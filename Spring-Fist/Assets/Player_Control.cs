@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player_Control : MonoBehaviour
 {
     //Create a 3 punch combo with 2 buttons  R, L , R
     //A Charge Punch with 3 stages
 
+
+    private Vector2 moveDirection;
+    private Vector2 aimDirection;
+    private GameObject TargetPoint;
+    public Rigidbody2D rb;
 
     //Is facing right
     public float speed;
@@ -34,20 +40,95 @@ public class Player_Control : MonoBehaviour
 
 
     [Header("CHARGE VARIABLES")]
+    public GameObject rightHand;
     public float rP_ChargeMin;
     public float rP_Chargemid;
     public float rP_ChargeMax;
-    private float rP_ChargeTime;
+    private float rp_ChargeTime;
     private bool isRightCharging = false;
+    private Vector2 hitPoint;
 
+
+    //public InputAction playerControls;
+    public PlayerInputActions playerControls;
+    private InputAction move;
+    private InputAction Aim;
+    private InputAction rPunch;
+    private InputAction attackCharge;
+
+
+
+    //targetpoint vectors
+    private Vector2 right; //right 
+    private Vector2 upRight;// up-right
+    private Vector2 up; // up
+    private Vector2 upLeft;// up-left
+    private Vector2 left;// left
+    private Vector2 downLeft;//down-left
+    private Vector2 down;//down
+    private Vector2 downRight;//down-right
+
+
+
+
+    private void Awake()
+    {
+        playerControls = new PlayerInputActions();
+
+        TargetPoint = GameObject.Find("TargetPoint");
+
+        right = new Vector2(1f, 0f);
+        upRight = new Vector2(0.5f, 0.5f);
+        up = new Vector2(0f, 1f);
+        upLeft = new Vector2(-0.5f, 0.5f);
+        left = new Vector2(-1f, 0f);
+        downLeft = new Vector2(-0.5f,-0.5f);
+        down = new Vector2(0f, -1f);
+        downRight = new Vector2(0.5f, -0.5f);
+
+    }
     void Start()
     {
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
+    private void OnEnable()
+    {
+        move = playerControls.Player.Move;
+        move.Enable();
+
+        Aim = playerControls.Player.Aim;
+        Aim.Enable();
+
+        rPunch = playerControls.Player.RightPunch;
+        rPunch.Enable();
+        rPunch.started += RightPunch;
+
+        attackCharge = playerControls.Player.AttackCharge;
+        attackCharge.Enable();
+        attackCharge.started += onChargeStart;
+        attackCharge.canceled += onChargeCanceled;
+    }
+
+    private void OnDisable()
+    {
+        move.Disable();
+
+        Aim.Disable();
+
+        rPunch.Disable();
+
+        attackCharge.Disable();
+        attackCharge.started -= onChargeStart;
+        attackCharge.canceled -= onChargeCanceled;
+    
+    }
     // Update is called once per frame
     void Update()
     {
+
+       // Debug.Log("HitPoint = "+ hitPoint);
 
         UpdateMovement();
 
@@ -108,18 +189,29 @@ public class Player_Control : MonoBehaviour
         
         }
 
-
     }
 
 
     void UpdateChargeAttacks() 
     {
 
+        if (isRightCharging) 
+        {
+
+            rp_ChargeTime +=  Time.deltaTime;
+        
+        }
+
+
+
+
+
+
        // When button is down
        if(Input.GetButtonDown("rightPunch")) 
         {
-            isRightCharging = true;
-            rP_ChargeTime = 0f;
+            isRightCharging = true;//HAPPENS AT PUNCH ACTION
+            rp_ChargeTime = 0f;
         
         }
 
@@ -127,37 +219,37 @@ public class Player_Control : MonoBehaviour
         if (Input.GetButton("rightPunch")) 
         {
 
-            if (isRightCharging) 
+            if (isRightCharging) //HAPPENS IN ONCHARGE
             {
-                Debug.Log("Charge time = " + rP_ChargeTime + ": " + "Max Charge = " + rP_ChargeMax);
-                rP_ChargeTime += Time.deltaTime;
+                Debug.Log("Charge time = " + rp_ChargeTime + ": " + "Max Charge = " + rP_ChargeMax);
+                rp_ChargeTime += Time.deltaTime;
 
-                if(rP_ChargeTime > rP_ChargeMax)// if charge time is greater then max charge time
+                if(rp_ChargeTime > rP_ChargeMax)// if charge time is greater then max charge time
                 {
-                    rP_ChargeTime = rP_ChargeMax; //ChargeTime = max charge time
+                    rp_ChargeTime = rP_ChargeMax; //ChargeTime = max charge time
                 
                 }
             
             }
         
         }
-       //When Button is up
-       if (Input.GetButtonUp("rightPunch")) 
+
+       if (Input.GetButtonUp("rightPunch")) //HAPPENS IN PERFORM ATTACKS
         {
-            if(rP_ChargeTime >= rP_ChargeMin) 
+            if(rp_ChargeTime >= rP_ChargeMin) 
             {
                 Debug.Log("Small Punch GO!!");
                 //set trigger animation
             }
 
-            if (rP_ChargeTime >= rP_Chargemid) 
+            if (rp_ChargeTime >= rP_Chargemid) 
             {
                 Debug.Log("Mid Punch A GOO!!!");
                 animator.SetTrigger("CR_L2");
             }
 
 
-            if (rP_ChargeTime == rP_ChargeMax) 
+            if (rp_ChargeTime == rP_ChargeMax) 
             {
                 Debug.Log("BIGGER AND MAX PUNCH A GOGO!!!");
                 //set trigger animation
@@ -167,17 +259,26 @@ public class Player_Control : MonoBehaviour
 
             isRightCharging = false;
             //animator.ResetTrigger("CR_L2");
-        }
-    
-    
+        }//////
     
     }
     void UpdateMovement() 
     {
-        Vector3 movement = Vector3.zero;
+
+         //Vector2 aimDirections;
+
+        moveDirection = move.ReadValue<Vector2>();
+        aimDirection = Aim.ReadValue<Vector2>();
+
+        Debug.Log(Aim.ReadValue<Vector2>());
+
+
+        /* if Aim.Direction is equal to <=x || y 
+
+
 
         //Move left and right without accelaration and decellration involed in movement
-        if (Input.GetKey(KeyCode.LeftArrow))
+       /* if (Input.GetKey(KeyCode.LeftArrow))
         {
             movement = Vector3.left;
 
@@ -185,27 +286,90 @@ public class Player_Control : MonoBehaviour
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             movement = Vector3.right;
-        }
-
+        }*/
 
         //controls the way the player is facing
-        if (movement.x > 0 && !IS_FacingRight)
+        if (moveDirection.x > 0 && !IS_FacingRight)
         {
             Flip();
         }
-        else if (movement.x < 0 && IS_FacingRight)
+        else if (moveDirection.x < 0 && IS_FacingRight)
         {
             Flip();
         }
 
-        transform.position += movement * speed * Time.deltaTime;
 
         //set animator parameter for speed
-        animator.SetFloat("Speed", Mathf.Abs(movement.x));
+        animator.SetFloat("Speed", Mathf.Abs(moveDirection.x));
 
 
     }
 
+
+    private void FixedUpdate()
+    {
+
+        rb.velocity = new Vector2(moveDirection.x * speed, 0f);
+
+        //TargetPoint.transform.localPosition = AimDirection;
+
+        if(aimDirection.x > 0.25f && aimDirection.y < -0.25f) 
+        {
+            //DIRECTION DOWNRIGHT
+            TargetPoint.transform.localPosition = downRight;
+
+        }
+        else if(aimDirection.x > -0.25f && aimDirection.y < -0.25f) 
+        {
+
+            //DIRECTION DOWN
+            TargetPoint.transform.localPosition = down;
+
+
+        }
+        else if(aimDirection.x < -0.25f && aimDirection.y < -0.25f) 
+        {
+            //DIRECTION DOWNLEFT 
+            TargetPoint.transform.localPosition = downLeft;
+
+        }
+        else if(aimDirection.x < -0.25f && aimDirection.y < 0.25f) 
+        {
+            //DIRECTION LEFT 
+            TargetPoint.transform.localPosition = left;
+
+        }
+        else if (aimDirection.x < -0.25f && aimDirection.y > 0.25f) 
+        {
+            //DIRECTION UPLEFT 
+            TargetPoint.transform.localPosition = upLeft;
+
+        }
+        else if (aimDirection.x < 0.25f && aimDirection.y > 0.25f)
+        {
+            //DIRECTION UP
+            TargetPoint.transform.localPosition = up;
+
+
+        }
+        else if (aimDirection.x > 0.25f && aimDirection.y > 0.25f)
+        {
+            //DIRECTION UPRIGHT
+            TargetPoint.transform.localPosition = upRight;
+
+        }
+        else if (aimDirection.x > 0.25f && aimDirection.y < 0.25f)
+        {
+            //DIRECTION RIGHT
+            TargetPoint.transform.localPosition = right;
+
+
+        }
+        else
+        {
+            TargetPoint.transform.localPosition = Vector2.zero;
+        }
+    }
     void Flip()
     {
         //Switch player direction EG. IF player is facing right then player with now face left
@@ -217,5 +381,50 @@ public class Player_Control : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
 
+    }
+
+
+
+    private void onChargeStart(InputAction.CallbackContext context) 
+    {
+        isRightCharging = true;
+        Debug.Log("ChargeStart"+ ","+ "Charging =" + isRightCharging);
+
+    }
+
+    private void onChargeCanceled(InputAction.CallbackContext context) 
+    {
+
+        isRightCharging = false;
+        Debug.Log("ChargeCancel" + "," + "Charging =" + rp_ChargeTime);
+
+        
+        rp_ChargeTime = 0;
+
+        performAttack(rp_ChargeTime);
+
+
+    }
+
+    private void performAttack(float rp_ChargeTime) 
+    {
+
+        Debug.Log(rp_ChargeTime);
+
+        hitPoint = new Vector2(rp_ChargeTime, 0f);
+
+       // rightHand.GetComponent<Rigidbody2D>().velocity = new Vector2(2f,0f);
+       
+    
+    }
+
+
+
+    private void RightPunch(InputAction.CallbackContext context) 
+    {
+       
+
+        Debug.Log("PUNCHED");
+    
     }
 }
