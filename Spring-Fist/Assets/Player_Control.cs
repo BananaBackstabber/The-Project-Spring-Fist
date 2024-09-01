@@ -9,12 +9,17 @@ public class Player_Control : MonoBehaviour
     //A Charge Punch with 3 stages
 
 
+
+
     private Vector2 moveDirection;
-    private Vector2 aimDirection;
-    private GameObject TargetPoint;
     public Rigidbody2D rb;
 
-    //Is facing right
+    private Vector2 aimDirection;
+    private GameObject TargetPoint;
+    private RightHand scriptRH;
+
+    //PLAYER VARIABLES
+
     public float speed;
     private Animator animator;
     private bool IS_FacingRight = true;
@@ -73,9 +78,14 @@ public class Player_Control : MonoBehaviour
 
     private void Awake()
     {
+        //INPUT CONTROLS
         playerControls = new PlayerInputActions();
 
+        //FIND TARGET POINT
         TargetPoint = GameObject.Find("TargetPoint");
+
+        //FIND RHAND SCRIPT
+        scriptRH = GameObject.Find("RightHand").GetComponent<RightHand>();
 
         right = new Vector2(1f, 0f);
         upRight = new Vector2(0.5f, 0.5f);
@@ -265,28 +275,11 @@ public class Player_Control : MonoBehaviour
     void UpdateMovement() 
     {
 
-         //Vector2 aimDirections;
-
+        //This code reads the values from the left and right joystick for movement and aiming
         moveDirection = move.ReadValue<Vector2>();
         aimDirection = Aim.ReadValue<Vector2>();
 
-        Debug.Log(Aim.ReadValue<Vector2>());
-
-
-        /* if Aim.Direction is equal to <=x || y 
-
-
-
-        //Move left and right without accelaration and decellration involed in movement
-       /* if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            movement = Vector3.left;
-
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            movement = Vector3.right;
-        }*/
+        //Debug.Log(Aim.ReadValue<Vector2>());
 
         //controls the way the player is facing
         if (moveDirection.x > 0 && !IS_FacingRight)
@@ -322,7 +315,7 @@ public class Player_Control : MonoBehaviour
         else if(aimDirection.x > -0.25f && aimDirection.y < -0.25f) 
         {
 
-            //DIRECTION DOWN
+            //DIRECTION DOWN    
             TargetPoint.transform.localPosition = down;
 
 
@@ -409,7 +402,20 @@ public class Player_Control : MonoBehaviour
     private void performAttack(float rp_ChargeTime) 
     {
 
+
+        //scriptRH.islocationLock = false;
+        
         Debug.Log(rp_ChargeTime);
+        if(rp_ChargeTime <= 2) 
+        {
+
+           
+            //Vector3 rHandPositon = rightHand.transform.position;
+
+            //rHandPositon = TargetPoint.transform.position;
+        
+        }
+
 
         hitPoint = new Vector2(rp_ChargeTime, 0f);
 
@@ -424,7 +430,7 @@ public class Player_Control : MonoBehaviour
     {
        
 
-        Debug.Log("PUNCHED");
+       // Debug.Log("PUNCHED");
     
     }
 }
