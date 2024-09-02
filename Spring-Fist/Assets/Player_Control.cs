@@ -47,12 +47,13 @@ public class Player_Control : MonoBehaviour
     [Header("CHARGE VARIABLES")]
     public GameObject rightHand;
     public float rP_ChargeMin;
-    public float rP_Chargemid;
+    public float rP_ChargeMid;
     public float rP_ChargeMax;
     private float rp_ChargeTime;
     private bool isRightCharging = false;
     private Vector2 hitPoint;
-
+    public float punchDistance;
+    public float punchSpeed;
 
     //public InputAction playerControls;
     public PlayerInputActions playerControls;
@@ -137,8 +138,9 @@ public class Player_Control : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //TargetPoint.transform.localPosition = TargetPoint.transform.localPosition * punchDistance;
 
-       // Debug.Log("HitPoint = "+ hitPoint);
+        // Debug.Log("HitPoint = "+ hitPoint);
 
         UpdateMovement();
 
@@ -207,8 +209,56 @@ public class Player_Control : MonoBehaviour
 
         if (isRightCharging) 
         {
+            if (isRightCharging) //HAPPENS IN ONCHARGE
+            {
+                Debug.Log("Charge time = " + rp_ChargeTime + ": " + "Max Charge = " + rP_ChargeMax);
+                rp_ChargeTime += Time.deltaTime;
 
-            rp_ChargeTime +=  Time.deltaTime;
+                if (rp_ChargeTime <= rP_ChargeMin)
+                {
+
+                    punchDistance = 0f;
+                    punchSpeed = 3f;
+
+                }
+
+                if (rp_ChargeTime >= rP_ChargeMin)
+                {
+                    Debug.Log("Small Punch GO!!");
+                    punchDistance = 0.5f;
+                    punchSpeed = 6f;
+                    //set trigger animation
+                }
+
+                if (rp_ChargeTime >= rP_ChargeMid)
+                {
+                    Debug.Log("Mid Punch A GOO!!!");
+                    punchDistance = 1f;
+                    punchSpeed = 10f;
+                    //animator.SetTrigger("CR_L2");
+                }
+
+
+                if (rp_ChargeTime >= rP_ChargeMax)
+                {
+                    Debug.Log("BIGGER AND MAX PUNCH A GOGO!!!");
+                    //set trigger animation
+                    punchDistance = 2f;
+                    //TargetPoint.transform.localPosition = TargetPoint.transform.localPosition * punchDistance;
+
+                }
+
+                //set position of target point based on charge time
+                //TargetPoint.transform.localPosition = TargetPoint.transform.localPosition * punchDistance;
+
+
+                if (rp_ChargeTime > rP_ChargeMax)// if charge time is greater then max charge time
+                {
+                    rp_ChargeTime = rP_ChargeMax; //ChargeTime = max charge time
+
+                }
+
+                rp_ChargeTime +=  Time.deltaTime;
         
         }
 
@@ -229,16 +279,7 @@ public class Player_Control : MonoBehaviour
         if (Input.GetButton("rightPunch")) 
         {
 
-            if (isRightCharging) //HAPPENS IN ONCHARGE
-            {
-                Debug.Log("Charge time = " + rp_ChargeTime + ": " + "Max Charge = " + rP_ChargeMax);
-                rp_ChargeTime += Time.deltaTime;
-
-                if(rp_ChargeTime > rP_ChargeMax)// if charge time is greater then max charge time
-                {
-                    rp_ChargeTime = rP_ChargeMax; //ChargeTime = max charge time
-                
-                }
+            
             
             }
         
@@ -252,7 +293,7 @@ public class Player_Control : MonoBehaviour
                 //set trigger animation
             }
 
-            if (rp_ChargeTime >= rP_Chargemid) 
+            if (rp_ChargeTime >= rP_ChargeMid) 
             {
                 Debug.Log("Mid Punch A GOO!!!");
                 animator.SetTrigger("CR_L2");
@@ -299,6 +340,75 @@ public class Player_Control : MonoBehaviour
     }
 
 
+    
+
+
+
+    private void onChargeStart(InputAction.CallbackContext context) 
+    {
+        rp_ChargeTime = 0;
+        isRightCharging = true;
+
+    }
+
+    private void onChargeCanceled(InputAction.CallbackContext context) 
+    {
+
+        isRightCharging = false;
+        performAttack(rp_ChargeTime);
+
+
+    }
+
+    private void performAttack(float rp_ChargeTime) 
+    {
+
+        Debug.Log(rp_ChargeTime);
+
+        
+       
+        //If the fist is locked then player can't spam charged punches
+        //Making so the punch can't change direction mid flight
+        if (scriptRH.islocationLock && punchDistance > 0f)
+        {
+            scriptRH.StopAllCoroutines();
+            scriptRH.StartCoroutine(scriptRH.MoveFist(punchDistance));
+
+        }
+        
+
+        //scriptRH.islocationLock = false;
+        
+       
+        if(rp_ChargeTime <= 2) 
+        {
+
+           
+            //Vector3 rHandPositon = rightHand.transform.position;
+
+            //rHandPositon = TargetPoint.transform.position;
+        
+        }
+
+        rp_ChargeTime = 0f;
+
+        hitPoint = new Vector2(rp_ChargeTime, 0f);
+
+       // rightHand.GetComponent<Rigidbody2D>().velocity = new Vector2(2f,0f);
+       
+    
+    }
+
+
+
+    private void RightPunch(InputAction.CallbackContext context) 
+    {
+       
+
+       // Debug.Log("PUNCHED");
+    
+    }
+
     private void FixedUpdate()
     {
 
@@ -306,56 +416,56 @@ public class Player_Control : MonoBehaviour
 
         //TargetPoint.transform.localPosition = AimDirection;
 
-        if(aimDirection.x > 0.25f && aimDirection.y < -0.25f) 
+
+        //THE FOLLOWING CODE IS USE TO LINK THE DIRECTION OF 
+        // THE RIGHT STICK TO THE TARGET POINT Location
+        if (aimDirection.x > 0.25f && aimDirection.y < -0.25f)
         {
             //DIRECTION DOWNRIGHT
-            TargetPoint.transform.localPosition = downRight;
+            TargetPoint.transform.localPosition = downRight * punchDistance;
 
         }
-        else if(aimDirection.x > -0.25f && aimDirection.y < -0.25f) 
+        else if (aimDirection.x > -0.25f && aimDirection.y < -0.25f)
         {
 
             //DIRECTION DOWN    
-            TargetPoint.transform.localPosition = down;
-
-
+            TargetPoint.transform.localPosition = down * punchDistance; // * distance 0.5, 1, 2
         }
-        else if(aimDirection.x < -0.25f && aimDirection.y < -0.25f) 
+        else if (aimDirection.x < -0.25f && aimDirection.y < -0.25f)
         {
             //DIRECTION DOWNLEFT 
-            TargetPoint.transform.localPosition = downLeft;
+            TargetPoint.transform.localPosition = downLeft * punchDistance;
 
         }
-        else if(aimDirection.x < -0.25f && aimDirection.y < 0.25f) 
+        else if (aimDirection.x < -0.25f && aimDirection.y < 0.25f)
         {
             //DIRECTION LEFT 
-            TargetPoint.transform.localPosition = left;
+            TargetPoint.transform.localPosition = left * punchDistance;
 
         }
-        else if (aimDirection.x < -0.25f && aimDirection.y > 0.25f) 
+        else if (aimDirection.x < -0.25f && aimDirection.y > 0.25f)
         {
             //DIRECTION UPLEFT 
-            TargetPoint.transform.localPosition = upLeft;
+            TargetPoint.transform.localPosition = upLeft * punchDistance;
 
         }
         else if (aimDirection.x < 0.25f && aimDirection.y > 0.25f)
         {
             //DIRECTION UP
-            TargetPoint.transform.localPosition = up;
+            TargetPoint.transform.localPosition = up * punchDistance;
 
 
         }
         else if (aimDirection.x > 0.25f && aimDirection.y > 0.25f)
         {
             //DIRECTION UPRIGHT
-            TargetPoint.transform.localPosition = upRight;
+            TargetPoint.transform.localPosition = upRight * punchDistance;
 
         }
         else if (aimDirection.x > 0.25f && aimDirection.y < 0.25f)
         {
             //DIRECTION RIGHT
-            TargetPoint.transform.localPosition = right;
-
+            TargetPoint.transform.localPosition = right * punchDistance;
 
         }
         else
@@ -374,63 +484,5 @@ public class Player_Control : MonoBehaviour
         theScale.x *= -1;
         transform.localScale = theScale;
 
-    }
-
-
-
-    private void onChargeStart(InputAction.CallbackContext context) 
-    {
-        isRightCharging = true;
-        Debug.Log("ChargeStart"+ ","+ "Charging =" + isRightCharging);
-
-    }
-
-    private void onChargeCanceled(InputAction.CallbackContext context) 
-    {
-
-        isRightCharging = false;
-        Debug.Log("ChargeCancel" + "," + "Charging =" + rp_ChargeTime);
-
-        
-        rp_ChargeTime = 0;
-
-        performAttack(rp_ChargeTime);
-
-
-    }
-
-    private void performAttack(float rp_ChargeTime) 
-    {
-
-
-        //scriptRH.islocationLock = false;
-        
-        Debug.Log(rp_ChargeTime);
-        if(rp_ChargeTime <= 2) 
-        {
-
-           
-            //Vector3 rHandPositon = rightHand.transform.position;
-
-            //rHandPositon = TargetPoint.transform.position;
-        
-        }
-
-
-        hitPoint = new Vector2(rp_ChargeTime, 0f);
-
-       // rightHand.GetComponent<Rigidbody2D>().velocity = new Vector2(2f,0f);
-       
-    
-    }
-
-
-
-    private void RightPunch(InputAction.CallbackContext context) 
-    {
-       
-
-       // Debug.Log("PUNCHED");
-    
     }
 }

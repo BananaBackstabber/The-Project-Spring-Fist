@@ -892,9 +892,10 @@ MonoBehaviour:
   lFistCount: 0
   comboCooldownTime: 3
   rightHand: {fileID: 478594615}
-  rP_ChargeMin: 0.5
-  rP_Chargemid: 1.5
-  rP_ChargeMax: 2.5
+  rP_ChargeMin: 3
+  rP_ChargeMid: 8
+  rP_ChargeMax: 15
+  punchDistance: 0
 --- !u!114 &851423719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1082,7 +1083,7 @@ Transform:
   m_GameObject: {fileID: 1172057827}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.057999965, y: -0.051000018, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.061322905, y: 0.061322905, z: 0.061322905}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1105,7 +1106,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.43862572, y: 0.4689699, z: 1}
   m_Center: {x: -0.078390144, y: 0.0986195, z: 0}
@@ -1186,13 +1187,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1557663522}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000021909513, y: -0.0000002337174, z: -0.010666789, w: 0.99994314}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.43091232, y: 0.43091232, z: 0.43091232}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 851423714}
-  m_LocalEulerAnglesHint: {x: 0.003, y: 0, z: -1.222}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1970189422
 GameObject:
   m_ObjectHideFlags: 0
