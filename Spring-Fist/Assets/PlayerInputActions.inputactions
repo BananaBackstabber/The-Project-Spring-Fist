@@ -33,9 +33,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "AttackCharge",
+                    "name": "RightCharge",
                     "type": "Value",
                     "id": "6f3c77c9-0360-4695-94d1-6d22d9dc1617",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "LeftGrab",
+                    "type": "Button",
+                    "id": "cb721c51-1191-4223-a8d4-fd9bb11ba22c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LeftCharge",
+                    "type": "Value",
+                    "id": "dd8d8ea2-e336-4515-baf1-e5f92c587f75",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -259,7 +277,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "AttackCharge",
+                    "action": "RightCharge",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "576986ea-736c-47f8-9bf5-113aaa8958f4",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftGrab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4e176e70-e00d-4f27-ac49-32b23737dc7b",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftCharge",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

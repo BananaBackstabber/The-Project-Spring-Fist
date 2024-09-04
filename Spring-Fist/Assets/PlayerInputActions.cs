@@ -55,9 +55,27 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""AttackCharge"",
+                    ""name"": ""RightCharge"",
                     ""type"": ""Value"",
                     ""id"": ""6f3c77c9-0360-4695-94d1-6d22d9dc1617"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""LeftGrab"",
+                    ""type"": ""Button"",
+                    ""id"": ""cb721c51-1191-4223-a8d4-fd9bb11ba22c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftCharge"",
+                    ""type"": ""Value"",
+                    ""id"": ""dd8d8ea2-e336-4515-baf1-e5f92c587f75"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -281,7 +299,29 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""AttackCharge"",
+                    ""action"": ""RightCharge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""576986ea-736c-47f8-9bf5-113aaa8958f4"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftGrab"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4e176e70-e00d-4f27-ac49-32b23737dc7b"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftCharge"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -872,7 +912,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_RightPunch = m_Player.FindAction("RightPunch", throwIfNotFound: true);
-        m_Player_AttackCharge = m_Player.FindAction("AttackCharge", throwIfNotFound: true);
+        m_Player_RightCharge = m_Player.FindAction("RightCharge", throwIfNotFound: true);
+        m_Player_LeftGrab = m_Player.FindAction("LeftGrab", throwIfNotFound: true);
+        m_Player_LeftCharge = m_Player.FindAction("LeftCharge", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -949,7 +991,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_RightPunch;
-    private readonly InputAction m_Player_AttackCharge;
+    private readonly InputAction m_Player_RightCharge;
+    private readonly InputAction m_Player_LeftGrab;
+    private readonly InputAction m_Player_LeftCharge;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -957,7 +1001,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @RightPunch => m_Wrapper.m_Player_RightPunch;
-        public InputAction @AttackCharge => m_Wrapper.m_Player_AttackCharge;
+        public InputAction @RightCharge => m_Wrapper.m_Player_RightCharge;
+        public InputAction @LeftGrab => m_Wrapper.m_Player_LeftGrab;
+        public InputAction @LeftCharge => m_Wrapper.m_Player_LeftCharge;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -976,9 +1022,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @RightPunch.started += instance.OnRightPunch;
             @RightPunch.performed += instance.OnRightPunch;
             @RightPunch.canceled += instance.OnRightPunch;
-            @AttackCharge.started += instance.OnAttackCharge;
-            @AttackCharge.performed += instance.OnAttackCharge;
-            @AttackCharge.canceled += instance.OnAttackCharge;
+            @RightCharge.started += instance.OnRightCharge;
+            @RightCharge.performed += instance.OnRightCharge;
+            @RightCharge.canceled += instance.OnRightCharge;
+            @LeftGrab.started += instance.OnLeftGrab;
+            @LeftGrab.performed += instance.OnLeftGrab;
+            @LeftGrab.canceled += instance.OnLeftGrab;
+            @LeftCharge.started += instance.OnLeftCharge;
+            @LeftCharge.performed += instance.OnLeftCharge;
+            @LeftCharge.canceled += instance.OnLeftCharge;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -992,9 +1044,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @RightPunch.started -= instance.OnRightPunch;
             @RightPunch.performed -= instance.OnRightPunch;
             @RightPunch.canceled -= instance.OnRightPunch;
-            @AttackCharge.started -= instance.OnAttackCharge;
-            @AttackCharge.performed -= instance.OnAttackCharge;
-            @AttackCharge.canceled -= instance.OnAttackCharge;
+            @RightCharge.started -= instance.OnRightCharge;
+            @RightCharge.performed -= instance.OnRightCharge;
+            @RightCharge.canceled -= instance.OnRightCharge;
+            @LeftGrab.started -= instance.OnLeftGrab;
+            @LeftGrab.performed -= instance.OnLeftGrab;
+            @LeftGrab.canceled -= instance.OnLeftGrab;
+            @LeftCharge.started -= instance.OnLeftCharge;
+            @LeftCharge.performed -= instance.OnLeftCharge;
+            @LeftCharge.canceled -= instance.OnLeftCharge;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1180,7 +1238,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnRightPunch(InputAction.CallbackContext context);
-        void OnAttackCharge(InputAction.CallbackContext context);
+        void OnRightCharge(InputAction.CallbackContext context);
+        void OnLeftGrab(InputAction.CallbackContext context);
+        void OnLeftCharge(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
