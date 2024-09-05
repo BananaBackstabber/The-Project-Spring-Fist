@@ -7,17 +7,20 @@ public class RightHand : MonoBehaviour
 
     public bool isLocationLocked = true;
     
+    //HANDPOINT A
     public GameObject handPoint;
-    public GameObject TargetPoint;
-
     private Vector2 handPointLocation;
+    //TARGET POINT B 
+    public GameObject TargetPoint;
     private Vector2 targetPointLocation;
     private bool isReturning;
 
+    //Charge Punch Movement floats
     private float count;
     private float reachThreshold = 0.3f;
 
     public Player_Control playerControls;
+    public Transform punchOrigin;
   
 
     private void Start()
@@ -66,26 +69,13 @@ public class RightHand : MonoBehaviour
         }
 
     }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        // Optional: Handle collision logic here, e.g., damage enemies
-        if (!isReturning)
-        {
-            // Hit something while moving towards the target, immediately return
-            StopAllCoroutines();
-            StartCoroutine(ReturnToPlayer());
-        }
-    }
-
-
     public IEnumerator MoveFist(float chargeTime)
     {
         //TargetPoint.transform.localPosition = TargetPoint.transform.localPosition * playerControls.punchDistance;
-        Debug.Log("Move STARTED");
+       // Debug.Log("Move STARTED");
         isLocationLocked = false;
         targetPointLocation = TargetPoint.transform.position;
-        Debug.Log("TARGET LOCATION is" + targetPointLocation);
+        //Debug.Log("TARGET LOCATION is" + targetPointLocation);
 
         while ((Vector3.Distance(transform.position, targetPointLocation) > reachThreshold))
         {
@@ -94,7 +84,7 @@ public class RightHand : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log("Move END");
+        //Debug.Log("Move END");
         isReturning = true;
 
       
@@ -104,7 +94,7 @@ public class RightHand : MonoBehaviour
     public IEnumerator ReturnToPlayer() 
     {
 
-        Debug.Log("RETURN STARTED");
+       // Debug.Log("RETURN STARTED");
         
         handPointLocation = handPoint.transform.position;
         while ((Vector3.Distance(transform.position, handPointLocation) > reachThreshold)) 
@@ -116,10 +106,35 @@ public class RightHand : MonoBehaviour
 
 
         }
-       Debug.Log("RETURN END");
+       //Debug.Log("RETURN END");
         isLocationLocked = true;
 
 
+    }
+
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(" HIT TRIGGER");
+
+        //punchOrigin Origin = current position of the fist 
+        punchOrigin = transform;
+
+        // Optional: Handle collision logic here, e.g., damage enemies
+        if (!isReturning)
+        {
+            Debug.Log(" KNOCK TRIGGER");
+            Enemy01 knockback = collision.GetComponent<Enemy01>();
+            // Calculate direction from PunchOrigin to the object being punched
+            Vector2 knockbackDirection = (collision.transform.position - punchOrigin.transform.position).normalized;
+
+            //Apply knockback to calculated direction
+            knockback.ApplyKnockBack(knockbackDirection);
+
+            // Hit something while moving towards the target, immediately return
+            StopAllCoroutines();
+            StartCoroutine(ReturnToPlayer());
+        }
     }
 
 

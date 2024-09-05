@@ -339,7 +339,7 @@ public class Player_Control : MonoBehaviour
 
         }
 
-        rp_ChargeTime = 0f;
+        rp_ChargeTime = 0f; 
 
     }
     private void RightPerformAttack(float rp_ChargeTime) 

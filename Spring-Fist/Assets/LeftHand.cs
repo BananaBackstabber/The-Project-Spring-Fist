@@ -1,6 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+public class LeftHand : MonoBehaviour
+{
+    public bool isLocationLocked = true;
+    private bool isReturning;
+
+
+    private GameObject handPoint;
+    private Vector2 handPointLocation;
+
+    private GameObject targetPoint;
+    private Vector2 targetPointLocation;
+
+    private float count;
     private float reachThreshold = 0.3f;
 
     public Player_Control playerControls;

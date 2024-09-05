@@ -13,9 +13,9 @@ TagManager:
   - UI
   - Player
   - Ground
-  - 
-  - 
-  - 
+  - Enemy
+  - RightHand
+  - LeftHand
   - 
   - 
   - 
@@ -40,4 +40,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackGround
+    uniqueID: 177496509
+    locked: 0
+  - name: LeftHand
+    uniqueID: 343609461
+    locked: 0
+  - name: Player
+    uniqueID: 3356204917
+    locked: 0
+  - name: RightHand
+    uniqueID: 1134815475
+    locked: 0
+  - name: Enemy
+    uniqueID: 3285653723
+    locked: 0
+  - name: Object
+    uniqueID: 282940357
     locked: 0
