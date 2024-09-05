@@ -80,6 +80,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""91254eb9-98d7-443d-9789-35b81eda39e2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -322,6 +331,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""LeftCharge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d27f4b19-e79f-4e96-820c-7d0e73c791fd"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -915,6 +935,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_RightCharge = m_Player.FindAction("RightCharge", throwIfNotFound: true);
         m_Player_LeftGrab = m_Player.FindAction("LeftGrab", throwIfNotFound: true);
         m_Player_LeftCharge = m_Player.FindAction("LeftCharge", throwIfNotFound: true);
+        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -994,6 +1015,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_RightCharge;
     private readonly InputAction m_Player_LeftGrab;
     private readonly InputAction m_Player_LeftCharge;
+    private readonly InputAction m_Player_Jump;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -1004,6 +1026,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @RightCharge => m_Wrapper.m_Player_RightCharge;
         public InputAction @LeftGrab => m_Wrapper.m_Player_LeftGrab;
         public InputAction @LeftCharge => m_Wrapper.m_Player_LeftCharge;
+        public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1031,6 +1054,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @LeftCharge.started += instance.OnLeftCharge;
             @LeftCharge.performed += instance.OnLeftCharge;
             @LeftCharge.canceled += instance.OnLeftCharge;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -1053,6 +1079,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @LeftCharge.started -= instance.OnLeftCharge;
             @LeftCharge.performed -= instance.OnLeftCharge;
             @LeftCharge.canceled -= instance.OnLeftCharge;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1241,6 +1270,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnRightCharge(InputAction.CallbackContext context);
         void OnLeftGrab(InputAction.CallbackContext context);
         void OnLeftCharge(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -5,29 +5,35 @@ using UnityEngine;
 public class RightHand : MonoBehaviour
 {
 
+    private LeftHand scriptLH;
+    private Collider2D objectColiider;
+
     public bool isLocationLocked = true;
-    
     //HANDPOINT A
     public GameObject handPoint;
     private Vector2 handPointLocation;
-    //TARGET POINT B 
+    //TARGETPOINT B 
     public GameObject TargetPoint;
     private Vector2 targetPointLocation;
     private bool isReturning;
 
+
     //Charge Punch Movement floats
     private float count;
     private float reachThreshold = 0.3f;
-
     public Player_Control playerControls;
     public Transform punchOrigin;
-  
 
+
+
+    private void Awake()
+    {
+        scriptLH = GameObject.Find("LeftHand").GetComponent<LeftHand>();
+    }
     private void Start()
     {
-
+        objectColiider = GetComponent<Collider2D>();
         playerControls = GameObject.Find("Player").GetComponent<Player_Control>();
-
         handPoint = GameObject.Find("R_HandPoint");
         TargetPoint = GameObject.Find("TargetPoint01");
 
@@ -35,6 +41,7 @@ public class RightHand : MonoBehaviour
         targetPointLocation = TargetPoint.transform.position;
 
         isLocationLocked = true;
+        objectColiider.enabled = false;
 
     }
     private void Update()
@@ -50,6 +57,7 @@ public class RightHand : MonoBehaviour
 
             transform.position = handPoint.transform.position;
             count = 0;
+            objectColiider.enabled = false;
         }
 
         if (isReturning && count == 0) 
@@ -71,6 +79,8 @@ public class RightHand : MonoBehaviour
     }
     public IEnumerator MoveFist(float chargeTime)
     {
+        objectColiider.enabled = true;
+
         //TargetPoint.transform.localPosition = TargetPoint.transform.localPosition * playerControls.punchDistance;
        // Debug.Log("Move STARTED");
         isLocationLocked = false;
@@ -108,6 +118,7 @@ public class RightHand : MonoBehaviour
         }
        //Debug.Log("RETURN END");
         isLocationLocked = true;
+        objectColiider.enabled = false;
 
 
     }
@@ -115,10 +126,14 @@ public class RightHand : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(" HIT TRIGGER");
 
+
+        
         //punchOrigin Origin = current position of the fist 
         punchOrigin = transform;
+
+        //if left hand has something grabbed then disable that grab
+        scriptLH.isGrabbed = false;
 
         // Optional: Handle collision logic here, e.g., damage enemies
         if (!isReturning)

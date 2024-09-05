@@ -46,24 +46,28 @@ public class Player_Control : MonoBehaviour
     private float comboTimeCount;
 
 
-    [Header("CHARGE VARIABLES")]
+    [Header("CHARGE TIME")]
     public GameObject rightHand;
     public float ChargeMin;
     public float ChargeMid;
     public float ChargeMax;
+    [Header("CHARGE SPEED")]
+    public float punchSpeedMin;
+    public float punchSpeedMid;
+    public float punchSpeedMax;
 
     //RIGHT CHARGE
     private float rp_ChargeTime;
     private bool isRightCharging = false;
     private Vector2 hitPoint;
     private float rp_PunchDistance;
-    public float rightPunchSpeed;
+    [HideInInspector] public float rightPunchSpeed;
 
     //LEFT CHARGE
     private float lp_ChargeTime;
     private bool isLeftCharging = false;
     private float lp_PunchDistance;
-    public float leftPunchSpeed;
+    [HideInInspector] public float leftPunchSpeed;
 
     //public InputAction playerControls;
     public PlayerInputActions playerControls;
@@ -73,6 +77,9 @@ public class Player_Control : MonoBehaviour
     private InputAction lPunch;
     private InputAction rightCharge;
     private InputAction leftCharge;
+    private InputAction jump;
+
+    private Vector2 jumped;
 
 
     //targetpoint vectors
@@ -146,6 +153,10 @@ public class Player_Control : MonoBehaviour
         leftCharge.Enable();
         leftCharge.started += onLeftChargeStart;
         leftCharge.canceled += onLeftChargeCanceled;
+
+        jump = playerControls.Player.Jump;
+        jump.Enable();
+        jump.started += Jump;
     }
 
     private void OnDisable()
@@ -154,6 +165,7 @@ public class Player_Control : MonoBehaviour
         Aim.Disable();
         rPunch.Disable();
         lPunch.Disable();
+        jump.Disable();
 
         rightCharge.Disable();
         rightCharge.started -= onRightChargeStart;
@@ -178,7 +190,249 @@ public class Player_Control : MonoBehaviour
         UpdateChargeAttacks();
 
     }
+    private void FixedUpdate()
+    {
 
+        //Translate movement of the player
+        rb.velocity = new Vector2(moveDirection.x * speed, jumped.y);
+        //Resets jumped
+        jumped.y = 0f;
+
+        //TargetPoint.transform.localPosition = AimDirection;
+    }
+    private void LateUpdate()
+    {
+       
+
+        if (isFacingRight)
+        {
+            //THE FOLLOWING CODE IS USE TO LINK THE DIRECTION OF 
+            // THE RIGHT STICK TO THE TARGET POINT Location
+            if (aimDirection.x > 0.25f && aimDirection.y < -0.25f)
+            {
+                //DIRECTION DOWNRIGHT
+                targetPoint01.transform.localPosition = downRight * rp_PunchDistance;
+
+            }
+            else if (aimDirection.x > -0.25f && aimDirection.y < -0.25f)
+            {
+
+                //DIRECTION DOWN    
+                targetPoint01.transform.localPosition = down * rp_PunchDistance; // * distance 0.5, 1, 2
+            }
+            else if (aimDirection.x < -0.25f && aimDirection.y < -0.25f)
+            {
+                //DIRECTION DOWNLEFT 
+                targetPoint01.transform.localPosition = downLeft * rp_PunchDistance;
+
+            }
+            else if (aimDirection.x < -0.25f && aimDirection.y < 0.25f)
+            {
+                //DIRECTION LEFT 
+                targetPoint01.transform.localPosition = left * rp_PunchDistance;
+
+            }
+            else if (aimDirection.x < -0.25f && aimDirection.y > 0.25f)
+            {
+                //DIRECTION UPLEFT 
+                targetPoint01.transform.localPosition = upLeft * rp_PunchDistance;
+
+            }
+            else if (aimDirection.x < 0.25f && aimDirection.y > 0.25f)
+            {
+                //DIRECTION UP
+                targetPoint01.transform.localPosition = up * rp_PunchDistance;
+
+            }
+            else if (aimDirection.x > 0.25f && aimDirection.y > 0.25f)
+            {
+                //DIRECTION UPRIGHT
+                targetPoint01.transform.localPosition = upRight * rp_PunchDistance;
+
+            }
+            else if (aimDirection.x > 0.25f && aimDirection.y < 0.25f)
+            {
+                //DIRECTION RIGHT
+                targetPoint01.transform.localPosition = right * rp_PunchDistance;
+
+            }
+            else
+            {
+                targetPoint01.transform.localPosition = Vector2.zero;
+            }
+
+
+
+            //LEFT STICK TARGET POINT || TARGET POINT 2 ROTATION
+            if (aimDirection.x > 0.25f && aimDirection.y < -0.25f)
+            {
+                //DIRECTION DOWNRIGHT
+                targetPoint02.transform.localPosition = downRight * lp_PunchDistance;
+
+            }
+            else if (aimDirection.x > -0.25f && aimDirection.y < -0.25f)
+            {
+
+                //DIRECTION DOWN    
+                targetPoint02.transform.localPosition = down * lp_PunchDistance; // * distance 0.5, 1, 2
+            }
+            else if (aimDirection.x < -0.25f && aimDirection.y < -0.25f)
+            {
+                //DIRECTION DOWNLEFT 
+                targetPoint02.transform.localPosition = downLeft * lp_PunchDistance;
+
+            }
+            else if (aimDirection.x < -0.25f && aimDirection.y < 0.25f)
+            {
+                //DIRECTION LEFT 
+                targetPoint02.transform.localPosition = left * lp_PunchDistance;
+
+            }
+            else if (aimDirection.x < -0.25f && aimDirection.y > 0.25f)
+            {
+                //DIRECTION UPLEFT 
+                targetPoint02.transform.localPosition = upLeft * lp_PunchDistance;
+
+            }
+            else if (aimDirection.x < 0.25f && aimDirection.y > 0.25f)
+            {
+                //DIRECTION UP
+                targetPoint02.transform.localPosition = up * lp_PunchDistance;
+
+            }
+            else if (aimDirection.x > 0.25f && aimDirection.y > 0.25f)
+            {
+                //DIRECTION UPRIGHT
+                targetPoint02.transform.localPosition = upRight * lp_PunchDistance;
+
+            }
+            else if (aimDirection.x > 0.25f && aimDirection.y < 0.25f)
+            {
+                //DIRECTION RIGHT
+                targetPoint02.transform.localPosition = right * lp_PunchDistance;
+
+            }
+            else
+            {
+                targetPoint02.transform.localPosition = Vector2.zero;
+            }
+
+        }
+        else
+        {
+            //THE FOLLOWING CODE IS USE TO LINK THE DIRECTION OF 
+            // THE RIGHT STICK TO THE TARGET POINT Location
+            if (aimDirection.x > 0.25f && aimDirection.y < -0.25f)
+            {
+                //DIRECTION DOWNleft
+                targetPoint01.transform.localPosition = downLeft * rp_PunchDistance;
+
+            }
+            else if (aimDirection.x > -0.25f && aimDirection.y < -0.25f)
+            {
+
+                //DIRECTION DOWN    
+                targetPoint01.transform.localPosition = down * rp_PunchDistance; // * distance 0.5, 1, 2
+            }
+            else if (aimDirection.x < -0.25f && aimDirection.y < -0.25f)
+            {
+                //DIRECTION DOWNRIGHT
+                targetPoint01.transform.localPosition = downRight * rp_PunchDistance;
+
+            }
+            else if (aimDirection.x < -0.25f && aimDirection.y < 0.25f)
+            {
+                //DIRECTION RIGHT
+                targetPoint01.transform.localPosition = right * rp_PunchDistance;
+
+            }
+            else if (aimDirection.x < -0.25f && aimDirection.y > 0.25f)
+            {
+                //DIRECTION UPRIGHT
+                targetPoint01.transform.localPosition = upRight * rp_PunchDistance;
+
+            }
+            else if (aimDirection.x < 0.25f && aimDirection.y > 0.25f)
+            {
+                //DIRECTION UP
+                targetPoint01.transform.localPosition = up * rp_PunchDistance;
+
+            }
+            else if (aimDirection.x > 0.25f && aimDirection.y > 0.25f)
+            {
+                //DIRECTION UPLEFT
+                targetPoint01.transform.localPosition = upLeft * rp_PunchDistance;
+
+            }
+            else if (aimDirection.x > 0.25f && aimDirection.y < 0.25f)
+            {
+                //DIRECTION LEFT
+                targetPoint01.transform.localPosition = left * rp_PunchDistance;
+
+            }
+            else
+            {
+                targetPoint01.transform.localPosition = Vector2.zero;
+            }
+
+
+
+            //LEFT STICK TARGET POINT || TARGET POINT 2 ROTATION
+            if (aimDirection.x > 0.25f && aimDirection.y < -0.25f)
+            {
+                //DIRECTION DOWNleft
+                targetPoint02.transform.localPosition = downLeft * lp_PunchDistance;
+
+            }
+            else if (aimDirection.x > -0.25f && aimDirection.y < -0.25f)
+            {
+
+                //DIRECTION DOWN    
+                targetPoint02.transform.localPosition = down * lp_PunchDistance; // * distance 0.5, 1, 2
+            }
+            else if (aimDirection.x < -0.25f && aimDirection.y < -0.25f)
+            {
+                //DIRECTION DOWNRIGHT
+                targetPoint02.transform.localPosition = downRight * lp_PunchDistance;
+
+            }
+            else if (aimDirection.x < -0.25f && aimDirection.y < 0.25f)
+            {
+                //DIRECTION RIGHT
+                targetPoint02.transform.localPosition = right * lp_PunchDistance;
+
+            }
+            else if (aimDirection.x < -0.25f && aimDirection.y > 0.25f)
+            {
+                //DIRECTION UPRIGHT
+                targetPoint02.transform.localPosition = upRight * lp_PunchDistance;
+
+            }
+            else if (aimDirection.x < 0.25f && aimDirection.y > 0.25f)
+            {
+                //DIRECTION UP
+                targetPoint02.transform.localPosition = up * lp_PunchDistance;
+
+            }
+            else if (aimDirection.x > 0.25f && aimDirection.y > 0.25f)
+            {
+                //DIRECTION UPLEFT
+                targetPoint02.transform.localPosition = upLeft * lp_PunchDistance;
+
+            }
+            else if (aimDirection.x > 0.25f && aimDirection.y < 0.25f)
+            {
+                //DIRECTION LEFT
+                targetPoint02.transform.localPosition = left * lp_PunchDistance;
+
+            }
+            else
+            {
+                targetPoint01.transform.localPosition = Vector2.zero;
+            }
+
+        }
+    }
     void UpdateAttack() 
     {
 
@@ -298,7 +552,7 @@ public class Player_Control : MonoBehaviour
             {
                 //Debug.Log("Mid Punch A GOO!!!");
                 rp_PunchDistance = 1f;
-                rightPunchSpeed = 10f;
+                //rightPunchSpeed = 10f;
                 //animator.SetTrigger("CR_L2");
             }
 
@@ -351,7 +605,7 @@ public class Player_Control : MonoBehaviour
         if (rp_ChargeTime <= ChargeMin)
         {
             Debug.Log("Small Punch GO!!");
-            rightPunchSpeed = 3f;
+            rightPunchSpeed = punchSpeedMin;
             //set trigger animation
         }
 
@@ -359,14 +613,14 @@ public class Player_Control : MonoBehaviour
         {
 
             Debug.Log("Mid Punch A GOO!!!");
-            rightPunchSpeed = 6f;
+            rightPunchSpeed = punchSpeedMid;
             //set trigger animation
         }
 
         if (rp_ChargeTime >= ChargeMax)
         {
             Debug.Log("BIGGER AND MAX PUNCH A GOGO!!!");
-            rightPunchSpeed = 10f;
+            rightPunchSpeed = punchSpeedMax;
             animator.SetTrigger("CR_L2");
         }
 
@@ -471,21 +725,21 @@ public class Player_Control : MonoBehaviour
         if (lp_ChargeTime <= ChargeMin)
         {
 
-            leftPunchSpeed = 3f;
+            leftPunchSpeed = punchSpeedMin;
             //set trigger animation
         }
 
         if (lp_ChargeTime >= ChargeMid)
         {
 
-            leftPunchSpeed = 6f;
+            leftPunchSpeed = punchSpeedMid;
             //set trigger animation
         }
 
         if (lp_ChargeTime >= ChargeMax)
         {
 
-            leftPunchSpeed = 10f;
+            leftPunchSpeed = punchSpeedMax;
             animator.SetTrigger("CR_L2");
         }
 
@@ -510,126 +764,17 @@ public class Player_Control : MonoBehaviour
 
 
     }
-
-    private void FixedUpdate()
+    
+    private void Jump(InputAction.CallbackContext context) 
     {
+        Debug.Log("Jumped");
 
-        rb.velocity = new Vector2(moveDirection.x * speed, 0f);
+        jumped = new Vector2(rb.velocity.x, 80f);
 
-        //TargetPoint.transform.localPosition = AimDirection;
-
-
-        //THE FOLLOWING CODE IS USE TO LINK THE DIRECTION OF 
-        // THE RIGHT STICK TO THE TARGET POINT Location
-        if (aimDirection.x > 0.25f && aimDirection.y < -0.25f)
-        {
-            //DIRECTION DOWNRIGHT
-            targetPoint01.transform.localPosition = downRight * rp_PunchDistance;
-
-        }
-        else if (aimDirection.x > -0.25f && aimDirection.y < -0.25f)
-        {
-
-            //DIRECTION DOWN    
-            targetPoint01.transform.localPosition = down * rp_PunchDistance; // * distance 0.5, 1, 2
-        }
-        else if (aimDirection.x < -0.25f && aimDirection.y < -0.25f)
-        {
-            //DIRECTION DOWNLEFT 
-            targetPoint01.transform.localPosition = downLeft * rp_PunchDistance;
-
-        }
-        else if (aimDirection.x < -0.25f && aimDirection.y < 0.25f)
-        {
-            //DIRECTION LEFT 
-            targetPoint01.transform.localPosition = left * rp_PunchDistance;
-
-        }
-        else if (aimDirection.x < -0.25f && aimDirection.y > 0.25f)
-        {
-            //DIRECTION UPLEFT 
-            targetPoint01.transform.localPosition = upLeft * rp_PunchDistance;
-
-        }
-        else if (aimDirection.x < 0.25f && aimDirection.y > 0.25f)
-        {
-            //DIRECTION UP
-            targetPoint01.transform.localPosition = up * rp_PunchDistance;
-
-        }
-        else if (aimDirection.x > 0.25f && aimDirection.y > 0.25f)
-        {
-            //DIRECTION UPRIGHT
-            targetPoint01.transform.localPosition = upRight * rp_PunchDistance;
-
-        }
-        else if (aimDirection.x > 0.25f && aimDirection.y < 0.25f)
-        {
-            //DIRECTION RIGHT
-            targetPoint01.transform.localPosition = right * rp_PunchDistance;
-
-        }
-        else
-        {
-            targetPoint01.transform.localPosition = Vector2.zero;
-        }
-
-
-
-        //LEFT STICK TARGET POINT || TARGET POINT 2 ROTATION
-        if (aimDirection.x > 0.25f && aimDirection.y < -0.25f)
-        {
-            //DIRECTION DOWNRIGHT
-            targetPoint02.transform.localPosition = downRight * lp_PunchDistance;
-
-        }
-        else if (aimDirection.x > -0.25f && aimDirection.y < -0.25f)
-        {
-
-            //DIRECTION DOWN    
-            targetPoint02.transform.localPosition = down * lp_PunchDistance; // * distance 0.5, 1, 2
-        }
-        else if (aimDirection.x < -0.25f && aimDirection.y < -0.25f)
-        {
-            //DIRECTION DOWNLEFT 
-            targetPoint02.transform.localPosition = downLeft * lp_PunchDistance;
-
-        }
-        else if (aimDirection.x < -0.25f && aimDirection.y < 0.25f)
-        {
-            //DIRECTION LEFT 
-            targetPoint02.transform.localPosition = left * lp_PunchDistance;
-
-        }
-        else if (aimDirection.x < -0.25f && aimDirection.y > 0.25f)
-        {
-            //DIRECTION UPLEFT 
-            targetPoint02.transform.localPosition = upLeft * lp_PunchDistance;
-
-        }
-        else if (aimDirection.x < 0.25f && aimDirection.y > 0.25f)
-        {
-            //DIRECTION UP
-            targetPoint02.transform.localPosition = up * lp_PunchDistance;
-
-        }
-        else if (aimDirection.x > 0.25f && aimDirection.y > 0.25f)
-        {
-            //DIRECTION UPRIGHT
-            targetPoint02.transform.localPosition = upRight * lp_PunchDistance;
-
-        }
-        else if (aimDirection.x > 0.25f && aimDirection.y < 0.25f)
-        {
-            //DIRECTION RIGHT
-            targetPoint02.transform.localPosition = right * lp_PunchDistance;
-
-        }
-        else
-        {
-            targetPoint02.transform.localPosition = Vector2.zero;
-        }
     }
+
+   
+   
     void Flip()
     {
         //Switch player direction EG. IF player is facing right then player with now face left
