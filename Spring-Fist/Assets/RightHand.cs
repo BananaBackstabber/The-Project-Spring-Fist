@@ -130,7 +130,7 @@ public class RightHand : MonoBehaviour
 
         
         //punchOrigin Origin = current position of the fist 
-        punchOrigin = transform;
+        punchOrigin = GameObject.Find("Player").transform;
 
         //if left hand has something grabbed then disable that grab
         scriptLH.isGrabbed = false;
@@ -138,8 +138,12 @@ public class RightHand : MonoBehaviour
         // Optional: Handle collision logic here, e.g., damage enemies
         if (!isReturning)
         {
-            Debug.Log(" KNOCK TRIGGER");
             Enemy01 knockback = collision.GetComponent<Enemy01>();
+            if(knockback == null) 
+            {
+                Debug.LogError("No Enemy detected, Hit " + collision.gameObject.name + "Instead");
+                return;
+            }
             // Calculate direction from PunchOrigin to the object being punched
             Vector2 knockbackDirection = (collision.transform.position - punchOrigin.transform.position).normalized;
 
@@ -150,6 +154,31 @@ public class RightHand : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine(ReturnToPlayer());
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+      /*  //punchOrigin Origin = current position of the fist 
+        punchOrigin = transform;
+
+        //if left hand has something grabbed then disable that grab
+        scriptLH.isGrabbed = false;
+
+        // Optional: Handle collision logic here, e.g., damage enemies
+        if (!isReturning)
+        {
+            Debug.Log(" KNOCK TRIGGER");
+            Enemy01 knockback = collision.gameObject.GetComponent<Enemy01>();
+            // Calculate direction from PunchOrigin to the object being punched
+            Vector2 knockbackDirection = (collision.transform.position - punchOrigin.transform.position).normalized;
+
+            //Apply knockback to calculated direction
+            knockback.ApplyKnockBack(knockbackDirection);
+
+            // Hit something while moving towards the target, immediately return
+            StopAllCoroutines();
+            StartCoroutine(ReturnToPlayer());
+        }*/
     }
 
 

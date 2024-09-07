@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class LeftHand : MonoBehaviour
 {
+    [HideInInspector]
     public bool isLocationLocked = true;
-    private bool isReturning;
+    public bool isReturning;
     private float temp;
 
     private GameObject handPoint;
@@ -26,14 +27,20 @@ public class LeftHand : MonoBehaviour
     //GRABBING VARIABLES
     public bool isGrabbed;
     public Transform leftHandPosition;
+    private bool isPulled;
+    private Vector2 collisionPoint;
+
+    private GameObject player;
 
     private BoxCollider2D objectCollider;
+    //public LayerMask;
 
     // Start is called before the first frame update
     void Start()
     {
         handPoint = GameObject.Find("L_HandPoint");
         targetPoint = GameObject.Find("TargetPoint02");
+        player = GameObject.Find("Player");
 
         playerControls = GameObject.Find("Player").GetComponent<Player_Control>();
         objectCollider = GetComponent<BoxCollider2D>();
@@ -45,7 +52,18 @@ public class LeftHand : MonoBehaviour
     void Update()
     {
 
-        if(isLocationLocked == true)
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, targetPointLocation, 0.3f);
+        if (hit.collider.gameObject.CompareTag("Wall"))
+        {
+            StopAllCoroutines();
+            StartCoroutine(pullPlayer());
+            collisionPoint = hit.point;
+
+            Debug.Log("Point of Contact:" + hit.point);
+
+        }
+
+        if (isLocationLocked == true)
         {
 
             StopAllCoroutines();
@@ -55,6 +73,8 @@ public class LeftHand : MonoBehaviour
             transform.position = handPoint.transform.position;
             count = 0;
             holdingCount = 0f;
+
+            playerControls.isMoving = true;
             objectCollider.enabled = false;
         }
         
@@ -74,26 +94,60 @@ public class LeftHand : MonoBehaviour
 
     }
 
+    private void OnDrawGizmos()
+    {
+        Vector2 origin = transform.position;
+        Vector2 endPoint = origin + targetPointLocation.normalized;
+
+        //Changes the gizmos colour on hit
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(origin, endPoint);
+    }
 
 
-    
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+        StopAllCoroutines();
+
+        
         temp += 1;
         Debug.Log("we hit: " + collision.gameObject.name + temp);
 
         Obj_Grab grabbedObject;
         grabbedObject = collision.gameObject.GetComponent<Obj_Grab>();
 
-        if(grabbedObject == null) 
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, targetPointLocation, 4f);
+        if (hit.collider != null)
+        {
+            collisionPoint = hit.point;
+            Debug.Log("Point of Contact:" + hit.point);
+
+        }
+
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+
+            this.GetComponent<Rigidbody2D>().isKinematic = true;
+            
+
+            StopAllCoroutines();
+            StartCoroutine(pullPlayer());
+            
+ 
+        }
+
+
+        if(grabbedObject == null)//If n object is not Grabable
         {
             Debug.LogError("GRABBED OBJECT = NULL");
 
-            return;
+            //isReturning = true;//stop it from frezze if it hits a non grabable object
+            //return;
    
          
         }
-        if (isReturning == false)
+        else if (grabbedObject && isReturning == false)
         {
 
             isGrabbed = true;
@@ -102,18 +156,35 @@ public class LeftHand : MonoBehaviour
             isHolding = true;
 
         }
-
-
-       
      /*
       IF the collison object has the grabbed script on it then
       isGrabbed = true
       isreturning = true
       */  
-
-
-
     }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+
+            transform.position = collisionPoint;
+
+           
+
+           // StopAllCoroutines();
+            //StartCoroutine(PullPlayer());
+
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        ContactPoint2D point = collision.GetContact(0);
+    }
+
+
 
 
     public IEnumerator MoveFist(float chargeTime)
@@ -127,11 +198,30 @@ public class LeftHand : MonoBehaviour
 
         while ((Vector3.Distance(transform.position, targetPointLocation) > reachThreshold))
         {
+            player.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0f;
 
-            transform.position = Vector3.MoveTowards(transform.position, targetPointLocation, playerControls.leftPunchSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPointLocation, playerControls.leftPunchSpeed  * Time.deltaTime);
             yield return null;
         }
         isReturning = true;
+
+    }
+
+    public IEnumerator pullPlayer()
+    {
+
+        while (Vector3.Distance(player.transform.position, transform.position) > reachThreshold * 2)
+        {
+            playerControls.isMoving = false;
+
+            player.transform.position = Vector3.MoveTowards(player.transform.position, transform.position, playerControls.leftPunchSpeed / 4 * Time.deltaTime);
+            yield return null;
+
+        }
+
+        Debug.Log("PULL HAS STopped");
+        isLocationLocked = true;
+
 
     }
 
@@ -162,7 +252,7 @@ public class LeftHand : MonoBehaviour
         {
             //Debug.Log("DISTANCE TO = " + Vector3.Distance(transform.position, handPointLocation));
 
-            transform.position = Vector3.MoveTowards(transform.position, handPointLocation, playerControls.rightPunchSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, handPointLocation, playerControls.leftPunchSpeed/2 * Time.deltaTime);
             yield return null;
 
 

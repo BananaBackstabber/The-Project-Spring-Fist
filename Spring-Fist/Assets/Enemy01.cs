@@ -19,8 +19,13 @@ public class Enemy01 : MonoBehaviour
     private Vector2 lastVelocity;
     private float curSpeed;
 
+    //knockback Variables
+    public float maxSpeed;
     private int curBounce;
-    public int numOfBounces = 2; 
+    public int numOfBounces = 2;
+
+    private int countKnockBack;
+    private float curKnockBackDelay;
     private void Awake()
     {
         playerControls = GameObject.Find("Player").GetComponent<Player_Control>();
@@ -38,12 +43,41 @@ public class Enemy01 : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log("Velocity : ]" + rb.velocity);
-        //transform.Translate(Vector2.up * Time.deltaTime * knockbackForce);
+
+        //Delays Hit impact so it can't hppen twice in quick succuion
+        if(countKnockBack > 0) 
+        {
+
+            curKnockBackDelay += 1f * Time.deltaTime;
+        }
+
+        if( curKnockBackDelay > 1f) 
+        {
+
+            countKnockBack = 0;
+            curKnockBackDelay = 0f;
+        
+        }
+
+        
     }
 
     private void LateUpdate()
     {
+
+        if (rb.velocity.magnitude > 0f)
+        {
+            //Debug.Log("Velocity : ]" + rb.velocity.magnitude);
+            //transform.Translate(Vector2.up * Time.deltaTime * knockbackForce);
+
+        }
+
+
+        if (rb.velocity.magnitude > maxSpeed)
+        {
+            rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
+
+        }
 
         lastVelocity = rb.velocity;
         
@@ -53,11 +87,10 @@ public class Enemy01 : MonoBehaviour
     {
         Vector2 knockbackDirection;
         knockbackDirection = direction + knockUp;
-
         curBounce = 0;
         
 
-        if(rb == null) 
+        if(rb == null || countKnockBack > 0) 
         {
             return;
         }
@@ -70,33 +103,69 @@ public class Enemy01 : MonoBehaviour
 
         //Apply the knockback to a direction
         rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
+
+        if (rb.velocity.magnitude > maxSpeed)
+        {
+            rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
+
+        }
+        countKnockBack++;
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
-        if(curBounce >= numOfBounces) 
+        if (curBounce >= numOfBounces)
         {
             return;
         }
 
-        if (collision.gameObject.CompareTag("Wall")) 
+        if (collision.gameObject.CompareTag("Wall"))
         {
-            Debug.Log("Colliding with " + collision.gameObject.name);
+            //Debug.Log("Colliding with " + collision.gameObject.name);
             ContactPoint2D point = collision.contacts[0];
             //gets its velocity speed based on the last frame
             curSpeed = lastVelocity.magnitude;
             //sets and reflects the objects direction
             direction = Vector2.Reflect(lastVelocity.normalized, point.normal);
-            //Sets thevelocity 
+            //Sets the velocity
             rb.velocity = direction * Mathf.Max(curSpeed, 0f);
 
             curBounce++;
         }
 
-        
-        
     }
+
+    //ContactPoint2D point = collision.contacts[0];
+
+   
+    void ProcessCollision(GameObject collider)
+    {
+
+        //collider.GetComponent<Collision2D>().GetContact[0];
+
+        if (curBounce >= numOfBounces)
+        {
+            return;
+        }
+
+        if (collider.gameObject.CompareTag("Wall"))
+        {
+            Debug.Log("Colliding with " + collider.gameObject.name);
+            //ContactPoint2D point = collider.GetComponent<Collider2D>().GetContact(0);
+            //gets its velocity speed based on the last frame
+            curSpeed = lastVelocity.magnitude;
+            //sets and reflects the objects direction
+           // direction = Vector2.Reflect(lastVelocity.normalized, point.normal);
+            //Sets the velocity
+            rb.velocity = direction * Mathf.Max(curSpeed, 0f);
+
+            curBounce++;
+        }
+
+    }
+
+
 
 
 }

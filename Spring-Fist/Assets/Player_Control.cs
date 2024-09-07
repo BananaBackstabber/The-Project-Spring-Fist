@@ -25,7 +25,7 @@ public class Player_Control : MonoBehaviour
     public float speed;
     private Animator animator;
     private bool isFacingRight = true;
-
+    public bool isMoving = true;
 
 
     /*
@@ -194,9 +194,15 @@ public class Player_Control : MonoBehaviour
     {
 
         //Translate movement of the player
-        rb.velocity = new Vector2(moveDirection.x * speed, jumped.y);
+        if (isMoving) 
+        {
+            rb.velocity = new Vector2(moveDirection.x * speed, jumped.y);
+
+        }
+
         //Resets jumped
         jumped.y = 0f;
+
 
         //TargetPoint.transform.localPosition = AimDirection;
     }
@@ -593,8 +599,6 @@ public class Player_Control : MonoBehaviour
 
         }
 
-        rp_ChargeTime = 0f; 
-
     }
     private void RightPerformAttack(float rp_ChargeTime) 
     {
@@ -635,14 +639,12 @@ public class Player_Control : MonoBehaviour
             scriptRH.StartCoroutine(scriptRH.MoveFist(rp_PunchDistance));
 
         }
-       
-        
+
+        //Resets charge time to 0
+        rp_ChargeTime = 0f;
+
 
         //hitPoint = new Vector2(rp_ChargeTime, 0f);
-
-   
-       
-    
     }
 
     private void RightPunch(InputAction.CallbackContext context)
@@ -683,7 +685,6 @@ public class Player_Control : MonoBehaviour
             {
                
                 lp_PunchDistance = 1f;
-                rightPunchSpeed = 10f;
                 //animator.SetTrigger("CR_L2");
             }
             if (lp_ChargeTime >= ChargeMax)
@@ -711,7 +712,12 @@ public class Player_Control : MonoBehaviour
     private void onLeftChargeCanceled(InputAction.CallbackContext context)
     {
         isLeftCharging = false;
-        LeftPerformAttack(lp_ChargeTime);
+        if (scriptLH.isLocationLocked) 
+        {
+
+            LeftPerformAttack(lp_ChargeTime);
+        }
+        
     }
     private void LeftPerformAttack(float lp_ChargeTime) 
     {
@@ -760,6 +766,15 @@ public class Player_Control : MonoBehaviour
     
     private void LeftPunch(InputAction.CallbackContext context) 
     {
+
+        if(!scriptLH.isLocationLocked && !scriptLH.isReturning) 
+        {
+            Debug.Log("Loctionlock = " + scriptLH.isLocationLocked + "Returning =" + scriptLH.isReturning);
+            scriptLH.StopAllCoroutines();
+            scriptLH.StartCoroutine(scriptLH.ReturnToPlayer());
+        
+        }
+
         //Debug.Log("GRAB");
 
 
