@@ -1,46 +1,43 @@
 fileFormatVersion: 2
-guid: e28020885386ac1489fce2b4d5981c9c
+guid: 9edd68286a635ca43b52126d2083642c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4602387570072316280
-    second: player land 48x48_0
+      213: 7110878671101974141
+    second: dash_0
   - first:
-      213: -7050213367843157162
-    second: player land 48x48_1
+      213: 7643240275301989466
+    second: dash_1
   - first:
-      213: -4760751101728093800
-    second: player land 48x48_2
+      213: -8809873816130030523
+    second: dash_2
   - first:
-      213: -1216246304953843119
-    second: player land 48x48_3
+      213: -4770175892979620097
+    second: dash_3
   - first:
-      213: -4517810991248364758
-    second: player land 48x48_4
+      213: -1190105860681885623
+    second: dash_4
   - first:
-      213: -4591912065576111590
-    second: player land 48x48_5
+      213: 8035217175372748222
+    second: dash_5
   - first:
-      213: 1349274582653079552
-    second: player land 48x48_6
+      213: 697318719324224050
+    second: dash_6
   - first:
-      213: 5904941268907416396
-    second: player land 48x48_7
+      213: -123402397366724103
+    second: dash_7
   - first:
-      213: -5832747298177718580
-    second: player land 48x48_8
+      213: 1856454893650784056
+    second: dash_8
   - first:
-      213: 3267701472246858424
-    second: player land 48x48_9
+      213: -6726272719258073990
+    second: dash_9
   - first:
-      213: 4074859373326206203
-    second: player land 48x48_10
+      213: 2655486098533973936
+    second: dash_10
   - first:
-      213: 5161187548481875975
-    second: player land 48x48_11
-  - first:
-      213: 6225700723224678848
-    second: player land 48x48_12
+      213: -3671615885211140864
+    second: dash_11
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -134,190 +131,253 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player land 48x48_0
+      name: dash_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 48
-        height: 48
+        x: 10
+        y: 7
+        width: 24
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 8d904d50378e5964298b70c009d43880
-      internalID: -885350551
+      spriteID: d765fefe97aeea260800000000000000
+      internalID: 7110878671101974141
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player land 48x48_1
+      name: dash_1
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
-        width: 48
-        height: 48
+        x: 21
+        y: 29
+        width: 10
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0d9dd6ce43bc8d645bf6189355a7976b
-      internalID: -1547683912
+      spriteID: a5c7556e88e321a60800000000000000
+      internalID: 7643240275301989466
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player land 48x48_2
+      name: dash_2
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
-        width: 48
-        height: 48
+        x: 54
+        y: 7
+        width: 38
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 95422cb50a85e2145a80d2cdd34521f8
-      internalID: 1660436041
+      spriteID: 544fd81e07a0db580800000000000000
+      internalID: -8809873816130030523
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player land 48x48_3
+      name: dash_3
       rect:
         serializedVersion: 2
-        x: 144
-        y: 0
-        width: 48
-        height: 48
+        x: 109
+        y: 7
+        width: 31
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 22c2317147d148f4ab8a571ea6e512d4
-      internalID: -1505377738
+      spriteID: ff661de7c4eeccdb0800000000000000
+      internalID: -4770175892979620097
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player land 48x48_4
+      name: dash_4
       rect:
         serializedVersion: 2
-        x: 192
-        y: 0
-        width: 48
-        height: 48
+        x: 157
+        y: 7
+        width: 31
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 3a60b96813d440541a99367d5485691c
-      internalID: -1430454634
+      spriteID: 94812f07605eb7fe0800000000000000
+      internalID: -1190105860681885623
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player land 48x48_5
+      name: dash_5
       rect:
         serializedVersion: 2
-        x: 240
-        y: 0
-        width: 48
-        height: 48
+        x: 205
+        y: 7
+        width: 31
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 48fd5f1b6d204194ab2ca41aedf29bc6
-      internalID: 2077631134
+      spriteID: eb5d537d273d28f60800000000000000
+      internalID: 8035217175372748222
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player land 48x48_6
+      name: dash_6
       rect:
         serializedVersion: 2
-        x: 288
-        y: 0
-        width: 48
-        height: 48
+        x: 253
+        y: 7
+        width: 31
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 6d08f7b40fb3a2d41b8fadaab22d4189
-      internalID: 712112912
+      spriteID: 23afc804eaf5da900800000000000000
+      internalID: 697318719324224050
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player land 48x48_7
+      name: dash_7
       rect:
         serializedVersion: 2
-        x: 336
-        y: 0
-        width: 48
-        height: 48
+        x: 296
+        y: 7
+        width: 25
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 02ccdcfb661781a4f90edfc7efb2b5cb
-      internalID: 1991432227
+      spriteID: 9f956846c26994ef0800000000000000
+      internalID: -123402397366724103
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player land 48x48_8
+      name: dash_8
       rect:
         serializedVersion: 2
-        x: 384
-        y: 0
-        width: 48
-        height: 48
+        x: 345
+        y: 7
+        width: 24
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 5b04846dc4689aa44a61151c09f86156
-      internalID: 1848184777
+      spriteID: 83f279dc3e373c910800000000000000
+      internalID: 1856454893650784056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dash_9
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 7
+        width: 27
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a74c832699a77a2a0800000000000000
+      internalID: -6726272719258073990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dash_10
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 7
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bffa19898e2ad420800000000000000
+      internalID: 2655486098533973936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dash_11
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 29
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00dfe423ecccb0dc0800000000000000
+      internalID: -3671615885211140864
       vertices: []
       indices: 
       edges: []
@@ -325,23 +385,14 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 955bfd6250edc574082d2b7538e4ccf6
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      player land 48x48_0: -885350551
-      player land 48x48_1: -1547683912
-      player land 48x48_2: 1660436041
-      player land 48x48_3: -1505377738
-      player land 48x48_4: -1430454634
-      player land 48x48_5: 2077631134
-      player land 48x48_6: 712112912
-      player land 48x48_7: 1991432227
-      player land 48x48_8: 1848184777
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

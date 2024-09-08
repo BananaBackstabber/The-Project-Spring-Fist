@@ -131,7 +131,7 @@ public class LeftHand : MonoBehaviour
 
         
         temp += 1;
-        Debug.Log("we hit: " + collision.gameObject.name + temp);
+        //Debug.Log("we hit: " + collision.gameObject.name + temp);
 
         Obj_Grab grabbedObject;
         grabbedObject = collision.gameObject.GetComponent<Obj_Grab>();
@@ -240,7 +240,7 @@ public class LeftHand : MonoBehaviour
         }
 
         Debug.Log("PULL HAS STopped");
-        isLocationLocked = true;
+        //isLocationLocked = true;
 
 
     }

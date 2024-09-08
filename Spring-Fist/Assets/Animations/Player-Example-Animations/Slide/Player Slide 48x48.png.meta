@@ -1,46 +1,40 @@
 fileFormatVersion: 2
-guid: e28020885386ac1489fce2b4d5981c9c
+guid: 6a618fbe985d4b644a9a8d6ca62c3723
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4602387570072316280
-    second: player land 48x48_0
+      213: -5894328622698030978
+    second: Player Slide 48x48_0
   - first:
-      213: -7050213367843157162
-    second: player land 48x48_1
+      213: -5299466595736483745
+    second: Player Slide 48x48_1
   - first:
-      213: -4760751101728093800
-    second: player land 48x48_2
+      213: 1333098324560746049
+    second: Player Slide 48x48_2
   - first:
-      213: -1216246304953843119
-    second: player land 48x48_3
+      213: -4527066608579262305
+    second: Player Slide 48x48_3
   - first:
-      213: -4517810991248364758
-    second: player land 48x48_4
+      213: -8231523880869386447
+    second: Player Slide 48x48_4
   - first:
-      213: -4591912065576111590
-    second: player land 48x48_5
+      213: -4277509470484915478
+    second: Player Slide 48x48_5
   - first:
-      213: 1349274582653079552
-    second: player land 48x48_6
+      213: -845729933226878291
+    second: Player Slide 48x48_6
   - first:
-      213: 5904941268907416396
-    second: player land 48x48_7
+      213: 1586465145681589053
+    second: Player Slide 48x48_7
   - first:
-      213: -5832747298177718580
-    second: player land 48x48_8
+      213: 3432575307154851518
+    second: Player Slide 48x48_8
   - first:
-      213: 3267701472246858424
-    second: player land 48x48_9
+      213: 2373426705189744327
+    second: Player Slide 48x48_9
   - first:
-      213: 4074859373326206203
-    second: player land 48x48_10
-  - first:
-      213: 5161187548481875975
-    second: player land 48x48_11
-  - first:
-      213: 6225700723224678848
-    second: player land 48x48_12
+      213: -6677606747951146996
+    second: Player Slide 48x48_10
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -134,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: player land 48x48_0
+      name: Player Slide 48x48_0
       rect:
         serializedVersion: 2
         x: 0
@@ -148,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d904d50378e5964298b70c009d43880
-      internalID: -885350551
+      spriteID: 1370cb3b0174c9c4896e19c477da5172
+      internalID: -1682923222
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player land 48x48_1
+      name: Player Slide 48x48_1
       rect:
         serializedVersion: 2
         x: 48
@@ -169,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d9dd6ce43bc8d645bf6189355a7976b
-      internalID: -1547683912
+      spriteID: 46d010b32d8ea784583da0418935deb3
+      internalID: -1361629161
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player land 48x48_2
+      name: Player Slide 48x48_2
       rect:
         serializedVersion: 2
         x: 96
@@ -190,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95422cb50a85e2145a80d2cdd34521f8
-      internalID: 1660436041
+      spriteID: 435cabb880b2a0f47815d09d7cb02c49
+      internalID: 959573944
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player land 48x48_3
+      name: Player Slide 48x48_3
       rect:
         serializedVersion: 2
         x: 144
@@ -211,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22c2317147d148f4ab8a571ea6e512d4
-      internalID: -1505377738
+      spriteID: bb3c33d5b75e2fb488232ffe6967ac0b
+      internalID: 1507061402
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player land 48x48_4
+      name: Player Slide 48x48_4
       rect:
         serializedVersion: 2
         x: 192
@@ -232,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a60b96813d440541a99367d5485691c
-      internalID: -1430454634
+      spriteID: 2a157d6eeb92b8f40b6309508e46fccf
+      internalID: -1326277156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player land 48x48_5
+      name: Player Slide 48x48_5
       rect:
         serializedVersion: 2
         x: 240
@@ -253,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48fd5f1b6d204194ab2ca41aedf29bc6
-      internalID: 2077631134
+      spriteID: 4530a70198a4e7f43a752089dc0b1519
+      internalID: -459482865
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player land 48x48_6
+      name: Player Slide 48x48_6
       rect:
         serializedVersion: 2
         x: 288
@@ -274,14 +268,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d08f7b40fb3a2d41b8fadaab22d4189
-      internalID: 712112912
+      spriteID: 8aaee4b8fdbb6d34683ee9c39f843411
+      internalID: -1118626320
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player land 48x48_7
+      name: Player Slide 48x48_7
       rect:
         serializedVersion: 2
         x: 336
@@ -295,29 +289,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02ccdcfb661781a4f90edfc7efb2b5cb
-      internalID: 1991432227
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: player land 48x48_8
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5b04846dc4689aa44a61151c09f86156
-      internalID: 1848184777
+      spriteID: 8ea81c2212ec45644bd5ecaeb408466e
+      internalID: 2012168614
       vertices: []
       indices: 
       edges: []
@@ -325,7 +298,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 955bfd6250edc574082d2b7538e4ccf6
+    spriteID: e5b66fa70b9d595498774a1888ea2a37
     internalID: 0
     vertices: []
     indices: 
@@ -333,15 +306,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      player land 48x48_0: -885350551
-      player land 48x48_1: -1547683912
-      player land 48x48_2: 1660436041
-      player land 48x48_3: -1505377738
-      player land 48x48_4: -1430454634
-      player land 48x48_5: 2077631134
-      player land 48x48_6: 712112912
-      player land 48x48_7: 1991432227
-      player land 48x48_8: 1848184777
+      Player Slide 48x48_0: -1682923222
+      Player Slide 48x48_1: -1361629161
+      Player Slide 48x48_2: 959573944
+      Player Slide 48x48_3: 1507061402
+      Player Slide 48x48_4: -1326277156
+      Player Slide 48x48_5: -459482865
+      Player Slide 48x48_6: -1118626320
+      Player Slide 48x48_7: 2012168614
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

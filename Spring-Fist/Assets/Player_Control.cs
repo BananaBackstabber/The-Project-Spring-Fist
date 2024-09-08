@@ -8,9 +8,6 @@ public class Player_Control : MonoBehaviour
     //Create a 3 punch combo with 2 buttons  R, L , R
     //A Charge Punch with 3 stages
 
-
-
-
     private Vector2 moveDirection;
     public Rigidbody2D rb;
 
@@ -80,7 +77,6 @@ public class Player_Control : MonoBehaviour
 
     private Vector2 jumped;
 
-
     //targetpoint vectors
     private Vector2 right; //right 
     private Vector2 upRight;// up-right
@@ -135,9 +131,7 @@ public class Player_Control : MonoBehaviour
         Aim = playerControls.Player.Aim;
         Aim.Enable();
 
-        rPunch = playerControls.Player.RightPunch;
-        rPunch.Enable();
-        rPunch.performed += RightPunch;
+        
 
         lPunch = playerControls.Player.LeftGrab;
         lPunch.Enable();
@@ -152,6 +146,10 @@ public class Player_Control : MonoBehaviour
         leftCharge.Enable();
         leftCharge.started += onLeftChargeStart;
         leftCharge.canceled += onLeftChargeCanceled;
+
+        rPunch = playerControls.Player.RightPunch;
+        rPunch.Enable();
+        rPunch.started += RightPunch;
 
         jump = playerControls.Player.Jump;
         jump.Enable();
@@ -465,6 +463,7 @@ public class Player_Control : MonoBehaviour
 
     void UpdateChargeAttacks() 
     {
+        Debug.Log(rp_ChargeTime);
         OnRightCharge();
         onLeftCharge();
 
@@ -574,19 +573,21 @@ public class Player_Control : MonoBehaviour
         if(scriptRH.isLocationLocked && rp_PunchDistance > 0f) 
         {
             RightPerformAttack(rp_ChargeTime);
-
         }
+
+        rp_ChargeTime = 0f;
+        //Debug.Log(rp_ChargeTime);
 
     }
     private void RightPerformAttack(float rp_ChargeTime) 
     {
 
-        Debug.Log(rp_ChargeTime);
+        //Debug.Log(rp_ChargeTime);
 
         //Checks charge variables once
         if (rp_ChargeTime <= ChargeMin)
         {
-            Debug.Log("Small Punch GO!!");
+            //Debug.Log("Small Punch GO!!");
             rightPunchSpeed = punchSpeedMin;
             //set trigger animation
         }
@@ -594,14 +595,14 @@ public class Player_Control : MonoBehaviour
         if (rp_ChargeTime >= ChargeMid)
         {
 
-            Debug.Log("Mid Punch A GOO!!!");
+            //Debug.Log("Mid Punch A GOO!!!");
             rightPunchSpeed = punchSpeedMid;
             //set trigger animation
         }
 
         if (rp_ChargeTime >= ChargeMax)
         {
-            Debug.Log("BIGGER AND MAX PUNCH A GOGO!!!");
+            //Debug.Log("BIGGER AND MAX PUNCH A GOGO!!!");
             rightPunchSpeed = punchSpeedMax;
             animator.SetTrigger("CR_L2");
         }
@@ -619,7 +620,7 @@ public class Player_Control : MonoBehaviour
         }
 
         //Resets charge time to 0
-        rp_ChargeTime = 0f;
+        this.gameObject.GetComponent<Player_Control>().rp_ChargeTime = 0f;
 
 
         //hitPoint = new Vector2(rp_ChargeTime, 0f);
@@ -628,37 +629,44 @@ public class Player_Control : MonoBehaviour
     private void RightPunch(InputAction.CallbackContext context)
     {
 
-        //Combo punch 2 
-        if (fistComboCount == 1)
+        if (scriptRH.isLocationLocked) 
         {
 
-            animator.SetTrigger("CP_02");
-            fistComboCount += 1;
-            comboTimeCount = 0;
-        }
-        else
-        {
-            animator.ResetTrigger("CP_02");
+            //Combo punch 2 
+            if (fistComboCount == 1)
+            {
+
+                animator.SetTrigger("CP_02");
+                fistComboCount += 1;
+                comboTimeCount = 0;
+            }
+            else
+            {
+                animator.ResetTrigger("CP_02");
+            }
+
+            //Combo punch 1 script
+            if (fistComboCount == 0)
+            {
+                animator.SetTrigger("CP_01");
+                fistComboCount += 1;
+                comboTimeCount = 0;
+
+            }
+            else
+            {
+                animator.ResetTrigger("CP_01");
+            }
+
+            //Debug.Log("Right Count = " + fistComboCount);
+
+
+            // Debug.Log("PUNCHED");
+
+
+
         }
 
-        //Combo punch 1 script
-        if (fistComboCount == 0)
-        {
-            Debug.Log("FIRST PUNCH");
-            animator.SetTrigger("CP_01");
-            fistComboCount += 1;
-            comboTimeCount = 0;
-
-        }
-        else
-        {
-            animator.ResetTrigger("CP_01");
-        }
-
-        Debug.Log("Right Count = " + fistComboCount);
-
-        
-        // Debug.Log("PUNCHED");
 
     }
 
@@ -731,7 +739,7 @@ public class Player_Control : MonoBehaviour
 
         if(lp_ChargeTime >= ChargeMin) 
         {
-            leftPunchSpeed = 0f;
+            //leftPunchSpeed = 0f;
         
         }
         //Checks charge variables once
@@ -773,13 +781,12 @@ public class Player_Control : MonoBehaviour
     
     private void LeftPunch(InputAction.CallbackContext context) 
     {
-
+        //If left trigger is tapped after left fist has been launch
+        // then return the left fist to the player
         if(!scriptLH.isLocationLocked && !scriptLH.isReturning) 
         {
-            Debug.Log("Loctionlock = " + scriptLH.isLocationLocked + "Returning =" + scriptLH.isReturning);
             scriptLH.StopAllCoroutines();
             scriptLH.StartCoroutine(scriptLH.ReturnToPlayer());
-        
         }
 
         //Debug.Log("GRAB");
@@ -790,6 +797,8 @@ public class Player_Control : MonoBehaviour
     private void Jump(InputAction.CallbackContext context) 
     {
         Debug.Log("Jumped");
+
+        //if()
 
         jumped = new Vector2(rb.velocity.x, 80f);
 

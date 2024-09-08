@@ -29,9 +29,6 @@ public class RightHand : MonoBehaviour
     private void Awake()
     {
         scriptLH = GameObject.Find("LeftHand").GetComponent<LeftHand>();
-    }
-    private void Start()
-    {
         objectColiider = GetComponent<Collider2D>();
         playerControls = GameObject.Find("Player").GetComponent<Player_Control>();
         handPoint = GameObject.Find("R_HandPoint");
@@ -44,8 +41,11 @@ public class RightHand : MonoBehaviour
         objectColiider.enabled = false;
 
     }
+  
     private void Update()
     {
+
+        
 
         if (!isLocationLocked)
         {
@@ -72,6 +72,10 @@ public class RightHand : MonoBehaviour
             count = 0;
             objectColiider.enabled = false;
         }
+        else 
+        {
+            objectColiider.enabled = true;
+        }
 
         if (isReturning && count == 0) 
         {
@@ -92,16 +96,16 @@ public class RightHand : MonoBehaviour
     }
     public IEnumerator MoveFist(float chargeTime)
     {
-        objectColiider.enabled = true;
 
         //TargetPoint.transform.localPosition = TargetPoint.transform.localPosition * playerControls.punchDistance;
-       // Debug.Log("Move STARTED");
+        // Debug.Log("Move STARTED");
         isLocationLocked = false;
         targetPointLocation = TargetPoint.transform.position;
         //Debug.Log("TARGET LOCATION is" + targetPointLocation);
 
         while ((Vector3.Distance(transform.position, targetPointLocation) > reachThreshold))
         {
+           
 
             transform.position = Vector3.MoveTowards(transform.position, targetPointLocation, playerControls.rightPunchSpeed * Time.deltaTime);
             yield return null;
@@ -109,9 +113,6 @@ public class RightHand : MonoBehaviour
 
         //Debug.Log("Move END");
         isReturning = true;
-
-      
-
     }
 
     public IEnumerator ReturnToPlayer() 
@@ -140,8 +141,6 @@ public class RightHand : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
 
-
-        
         //punchOrigin Origin = current position of the fist 
         punchOrigin = GameObject.Find("Player").transform;
 
