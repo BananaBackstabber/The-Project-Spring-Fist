@@ -47,6 +47,19 @@ public class RightHand : MonoBehaviour
     private void Update()
     {
 
+        if (!isLocationLocked)
+        {
+            Vector2 Direction = (targetPointLocation - handPointLocation).normalized;
+            float angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+        }
+
+
         //lock right hand from moving
         //happens after every charged punch
         if (isLocationLocked == true) 

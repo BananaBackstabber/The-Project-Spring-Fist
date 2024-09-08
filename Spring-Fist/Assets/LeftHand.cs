@@ -52,16 +52,35 @@ public class LeftHand : MonoBehaviour
     void Update()
     {
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, targetPointLocation, 0.3f);
-        if (hit.collider.gameObject.CompareTag("Wall"))
+        if (!isLocationLocked) 
         {
-            StopAllCoroutines();
-            StartCoroutine(pullPlayer());
-            collisionPoint = hit.point;
-
-            Debug.Log("Point of Contact:" + hit.point);
+            //Rotates the fist to face the target point location while the hand is moving;
+            Vector2 Direction = (targetPointLocation - handPointLocation).normalized;
+            float angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
 
         }
+        else 
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+        }
+        
+
+        /* if (!isReturning) 
+         {
+             RaycastHit2D hit = Physics2D.Raycast(transform.position, targetPointLocation, 0.3f);
+             if (hit.collider.gameObject.CompareTag("Wall"))
+             {
+                 StopAllCoroutines();
+                 StartCoroutine(pullPlayer());
+                 collisionPoint = hit.point;
+
+                 Debug.Log("Point of Contact:" + hit.point);
+
+             }
+
+         }*/
+
 
         if (isLocationLocked == true)
         {
@@ -120,29 +139,28 @@ public class LeftHand : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, targetPointLocation, 4f);
         if (hit.collider != null)
         {
-            collisionPoint = hit.point;
-            Debug.Log("Point of Contact:" + hit.point);
+            if (collision.gameObject.CompareTag("Wall"))
+            {
+                collisionPoint = hit.point;
+                Debug.Log("Point of Contact:" + hit.point);
 
+                this.GetComponent<Rigidbody2D>().isKinematic = true;
+
+                StopAllCoroutines();
+                StartCoroutine(pullPlayer());
+
+                return;
+            }
+            
         }
 
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-
-            this.GetComponent<Rigidbody2D>().isKinematic = true;
-            
-
-            StopAllCoroutines();
-            StartCoroutine(pullPlayer());
-            
- 
-        }
-
+        
 
         if(grabbedObject == null)//If n object is not Grabable
         {
             Debug.LogError("GRABBED OBJECT = NULL");
 
-            //isReturning = true;//stop it from frezze if it hits a non grabable object
+            isReturning = true;//stop it from frezze if it hits a non grabable object
             //return;
    
          
@@ -198,7 +216,6 @@ public class LeftHand : MonoBehaviour
 
         while ((Vector3.Distance(transform.position, targetPointLocation) > reachThreshold))
         {
-            player.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0f;
 
             transform.position = Vector3.MoveTowards(transform.position, targetPointLocation, playerControls.leftPunchSpeed  * Time.deltaTime);
             yield return null;
@@ -209,6 +226,9 @@ public class LeftHand : MonoBehaviour
 
     public IEnumerator pullPlayer()
     {
+        Debug.Log("HIT PULL");
+
+        player.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0f;
 
         while (Vector3.Distance(player.transform.position, transform.position) > reachThreshold * 2)
         {

@@ -21,11 +21,11 @@ public class Player_Control : MonoBehaviour
     private LeftHand scriptLH;
 
     //PLAYER VARIABLES
-
     public float speed;
     private Animator animator;
     private bool isFacingRight = true;
     public bool isMoving = true;
+    public float nGravity;
 
 
     /*
@@ -40,8 +40,7 @@ public class Player_Control : MonoBehaviour
      
      */
     [Header("COMBO VARIABLES")]
-    public int rFistCount = 0;
-    public int lFistCount = 0;
+    public int fistComboCount = 0;
     public float comboCooldownTime = 2;
     private float comboTimeCount;
 
@@ -138,7 +137,7 @@ public class Player_Control : MonoBehaviour
 
         rPunch = playerControls.Player.RightPunch;
         rPunch.Enable();
-        rPunch.started += RightPunch;
+        rPunch.performed += RightPunch;
 
         lPunch = playerControls.Player.LeftGrab;
         lPunch.Enable();
@@ -187,6 +186,7 @@ public class Player_Control : MonoBehaviour
 
         UpdateAttack();
 
+        
         UpdateChargeAttacks();
 
     }
@@ -196,9 +196,11 @@ public class Player_Control : MonoBehaviour
         //Translate movement of the player
         if (isMoving) 
         {
+            rb.gravityScale = nGravity;
             rb.velocity = new Vector2(moveDirection.x * speed, jumped.y);
 
         }
+        
 
         //Resets jumped
         jumped.y = 0f;
@@ -442,37 +444,8 @@ public class Player_Control : MonoBehaviour
     void UpdateAttack() 
     {
 
-        //Combo punch 1 script
-        if (Input.GetButtonDown("rightPunch") && rFistCount == 0)
-        {
-            animator.SetTrigger("CP_01");
-            rFistCount += 1;
-            comboTimeCount = 0;
-
-        }
-        else
-        {
-            animator.ResetTrigger("CP_01");
-        }
-
-        //Debug.Log("Right Count = " + rFistCount + ": " + "left count =" + lFistCount);
-
-        //Combo punch 2 
-        if (Input.GetButtonDown("leftPunch") && lFistCount == 0)
-        {
-
-            animator.SetTrigger("CP_02");
-            lFistCount += 1;
-            comboTimeCount = 0;
-        }
-        else
-        {
-            animator.ResetTrigger("CP_02");
-        }
-
-
         //Prevent combo spam, gives the combo a cooldown to it
-        if(rFistCount > 0 || lFistCount > 0)
+        if(fistComboCount > 0)
         {
             comboTimeCount += 1 * Time.deltaTime;
         
@@ -483,11 +456,8 @@ public class Player_Control : MonoBehaviour
         //player can punch again
         if(comboTimeCount >= comboCooldownTime) 
         {
-            rFistCount = 0;
-            lFistCount = 0;
-
+            fistComboCount = 0;
             comboTimeCount = 0;
-        
         }
 
     }
@@ -502,8 +472,15 @@ public class Player_Control : MonoBehaviour
     void UpdateMovement() 
     {
 
-        //This code reads the values from the left and right joystick for movement and aiming
-        moveDirection = move.ReadValue<Vector2>();
+        if (isMoving)
+        {
+            //This code reads the values from the left and right joystick for movement and aiming
+            moveDirection = move.ReadValue<Vector2>();
+        }
+        else
+        { 
+           moveDirection = Vector2.zero;
+        }
         aimDirection = Aim.ReadValue<Vector2>();
 
         //Debug.Log(Aim.ReadValue<Vector2>());
@@ -584,6 +561,7 @@ public class Player_Control : MonoBehaviour
 
     private void onRightChargeStart(InputAction.CallbackContext context) 
     {
+        
         rp_ChargeTime = 0;
         isRightCharging = true;
 
@@ -650,7 +628,36 @@ public class Player_Control : MonoBehaviour
     private void RightPunch(InputAction.CallbackContext context)
     {
 
+        //Combo punch 2 
+        if (fistComboCount == 1)
+        {
 
+            animator.SetTrigger("CP_02");
+            fistComboCount += 1;
+            comboTimeCount = 0;
+        }
+        else
+        {
+            animator.ResetTrigger("CP_02");
+        }
+
+        //Combo punch 1 script
+        if (fistComboCount == 0)
+        {
+            Debug.Log("FIRST PUNCH");
+            animator.SetTrigger("CP_01");
+            fistComboCount += 1;
+            comboTimeCount = 0;
+
+        }
+        else
+        {
+            animator.ResetTrigger("CP_01");
+        }
+
+        Debug.Log("Right Count = " + fistComboCount);
+
+        
         // Debug.Log("PUNCHED");
 
     }
