@@ -32,6 +32,9 @@ public class LeftHand : MonoBehaviour
 
     private GameObject player;
 
+    private float dCount;
+
+
     private BoxCollider2D objectCollider;
     //public LayerMask;
 
@@ -52,8 +55,10 @@ public class LeftHand : MonoBehaviour
     void Update()
     {
 
+
         if (!isLocationLocked) 
         {
+            dCount += 1;
             //Rotates the fist to face the target point location while the hand is moving;
             Vector2 Direction = (targetPointLocation - handPointLocation).normalized;
             float angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg;
@@ -64,8 +69,15 @@ public class LeftHand : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
         }
-        
 
+        if (dCount < 0.01f)
+        {
+            Debug.Log(dCount);
+            targetPointLocation = targetPoint.transform.position;//DON'T DELETE IT MESSSES WITH THE AIM
+
+        }
+
+ 
         /* if (!isReturning) 
          {
              RaycastHit2D hit = Physics2D.Raycast(transform.position, targetPointLocation, 0.3f);
@@ -84,6 +96,7 @@ public class LeftHand : MonoBehaviour
 
         if (isLocationLocked == true)
         {
+            
 
             StopAllCoroutines();
             isGrabbed = false;
@@ -92,10 +105,12 @@ public class LeftHand : MonoBehaviour
             transform.position = handPoint.transform.position;
             count = 0;
             holdingCount = 0f;
+            dCount = 0f;
 
             playerControls.isMoving = true;
             objectCollider.enabled = false;
         }
+
         
         if(isHolding && count == 0) 
         {
@@ -115,8 +130,26 @@ public class LeftHand : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Vector2 origin = transform.position;
-        Vector2 endPoint = origin + targetPointLocation.normalized;
+
+        if(targetPoint == null) 
+        {
+            return;
+        
+        }
+        Vector2 origin;
+        Vector2 endPoint;
+        if (playerControls.isFacingRight) 
+        {
+              origin = player.transform.localPosition;
+              endPoint = origin + new Vector2(targetPoint.transform.localPosition.x, targetPoint.transform.localPosition.y) * 5f;
+        }
+        else 
+        {
+           origin = player.transform.localPosition;
+           endPoint = origin - new Vector2(targetPoint.transform.localPosition.x,targetPoint.transform.localPosition.y) * 5f;
+
+        }
+        
 
         //Changes the gizmos colour on hit
         Gizmos.color = Color.red;
@@ -183,7 +216,7 @@ public class LeftHand : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
+        /*if (collision.gameObject.CompareTag("Wall"))
         {
 
             transform.position = collisionPoint;
@@ -193,7 +226,7 @@ public class LeftHand : MonoBehaviour
            // StopAllCoroutines();
             //StartCoroutine(PullPlayer());
 
-        }
+        }*/
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -207,15 +240,21 @@ public class LeftHand : MonoBehaviour
 
     public IEnumerator MoveFist(float chargeTime)
     {
+
         //Actives the hit box for the object;
         objectCollider.enabled = true;
 
+
+        Debug.Log("TARGET PPoint LOCATION" + targetPoint.transform.localPosition);
         isLocationLocked = false;
         targetPointLocation = targetPoint.transform.position;
+        Debug.Log("LOCATION IS NOW " + targetPointLocation);
         //Debug.Log("TARGET LOCATION is" + targetPointLocation);
+        //targetPointLocation = targetPoint.transform.position;
 
         while ((Vector3.Distance(transform.position, targetPointLocation) > reachThreshold))
         {
+            
 
             transform.position = Vector3.MoveTowards(transform.position, targetPointLocation, playerControls.leftPunchSpeed  * Time.deltaTime);
             yield return null;
@@ -239,7 +278,7 @@ public class LeftHand : MonoBehaviour
 
         }
 
-        Debug.Log("PULL HAS STopped");
+        //Debug.Log("PULL HAS STopped");
         //isLocationLocked = true;
 
 

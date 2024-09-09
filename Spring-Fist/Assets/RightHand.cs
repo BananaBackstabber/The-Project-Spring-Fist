@@ -194,6 +194,36 @@ public class RightHand : MonoBehaviour
     }
 
 
+    private void OnDrawGizmos()
+    {
 
+        if (TargetPoint == null)
+        {
+            return;
+
+        }
+
+       
+        Vector2 origin;
+        Vector2 endPoint;
+        if (playerControls.isFacingRight)
+        {
+
+            origin = GameObject.Find("Player").transform.localPosition;
+            endPoint = origin + new Vector2(TargetPoint.transform.localPosition.x, TargetPoint.transform.localPosition.y) * 5f;
+        }
+        else
+        {
+            origin = GameObject.Find("Player").transform.localPosition;
+            endPoint = origin - new Vector2(TargetPoint.transform.localPosition.x, TargetPoint.transform.localPosition.y) * 5f;
+
+        }
+
+       
+
+        //Changes the gizmos colour on hit
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(origin, endPoint);
+    }
 
 }

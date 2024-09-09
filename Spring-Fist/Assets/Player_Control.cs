@@ -20,7 +20,7 @@ public class Player_Control : MonoBehaviour
     //PLAYER VARIABLES
     public float speed;
     private Animator animator;
-    private bool isFacingRight = true;
+ [HideInInspector] public bool isFacingRight = true;
     public bool isMoving = true;
     public float nGravity;
 
@@ -75,7 +75,16 @@ public class Player_Control : MonoBehaviour
     private InputAction leftCharge;
     private InputAction jump;
 
+
+    //Jumping 
     private Vector2 jumped;
+    public LayerMask groundLayer;
+    public LayerMask wallLayer;
+    public Transform groundcheck;
+    public float checkRadius;
+    private bool isGrounded;
+    private bool isWallJump = false;
+    private Vector2 animDirection;
 
     //targetpoint vectors
     private Vector2 right; //right 
@@ -92,6 +101,11 @@ public class Player_Control : MonoBehaviour
 
     private void Awake()
     {
+
+
+        groundLayer = LayerMask.GetMask("Ground");
+        wallLayer = LayerMask.GetMask("Wall");
+
         //INPUT CONTROLS
         playerControls = new PlayerInputActions();
 
@@ -183,7 +197,6 @@ public class Player_Control : MonoBehaviour
         UpdateMovement();
 
         UpdateAttack();
-
         
         UpdateChargeAttacks();
 
@@ -218,49 +231,52 @@ public class Player_Control : MonoBehaviour
             {
                 //DIRECTION DOWNRIGHT
                 targetPoint01.transform.localPosition = downRight * rp_PunchDistance;
-
+                animDirection = downRight;
             }
             else if (aimDirection.x > -0.25f && aimDirection.y < -0.25f)
             {
-
                 //DIRECTION DOWN    
                 targetPoint01.transform.localPosition = down * rp_PunchDistance; // * distance 0.5, 1, 2
+                animDirection = down;
             }
             else if (aimDirection.x < -0.25f && aimDirection.y < -0.25f)
             {
                 //DIRECTION DOWNLEFT 
                 targetPoint01.transform.localPosition = downLeft * rp_PunchDistance;
+                animDirection = downLeft;
 
             }
             else if (aimDirection.x < -0.25f && aimDirection.y < 0.25f)
             {
                 //DIRECTION LEFT 
                 targetPoint01.transform.localPosition = left * rp_PunchDistance;
+                animDirection = left;
 
             }
             else if (aimDirection.x < -0.25f && aimDirection.y > 0.25f)
             {
                 //DIRECTION UPLEFT 
                 targetPoint01.transform.localPosition = upLeft * rp_PunchDistance;
+                animDirection = upLeft;
 
             }
             else if (aimDirection.x < 0.25f && aimDirection.y > 0.25f)
             {
                 //DIRECTION UP
                 targetPoint01.transform.localPosition = up * rp_PunchDistance;
-
+                animDirection = up;
             }
             else if (aimDirection.x > 0.25f && aimDirection.y > 0.25f)
             {
                 //DIRECTION UPRIGHT
                 targetPoint01.transform.localPosition = upRight * rp_PunchDistance;
-
+                animDirection = upRight;
             }
             else if (aimDirection.x > 0.25f && aimDirection.y < 0.25f)
             {
                 //DIRECTION RIGHT
                 targetPoint01.transform.localPosition = right * rp_PunchDistance;
-
+                animDirection = right;
             }
             else
             {
@@ -330,8 +346,9 @@ public class Player_Control : MonoBehaviour
             // THE RIGHT STICK TO THE TARGET POINT Location
             if (aimDirection.x > 0.25f && aimDirection.y < -0.25f)
             {
-                //DIRECTION DOWNleft
+                //DIRECTION DOWNRIGHT
                 targetPoint01.transform.localPosition = downLeft * rp_PunchDistance;
+                animDirection = downLeft;
 
             }
             else if (aimDirection.x > -0.25f && aimDirection.y < -0.25f)
@@ -339,42 +356,47 @@ public class Player_Control : MonoBehaviour
 
                 //DIRECTION DOWN    
                 targetPoint01.transform.localPosition = down * rp_PunchDistance; // * distance 0.5, 1, 2
+                animDirection = down;
             }
             else if (aimDirection.x < -0.25f && aimDirection.y < -0.25f)
             {
-                //DIRECTION DOWNRIGHT
+                //DIRECTION DOWNLEFT
                 targetPoint01.transform.localPosition = downRight * rp_PunchDistance;
+                animDirection = right;
 
             }
             else if (aimDirection.x < -0.25f && aimDirection.y < 0.25f)
             {
-                //DIRECTION RIGHT
+                //DIRECTION Left
                 targetPoint01.transform.localPosition = right * rp_PunchDistance;
+                animDirection = right;
+               
 
             }
             else if (aimDirection.x < -0.25f && aimDirection.y > 0.25f)
             {
-                //DIRECTION UPRIGHT
+                //DIRECTION UPLEFT
                 targetPoint01.transform.localPosition = upRight * rp_PunchDistance;
+                animDirection = upRight;
 
             }
             else if (aimDirection.x < 0.25f && aimDirection.y > 0.25f)
             {
                 //DIRECTION UP
                 targetPoint01.transform.localPosition = up * rp_PunchDistance;
-
+                animDirection = up;
             }
             else if (aimDirection.x > 0.25f && aimDirection.y > 0.25f)
             {
-                //DIRECTION UPLEFT
+                //DIRECTION UPRIGHT
                 targetPoint01.transform.localPosition = upLeft * rp_PunchDistance;
-
+                animDirection = left;
             }
             else if (aimDirection.x > 0.25f && aimDirection.y < 0.25f)
             {
-                //DIRECTION LEFT
+                //DIRECTION RIGHT
                 targetPoint01.transform.localPosition = left * rp_PunchDistance;
-
+                animDirection = left;
             }
             else
             {
@@ -434,9 +456,10 @@ public class Player_Control : MonoBehaviour
             }
             else
             {
-                targetPoint01.transform.localPosition = Vector2.zero;
+                targetPoint02.transform.localPosition = Vector2.zero;
             }
 
+            
         }
     }
     void UpdateAttack() 
@@ -463,13 +486,20 @@ public class Player_Control : MonoBehaviour
 
     void UpdateChargeAttacks() 
     {
-        Debug.Log(rp_ChargeTime);
+        //Debug.Log(rp_ChargeTime);
         OnRightCharge();
         onLeftCharge();
 
     }
     void UpdateMovement() 
     {
+        //is grounded Check
+        isGrounded = Physics2D.OverlapCircle(groundcheck.position, checkRadius, groundLayer);
+       // Debug.Log("Ground = " + isGrounded);
+
+        isWallJump = Physics2D.OverlapCircle(groundcheck.position, checkRadius, wallLayer);
+        //Debug.Log("WALL JUMP = " + isWallJump);
+
 
         if (isMoving)
         {
@@ -604,7 +634,6 @@ public class Player_Control : MonoBehaviour
         {
             //Debug.Log("BIGGER AND MAX PUNCH A GOGO!!!");
             rightPunchSpeed = punchSpeedMax;
-            animator.SetTrigger("CR_L2");
         }
 
         scriptRH.StopAllCoroutines();
@@ -619,6 +648,34 @@ public class Player_Control : MonoBehaviour
 
         }
 
+
+        //Sets animation Direction
+        if(animDirection == right 
+         || animDirection == downRight 
+         || animDirection == upRight) 
+        {
+            Debug.Log("Right");
+            animator.SetTrigger("R2_CG");
+        }
+        else if(animDirection == left 
+              || animDirection == downLeft
+              || animDirection == upLeft) 
+        {
+            Debug.Log("Left");
+            animator.SetTrigger("R2_CG");
+            Flip();
+        }
+        else if(animDirection == down) 
+        {
+            Debug.Log("Down");
+            animator.SetTrigger("R2_CD");
+        }
+        else if(animDirection == up) 
+        {
+            Debug.Log("Up");
+            animator.SetTrigger("R2_CU");
+        }
+        
         //Resets charge time to 0
         this.gameObject.GetComponent<Player_Control>().rp_ChargeTime = 0f;
 
@@ -736,6 +793,8 @@ public class Player_Control : MonoBehaviour
     }
     private void LeftPerformAttack(float lp_ChargeTime) 
     {
+        
+
 
         if(lp_ChargeTime >= ChargeMin) 
         {
@@ -761,9 +820,35 @@ public class Player_Control : MonoBehaviour
         {
 
             leftPunchSpeed = punchSpeedMax;
-            animator.SetTrigger("CR_L2");
+            
         }
 
+        //Sets animation Direction
+        if (animDirection == right
+         || animDirection == downRight
+         || animDirection == upRight)
+        {
+           // Debug.Log("Right");
+            animator.SetTrigger("L2_CG");
+        }
+        else if (animDirection == left
+              || animDirection == downLeft
+              || animDirection == upLeft)
+        {
+           // Debug.Log("Left");
+            animator.SetTrigger("L2_CG");
+            Flip();
+        }
+        else if (animDirection == down)
+        {
+            //Debug.Log("Down");
+            animator.SetTrigger("L2_CD");
+        }
+        else if (animDirection == up)
+        {
+           // Debug.Log("Up");
+            animator.SetTrigger("L2_CU");
+        }
         //If the fist is locked then player can't spam charged punches
         //Making so the punch can't change direction mid flight
         if (scriptLH.isLocationLocked && lp_PunchDistance > 0f)
@@ -793,14 +878,57 @@ public class Player_Control : MonoBehaviour
 
 
     }
-    
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 7) 
+        {
+            isGrounded = true;
+        }
+        else 
+        {
+            isGrounded = false;
+        }
+
+
+        if (collision.gameObject.layer ==  11) 
+        {
+
+            isWallJump = true;
+        
+        }
+    }
     private void Jump(InputAction.CallbackContext context) 
     {
-        Debug.Log("Jumped");
+       
+        
 
-        //if()
+        if (isGrounded) 
+        {
+            Debug.Log("Jumped");
+            rb.velocity = new Vector2(rb.velocity.x, 0f);
 
-        jumped = new Vector2(rb.velocity.x, 80f);
+            rb.AddForce(Vector2.up * 5f, ForceMode2D.Impulse);
+           
+            jumped = new Vector2(rb.velocity.x, 80f);
+            isGrounded = false;
+            animator.SetTrigger("Jump");
+
+        }
+
+        if (isWallJump && !scriptLH.isReturning) 
+        {
+            Debug.Log("WALL JUMP");
+            scriptLH.isReturning = true;
+            Vector2 direction = this.transform.position - scriptLH.gameObject.transform.position;
+            Debug.Log(direction);
+            rb.velocity = new Vector2(direction.x * 50f, 0f);
+
+            rb.AddForce(Vector2.up * 8f, ForceMode2D.Impulse);
+
+            //isWallJump = false;
+        }
 
     }
 
