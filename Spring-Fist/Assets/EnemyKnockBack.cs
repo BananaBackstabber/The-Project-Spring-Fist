@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy01 : MonoBehaviour
+public class EnemyKnockBack : MonoBehaviour
 {
     private float knockbackDistance;
     private float knockbackForce;
 
     private Rigidbody2D rb;
-    private bool isKnockedBacked = false;
+    public bool isKnockedBacked = false;
     private float drag = 1f;
 
     private Player_Control playerControls;
-
     private Vector2 knockUp;
 
     private Vector2 direction;
@@ -44,6 +43,10 @@ public class Enemy01 : MonoBehaviour
     private void Update()
     {
 
+        if(rb.velocity.y == 0f) 
+        {
+            isKnockedBacked = false;
+        }
         //Delays Hit impact so it can't hppen twice in quick succuion
         if(countKnockBack > 0) 
         {
@@ -85,6 +88,9 @@ public class Enemy01 : MonoBehaviour
   
     public void ApplyKnockBack(Vector2 direction)
     {
+
+        isKnockedBacked = true;
+
         Vector2 knockbackDirection;
         knockbackDirection = direction + knockUp;
         curBounce = 0;
@@ -120,7 +126,7 @@ public class Enemy01 : MonoBehaviour
             return;
         }
 
-        if (collision.gameObject.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Wall") && isKnockedBacked)
         {
             //Debug.Log("Colliding with " + collision.gameObject.name);
             ContactPoint2D point = collision.contacts[0];
@@ -136,7 +142,6 @@ public class Enemy01 : MonoBehaviour
 
     }
 
-    //ContactPoint2D point = collision.contacts[0];
 
    
     void ProcessCollision(GameObject collider)

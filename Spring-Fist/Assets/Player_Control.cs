@@ -20,7 +20,7 @@ public class Player_Control : MonoBehaviour
     //PLAYER VARIABLES
     public float speed;
     private Animator animator;
- [HideInInspector] public bool isFacingRight = true;
+    [HideInInspector] public bool isFacingRight = true;
     public bool isMoving = true;
     public float nGravity;
 
@@ -144,8 +144,6 @@ public class Player_Control : MonoBehaviour
 
         Aim = playerControls.Player.Aim;
         Aim.Enable();
-
-        
 
         lPunch = playerControls.Player.LeftGrab;
         lPunch.Enable();
@@ -728,7 +726,6 @@ public class Player_Control : MonoBehaviour
     }
 
 
-
     /// <summary>
     /// LEFT CHARGE 
     /// All need to for the left trigger and the charging grab mechanic
@@ -860,8 +857,8 @@ public class Player_Control : MonoBehaviour
 
         lp_ChargeTime = 0f;
 
-
     }
+
    
     
     private void LeftPunch(InputAction.CallbackContext context) 
@@ -902,7 +899,6 @@ public class Player_Control : MonoBehaviour
     private void Jump(InputAction.CallbackContext context) 
     {
        
-        
 
         if (isGrounded) 
         {

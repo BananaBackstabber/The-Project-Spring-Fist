@@ -67,15 +67,11 @@ public class LeftHand : MonoBehaviour
         }
         else 
         {
+            dCount += 1;
             transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
         }
 
-        if (dCount < 0.01f)
-        {
-            Debug.Log(dCount);
-            targetPointLocation = targetPoint.transform.position;//DON'T DELETE IT MESSSES WITH THE AIM
-
-        }
+        
 
  
         /* if (!isReturning) 
@@ -128,6 +124,20 @@ public class LeftHand : MonoBehaviour
 
     }
 
+
+    private void LateUpdate()
+    {
+        if (dCount < 2f)
+        {
+            //Debug.Log(dCount);
+            targetPointLocation = targetPoint.transform.position;//DON'T DELETE IT MESSSES WITH THE AIM
+
+        }
+        else 
+        {
+            Debug.Log("NO COUNT");
+        }
+    }
     private void OnDrawGizmos()
     {
 

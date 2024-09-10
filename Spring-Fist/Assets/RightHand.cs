@@ -150,7 +150,7 @@ public class RightHand : MonoBehaviour
         // Optional: Handle collision logic here, e.g., damage enemies
         if (!isReturning)
         {
-            Enemy01 knockback = collision.GetComponent<Enemy01>();
+            EnemyKnockBack knockback = collision.GetComponent<EnemyKnockBack>();
             if(knockback == null) 
             {
                 Debug.LogError("No Enemy detected, Hit " + collision.gameObject.name + "Instead");
