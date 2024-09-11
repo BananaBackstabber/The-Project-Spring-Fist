@@ -206,6 +206,8 @@ public class RightHand : MonoBehaviour
        
         Vector2 origin;
         Vector2 endPoint;
+        float TargetX;
+        float TargetY;
         if (playerControls.isFacingRight)
         {
 
@@ -215,7 +217,11 @@ public class RightHand : MonoBehaviour
         else
         {
             origin = GameObject.Find("Player").transform.localPosition;
-            endPoint = origin - new Vector2(TargetPoint.transform.localPosition.x, TargetPoint.transform.localPosition.y) * 5f;
+
+            TargetX = origin.x - TargetPoint.transform.position.x;
+            TargetY = origin.y - TargetPoint.transform.position.y;
+
+            endPoint =  origin - new Vector2(TargetX, TargetY) * 5f;
 
         }
 

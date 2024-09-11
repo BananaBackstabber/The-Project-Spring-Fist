@@ -146,20 +146,27 @@ public class LeftHand : MonoBehaviour
             return;
         
         }
+
         Vector2 origin;
         Vector2 endPoint;
-        if (playerControls.isFacingRight) 
+        float TargetX;
+        float TargetY;
+        if (playerControls.isFacingRight)
         {
-              origin = player.transform.localPosition;
-              endPoint = origin + new Vector2(targetPoint.transform.localPosition.x, targetPoint.transform.localPosition.y) * 5f;
+
+            origin = GameObject.Find("Player").transform.localPosition;
+            endPoint = origin + new Vector2(targetPoint.transform.localPosition.x, targetPoint.transform.localPosition.y) * 5f;
         }
-        else 
+        else
         {
-           origin = player.transform.localPosition;
-           endPoint = origin - new Vector2(targetPoint.transform.localPosition.x,targetPoint.transform.localPosition.y) * 5f;
+            origin = GameObject.Find("Player").transform.localPosition;
+
+            TargetX = origin.x - targetPoint.transform.position.x;
+            TargetY = origin.y - targetPoint.transform.position.y;
+
+            endPoint = origin - new Vector2(TargetX, TargetY) * 5f;
 
         }
-        
 
         //Changes the gizmos colour on hit
         Gizmos.color = Color.red;
@@ -170,6 +177,8 @@ public class LeftHand : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
+        
+
         StopAllCoroutines();
 
         
@@ -178,6 +187,8 @@ public class LeftHand : MonoBehaviour
 
         Obj_Grab grabbedObject;
         grabbedObject = collision.gameObject.GetComponent<Obj_Grab>();
+        EnemyKnockBack KnockBack;
+        KnockBack = collision.gameObject.GetComponent<EnemyKnockBack>();
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, targetPointLocation, 4f);
         if (hit.collider != null)
@@ -208,14 +219,32 @@ public class LeftHand : MonoBehaviour
    
          
         }
-        else if (grabbedObject && isReturning == false)
+        else if (grabbedObject && isGrabbed == false)
         {
 
             isGrabbed = true;
             grabbedObject.StartCoroutine(grabbedObject.MoveWithFist());
             Debug.Log("we hit: " + collision.gameObject.name);
+            //How long the fist stays in place for
             isHolding = true;
 
+        }
+        else 
+        {
+            isGrabbed = false;
+
+
+        }
+
+        // Calculate direction from PunchOrigin to the object being punched
+        Vector2 knockbackDirection = (collision.transform.position - this.transform.position).normalized;
+
+        if (isGrabbed == true
+        && isReturning == true
+        && KnockBack) 
+        {
+            KnockBack.ApplyKnockBack(knockbackDirection);
+        
         }
      /*
       IF the collison object has the grabbed script on it then

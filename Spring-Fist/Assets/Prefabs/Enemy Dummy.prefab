@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2256740297945682752}
   - component: {fileID: 1896942280015452549}
   - component: {fileID: 1483354881465432102}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy Dummy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 134449370181302120}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

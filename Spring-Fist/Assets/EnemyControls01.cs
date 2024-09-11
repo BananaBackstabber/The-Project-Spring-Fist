@@ -69,7 +69,7 @@ public class EnemyControls01 : MonoBehaviour
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.3f, groundLayer);
 
-        Debug.Log("IsKnockBack :" + knockBack.isKnockedBacked);
+        //Debug.Log("IsKnockBack :" + knockBack.isKnockedBacked);
 
         if( Temp >= 0.2f) 
          {
