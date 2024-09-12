@@ -107,7 +107,7 @@ public class RightHand : MonoBehaviour
         {
            
 
-            transform.position = Vector3.MoveTowards(transform.position, targetPointLocation, playerControls.rightPunchSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetPointLocation, playerControls.punchSpeed * Time.deltaTime);
             yield return null;
         }
 
@@ -125,7 +125,7 @@ public class RightHand : MonoBehaviour
         {
             //Debug.Log("DISTANCE TO = " + Vector3.Distance(transform.position, handPointLocation));
 
-            transform.position = Vector3.MoveTowards(transform.position, handPointLocation, playerControls.rightPunchSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, handPointLocation, playerControls.punchSpeed * Time.deltaTime);
             yield return null;
 
 
@@ -147,7 +147,7 @@ public class RightHand : MonoBehaviour
         //if left hand has something grabbed then disable that grab
         scriptLH.isGrabbed = false;
 
-        // Optional: Handle collision logic here, e.g., damage enemies
+        // Handle collision logic here, e.g., damage enemies
         if (!isReturning)
         {
             EnemyKnockBack knockback = collision.GetComponent<EnemyKnockBack>();

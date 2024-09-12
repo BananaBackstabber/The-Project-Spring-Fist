@@ -9,25 +9,41 @@ public class EnemyKnockBack : MonoBehaviour
 
     private Rigidbody2D rb;
     public bool isKnockedBacked = false;
+    private int damageNumber = 1;
     private float drag = 1f;
 
+    //Scripts;
     private Player_Control playerControls;
-    private Vector2 knockUp;
+    private Obj_Grab grabbed;
+    private Enemy_Health health;
 
+    //Direction Variables
+    private Vector2 knockUp;
     private Vector2 direction;
     private Vector2 lastVelocity;
-    private float curSpeed;
+
 
     //knockback Variables
+    private float curSpeed;
     public float maxSpeed;
     private int curBounce;
     public int numOfBounces = 2;
 
+    //Knockback Delay
     private int countKnockBack;
     private float curKnockBackDelay;
+
+    
+
     private void Awake()
     {
         playerControls = GameObject.Find("Player").GetComponent<Player_Control>();
+
+
+        health = GetComponent<Enemy_Health>();
+        grabbed = GetComponent<Obj_Grab>();
+
+        
     }
     // Start is called before the first frame update
     void Start()
@@ -37,32 +53,30 @@ public class EnemyKnockBack : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         rb.drag = drag;
-        
+
     }
 
     private void Update()
     {
 
-        if(rb.velocity.y == 0f) 
-        {
-            isKnockedBacked = false;
-        }
-        //Delays Hit impact so it can't hppen twice in quick succuion
-        if(countKnockBack > 0) 
+        
+        //Delays Hit impact so it can't happen twice in quick succuion
+        if (countKnockBack > 0)
         {
 
             curKnockBackDelay += 1f * Time.deltaTime;
         }
 
-        if( curKnockBackDelay > 1f) 
+        if (curKnockBackDelay > 1f)
         {
 
             countKnockBack = 0;
             curKnockBackDelay = 0f;
-        
+
         }
 
-        
+
+
     }
 
     private void LateUpdate()
@@ -83,20 +97,47 @@ public class EnemyKnockBack : MonoBehaviour
         }
 
         lastVelocity = rb.velocity;
-        
+
+        if (rb.velocity.y == 0f)
+        {
+            if (grabbed == null)
+            {
+                Debug.LogError("Grabbed = NULL");
+                //isKnockedBacked = false;
+                return;
+            }
+
+            /*if (!grabbed.isHeld)
+            {
+                //Debug.Log("NOt Grabbed");
+                isKnockedBacked = false;
+
+            }
+            else if(grabbed.isHeld)
+            {
+                isKnockedBacked = true;
+               // Debug.Log("Grabbed");
+            }*/
+
+        }
+
     }
-  
+
     public void ApplyKnockBack(Vector2 direction)
     {
+        knockbackForce = Random.Range(1, 12);
+
+        health.TakeDamage(damageNumber);
 
         isKnockedBacked = true;
 
         Vector2 knockbackDirection;
         knockbackDirection = direction + knockUp;
         curBounce = 0;
-        
 
-        if(rb == null || countKnockBack > 0) 
+
+
+        if (rb == null || countKnockBack > 0)
         {
             return;
         }
@@ -105,7 +146,7 @@ public class EnemyKnockBack : MonoBehaviour
         rb.velocity = Vector2.zero;
 
         //knockback speed equals punch speed X 1.5f
-        knockbackForce = playerControls.rightPunchSpeed * 2f;
+        knockbackForce = playerControls.punchSpeed * 2f;
 
         //Apply the knockback to a direction
         rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
@@ -136,13 +177,12 @@ public class EnemyKnockBack : MonoBehaviour
             direction = Vector2.Reflect(lastVelocity.normalized, point.normal);
             //Sets the velocity
             rb.velocity = direction * Mathf.Max(curSpeed, 0f);
-
             curBounce++;
         }
 
     }
 
-
+    
    
     void ProcessCollision(GameObject collider)
     {

@@ -15,9 +15,13 @@ public class LeftHand : MonoBehaviour
     private GameObject targetPoint;
     private Vector2 targetPointLocation;
 
+
+    private GameObject player;
+
     private float count;
     private float reachThreshold = 0.3f;
 
+    //Holding positon after object has been grabbed
     private float holdingCount;
     public float holdingMax = 2f;
     private bool isHolding;
@@ -30,8 +34,7 @@ public class LeftHand : MonoBehaviour
     private bool isPulled;
     private Vector2 collisionPoint;
 
-    private GameObject player;
-
+    private Vector2 incSize;
     private float dCount;
 
 
@@ -44,7 +47,6 @@ public class LeftHand : MonoBehaviour
         handPoint = GameObject.Find("L_HandPoint");
         targetPoint = GameObject.Find("TargetPoint02");
         player = GameObject.Find("Player");
-
         playerControls = GameObject.Find("Player").GetComponent<Player_Control>();
         objectCollider = GetComponent<BoxCollider2D>();
         objectCollider.enabled = false;
@@ -135,7 +137,7 @@ public class LeftHand : MonoBehaviour
         }
         else 
         {
-            Debug.Log("NO COUNT");
+           //Debug.Log("NO COUNT");
         }
     }
     private void OnDrawGizmos()
@@ -176,12 +178,7 @@ public class LeftHand : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        
-
-        StopAllCoroutines();
-
-        
+        //Debug.Log("TRIGGERHIT");
         temp += 1;
         //Debug.Log("we hit: " + collision.gameObject.name + temp);
 
@@ -191,7 +188,7 @@ public class LeftHand : MonoBehaviour
         KnockBack = collision.gameObject.GetComponent<EnemyKnockBack>();
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, targetPointLocation, 4f);
-        if (hit.collider != null)
+        if (hit.collider != null && !isReturning)
         {
             if (collision.gameObject.CompareTag("Wall"))
             {
@@ -208,41 +205,48 @@ public class LeftHand : MonoBehaviour
             
         }
 
-        
-
-        if(grabbedObject == null)//If n object is not Grabable
+        if(grabbedObject == null && !isReturning)//If  object hit is nonGrabable Return to player
         {
             Debug.LogError("GRABBED OBJECT = NULL");
 
             isReturning = true;//stop it from frezze if it hits a non grabable object
             //return;
-   
-         
         }
-        else if (grabbedObject && isGrabbed == false)
+        else if (grabbedObject && isGrabbed == false && !isReturning)
         {
+            //Debug.Log("we hit: " + collision.gameObject.name);
+            //KnockBack.isKnockedBacked = true;
 
+            grabbedObject.IsGrabbed();
             isGrabbed = true;
             grabbedObject.StartCoroutine(grabbedObject.MoveWithFist());
-            Debug.Log("we hit: " + collision.gameObject.name);
-            //How long the fist stays in place for
+            
+            //How long the fist stays in place before returning to player
             isHolding = true;
 
+            //Increase the hands hitbox to be size of the grabbed objects hit box
+            incSize = collision.GetComponent<BoxCollider2D>().size;
         }
-        else 
-        {
-            isGrabbed = false;
-
-
-        }
+       
 
         // Calculate direction from PunchOrigin to the object being punched
         Vector2 knockbackDirection = (collision.transform.position - this.transform.position).normalized;
 
-        if (isGrabbed == true
-        && isReturning == true
+        if (grabbedObject == null) 
+        {
+            Debug.LogError("Grabeed object = Null");
+            return;
+        }
+
+        Debug.Log("GRABBED Object = " + grabbedObject.isHeld + " is Returning = " + isReturning + "ISGRABBED = " + isGrabbed + "knockback = " + KnockBack);
+        if (!grabbedObject.isHeld
+        && isReturning
+        && isGrabbed
         && KnockBack) 
         {
+
+            Debug.Log("KNOCKBACK HIT");
+            playerControls.punchSpeed = 20;
             KnockBack.ApplyKnockBack(knockbackDirection);
         
         }
@@ -283,11 +287,9 @@ public class LeftHand : MonoBehaviour
         //Actives the hit box for the object;
         objectCollider.enabled = true;
 
-
-        Debug.Log("TARGET PPoint LOCATION" + targetPoint.transform.localPosition);
+        //Location is not locked to the players hand
         isLocationLocked = false;
         targetPointLocation = targetPoint.transform.position;
-        Debug.Log("LOCATION IS NOW " + targetPointLocation);
         //Debug.Log("TARGET LOCATION is" + targetPointLocation);
         //targetPointLocation = targetPoint.transform.position;
 
@@ -343,18 +345,26 @@ public class LeftHand : MonoBehaviour
 
     public IEnumerator ReturnToPlayer()
     {
-        objectCollider.enabled = false;
 
+        //Save current size of collider
+        Vector2 cursize = objectCollider.size;
+     
+        //Increase collider size to the size of the grabbed object
+        objectCollider.size = incSize;
         handPointLocation = handPoint.transform.position;
         while ((Vector3.Distance(transform.position, handPointLocation) > reachThreshold))
         {
+          
             //Debug.Log("DISTANCE TO = " + Vector3.Distance(transform.position, handPointLocation));
 
             transform.position = Vector3.MoveTowards(transform.position, handPointLocation, playerControls.leftPunchSpeed/2 * Time.deltaTime);
             yield return null;
 
-
         }
+       
+        //reset size of collider
+        objectCollider.size = cursize;
+        objectCollider.enabled = false;
         // Debug.Log("RETURN END");
         isLocationLocked = true;
 

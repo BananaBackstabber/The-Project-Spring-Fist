@@ -11,14 +11,6 @@ public class EnemyControls01 : MonoBehaviour
     /// and jumps in the other direction
     /// 
     /// 
-    ///
-    /// 
-    /// 
-    /// 
-    /// 
-    /// 
-    /// 
-    /// 
     /// </summary>
 
 
@@ -48,45 +40,55 @@ public class EnemyControls01 : MonoBehaviour
     private bool isFacingRight;
 
     private EnemyKnockBack knockBack;
-    //
+    private PlayerKnockBack playerKnockBack;
+    private Obj_Grab grab;
 
+    private float temp;
 
     private void Awake()
     {
+        playerKnockBack = GameObject.Find("Player").GetComponent<PlayerKnockBack>();
         rb = GetComponent<Rigidbody2D>();
+        grab = GetComponent<Obj_Grab>();
         knockBack = GetComponent<EnemyKnockBack>();
         groundLayer = LayerMask.GetMask("Ground");
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.3f, groundLayer);
 
+        //
         //Debug.Log("IsKnockBack :" + knockBack.isKnockedBacked);
 
-        if( Temp >= 0.2f) 
+        if (!grab.isHeld)
+        {
+            //Enemey is not grabbed by the player
+            knockBack.isKnockedBacked = false;
+        }
+        else if (grab.isHeld)
+        {
+            //Enemy is grabbed by the player
+            knockBack.isKnockedBacked = true;
+        }
+
+        //IF knockback = true then don't do AI movement
+        if ( Temp >= 0.2f && !knockBack.isKnockedBacked) 
          {
+            //ENEMY JUMPED
              isGrounded = true;
-             Debug.Log("ENEMY JUMPED");
              Jump();
              Temp = 0f;
 
          }
 
 
-
-
         if (isGrounded && !knockBack.isKnockedBacked) 
         {
             Temp += Time.deltaTime;
         }
+
 
     }
 
@@ -97,6 +99,42 @@ public class EnemyControls01 : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall") && !knockBack.isKnockedBacked)
         {
             Flip(); 
+        }
+
+        if (collision.gameObject.CompareTag("Player")) 
+        {
+
+            playerKnockBack.PlayerHit();
+        
+        }
+        //Player Knockback
+
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+
+        Debug.Log("STAYING");
+        if (collision.gameObject.CompareTag("Wall") && !knockBack.isKnockedBacked)
+        {
+            Debug.Log("TEMPING");
+            temp += Time.deltaTime;
+
+            if (temp <= 2)
+            {
+                Flip();
+            }
+        }
+
+
+
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+
+        if (collision.gameObject.CompareTag("Wall") && !knockBack.isKnockedBacked)
+        {
+            temp = 0;
         }
 
     }
@@ -132,7 +170,7 @@ public class EnemyControls01 : MonoBehaviour
             // Jumped = new Vector2(jumpDistance, jumpHeight);
 
             // rb.velocity = Jumped;
-            isGrounded = false;
+            //isGrounded = false;
         
         }
         /*

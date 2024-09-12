@@ -57,7 +57,7 @@ public class Player_Control : MonoBehaviour
     private bool isRightCharging = false;
     private Vector2 hitPoint;
     private float rp_PunchDistance;
-    [HideInInspector] public float rightPunchSpeed;
+    [HideInInspector] public float punchSpeed;
 
     //LEFT CHARGE
     private float lp_ChargeTime;
@@ -616,7 +616,7 @@ public class Player_Control : MonoBehaviour
         if (rp_ChargeTime <= ChargeMin)
         {
             //Debug.Log("Small Punch GO!!");
-            rightPunchSpeed = punchSpeedMin;
+            punchSpeed = punchSpeedMin;
             //set trigger animation
         }
 
@@ -624,14 +624,14 @@ public class Player_Control : MonoBehaviour
         {
 
             //Debug.Log("Mid Punch A GOO!!!");
-            rightPunchSpeed = punchSpeedMid;
+            punchSpeed = punchSpeedMid;
             //set trigger animation
         }
 
         if (rp_ChargeTime >= ChargeMax)
         {
             //Debug.Log("BIGGER AND MAX PUNCH A GOGO!!!");
-            rightPunchSpeed = punchSpeedMax;
+            punchSpeed = punchSpeedMax;
         }
 
         scriptRH.StopAllCoroutines();
@@ -652,25 +652,25 @@ public class Player_Control : MonoBehaviour
          || animDirection == downRight 
          || animDirection == upRight) 
         {
-            Debug.Log("Right");
+            //RIGHT
             animator.SetTrigger("R2_CG");
         }
         else if(animDirection == left 
               || animDirection == downLeft
               || animDirection == upLeft) 
         {
-            Debug.Log("Left");
+            //LEFT
             animator.SetTrigger("R2_CG");
             Flip();
         }
         else if(animDirection == down) 
         {
-            Debug.Log("Down");
+            //DOWN
             animator.SetTrigger("R2_CD");
         }
         else if(animDirection == up) 
         {
-            Debug.Log("Up");
+            //UP
             animator.SetTrigger("R2_CU");
         }
         

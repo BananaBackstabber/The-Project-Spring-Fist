@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2256740297945682752}
   - component: {fileID: 1896942280015452549}
   - component: {fileID: 1483354881465432102}
+  - component: {fileID: 3965617681825006699}
   m_Layer: 8
   m_Name: Enemy Dummy
   m_TagString: Untagged
@@ -185,11 +186,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 568842793991398085}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 820741a2db677744296c314fed1000ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHeld: 0
 --- !u!114 &1483354881465432102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +207,21 @@ MonoBehaviour:
   jumpHeight: 20
   jumpDistance: 4
   groundCheck: {fileID: 134449370181302120}
+--- !u!114 &3965617681825006699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568842793991398085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db5395d3030a44e8b255d239ca17ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageColour: {r: 0.9245283, g: 0.16135636, b: 0.22518267, a: 1}
+  flashTime: 0.05
+  flashAmount: 2
 --- !u!1 &5841815275615847964
 GameObject:
   m_ObjectHideFlags: 0
