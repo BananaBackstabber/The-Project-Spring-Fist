@@ -244,7 +244,6 @@ public class LeftHand : MonoBehaviour
         && isGrabbed
         && KnockBack) 
         {
-
             Debug.Log("KNOCKBACK HIT");
             playerControls.punchSpeed = 20;
             KnockBack.ApplyKnockBack(knockbackDirection);

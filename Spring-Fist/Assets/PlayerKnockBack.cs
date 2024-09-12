@@ -29,6 +29,7 @@ public class PlayerKnockBack : MonoBehaviour
     public float maxSpeed;
     private int curBounce;
     public int numOfBounces = 2;
+    private LayerMask hitLayer;
 
     //Knockback Delay
     private int countKnockBack;
@@ -38,10 +39,10 @@ public class PlayerKnockBack : MonoBehaviour
     {
         playerControls = GetComponent<Player_Control>();
 
-
         health = GetComponent<Enemy_Health>();
         grabbed = GetComponent<Obj_Grab>();
 
+        //hitLayer = LayerMask.GetMask("Player");
 
     }
     // Start is called before the first frame update
@@ -52,14 +53,20 @@ public class PlayerKnockBack : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
 
+
+        Debug.Log(hitLayer);
     }
 
     public void PlayerHit() 
     {
+        int newLayer = LayerMask.NameToLayer("BackGround");
+        Debug.Log(newLayer);
+        this.gameObject.layer = newLayer;
+
         playerControls.enabled = false;
         //GetComponent<Collider2D>().enabled = false;
 
-
+        //this.gameObject.layer = hitLayer;
         knockbackForce = Random.Range(1, 12);
 
         //health.TakeDamage(damageNumber);
@@ -79,7 +86,7 @@ public class PlayerKnockBack : MonoBehaviour
         rb.velocity = Vector2.zero;
 
         //knockback speed equals punch speed X 1.5f
-        knockbackForce = playerControls.punchSpeed * 2f;
+        knockbackForce = 400f;
 
         //Apply the knockback to a direction
         rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
@@ -88,7 +95,6 @@ public class PlayerKnockBack : MonoBehaviour
         if (rb.velocity.magnitude > maxSpeed)
         {
             rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
-
         }
         countKnockBack++;
 
