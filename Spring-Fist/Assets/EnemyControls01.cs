@@ -101,9 +101,11 @@ public class EnemyControls01 : MonoBehaviour
             Flip(); 
         }
 
-        if (collision.gameObject.CompareTag("Player")) 
+        if (collision.gameObject.CompareTag("Player")
+            && !knockBack.isKnockedBacked
+            && rb.velocity.y < 0) 
         {
-
+            
             playerKnockBack.PlayerHit();
         
         }

@@ -238,7 +238,7 @@ public class LeftHand : MonoBehaviour
             return;
         }
 
-        Debug.Log("GRABBED Object = " + grabbedObject.isHeld + " is Returning = " + isReturning + "ISGRABBED = " + isGrabbed + "knockback = " + KnockBack);
+        //Debug.Log("GRABBED Object = " + grabbedObject.isHeld + " is Returning = " + isReturning + "ISGRABBED = " + isGrabbed + "knockback = " + KnockBack);
         if (!grabbedObject.isHeld
         && isReturning
         && isGrabbed
@@ -249,6 +249,7 @@ public class LeftHand : MonoBehaviour
             KnockBack.ApplyKnockBack(knockbackDirection);
         
         }
+
      /*
       IF the collison object has the grabbed script on it then
       isGrabbed = true
