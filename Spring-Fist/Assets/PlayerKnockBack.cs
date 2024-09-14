@@ -18,8 +18,6 @@ public class PlayerKnockBack : MonoBehaviour
 
     //Scripts;
     private Player_Control playerControls;
-    private RightHand rFist;
-    private LeftHand lFist;
     private Obj_Grab grabbed;
     private Enemy_Health health;
 
@@ -45,8 +43,6 @@ public class PlayerKnockBack : MonoBehaviour
     {
 
         playerControls = GetComponent<Player_Control>();
-        rFist = GameObject.Find("RightHand").GetComponent<RightHand>();
-        lFist = GameObject.Find("LeftHand").GetComponent<LeftHand>();
         health = GetComponent<Enemy_Health>();
         grabbed = GetComponent<Obj_Grab>();
         animator = GetComponent<Animator>();
@@ -57,12 +53,8 @@ public class PlayerKnockBack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         knockUp = new Vector2(0f, 1f);
-
         rb = GetComponent<Rigidbody2D>();
-
-        Debug.Log(hitLayer);
     }
 
     public void PlayerHit()
@@ -95,16 +87,13 @@ public class PlayerKnockBack : MonoBehaviour
         //knockback speed equals punch speed X 1.5f
         knockbackForce = 3f;
 
-        Debug.Log("HIT BACK FORCE" + knockbackDirection * knockbackForce);
-
-
-        //Animation trigger stun
+        //Debug.Log("HIT BACK FORCE" + knockbackDirection * knockbackForce);
 
 
         //Apply the knockback to a direction NOT WORKING
         rb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
 
-        //Debug.Log("RB.Velocity: " + rb.velocity);
+      
         //Clamp the max knockback velocity
         if (rb.velocity.magnitude > maxSpeed)
         {
@@ -129,19 +118,15 @@ public class PlayerKnockBack : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         
-
+        //Triggers animation
         animator.SetTrigger("Stun");
+        //Save current layer player is at
         curLayer = this.gameObject.layer;
+        //Gets new for player to be set at
         newLayer = LayerMask.NameToLayer("BackGround");
-        Debug.Log(newLayer);
         this.gameObject.layer = newLayer;
 
-
         playerControls.enabled = false;
-        rFist.enabled = false;
-        lFist.enabled = false;
-
-        Debug.Log("MESSAGE TO YOU");
 
         for (int i = 0; i < 3; i++) //flash 3 times
         {
@@ -156,13 +141,13 @@ public class PlayerKnockBack : MonoBehaviour
 
 
         }
-
+  
         animator.SetTrigger("StunNull");
+        //Returns these values after stun has finished
         this.gameObject.layer = curLayer;
         isKnockedBacked = false;
         playerControls.enabled = true;
-        rFist.enabled = true;
-        lFist.enabled = true;
+     
         StopAllCoroutines();
 
         yield return null;

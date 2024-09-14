@@ -47,6 +47,11 @@ public class Player_Control : MonoBehaviour
     public float ChargeMin;
     public float ChargeMid;
     public float ChargeMax;
+
+    [Header("CHARGE DISTANCE")]
+    public float chargeDistanceMin;
+    public float chargeDistanceMid;
+    public float chargeDistanceMax;
     [Header("CHARGE SPEED")]
     public float punchSpeedMin;
     public float punchSpeedMid;
@@ -58,7 +63,7 @@ public class Player_Control : MonoBehaviour
     private Vector2 hitPoint;
     private float rp_PunchDistance;
     [HideInInspector] public float punchSpeed;
-
+    private int returnCount;
     //LEFT CHARGE
     private float lp_ChargeTime;
     private bool isLeftCharging = false;
@@ -122,13 +127,13 @@ public class Player_Control : MonoBehaviour
         scriptLH = GameObject.Find("LeftHand").GetComponent<LeftHand>();
 
         right = new Vector2(1f, 0f);
-        upRight = new Vector2(0.5f, 0.5f);
+        upRight = new Vector2(0.75f, 0.75f);
         up = new Vector2(0f, 1f);
-        upLeft = new Vector2(-0.5f, 0.5f);
+        upLeft = new Vector2(-0.75f, 0.75f);
         left = new Vector2(-1f, 0f);
-        downLeft = new Vector2(-0.5f,-0.5f);
+        downLeft = new Vector2(-0.75f, -0.75f);
         down = new Vector2(0f, -1f);
-        downRight = new Vector2(0.5f, -0.5f);
+        downRight = new Vector2(0.75f, -0.75f);
 
     }
     void Start()
@@ -521,15 +526,9 @@ public class Player_Control : MonoBehaviour
         {
             Flip();
         }
-
-
         //set animator parameter for speed
         animator.SetFloat("Speed", Mathf.Abs(moveDirection.x));
-
-
     }
-
-
 
 
     /// <summary>
@@ -554,14 +553,14 @@ public class Player_Control : MonoBehaviour
             if (rp_ChargeTime >= ChargeMin)
             {
                 //Debug.Log("Small Punch GO!!");
-                rp_PunchDistance = 0.5f;
+                rp_PunchDistance = chargeDistanceMin;
                 //set trigger animation
             }
 
             if (rp_ChargeTime >= ChargeMid)
             {
                 //Debug.Log("Mid Punch A GOO!!!");
-                rp_PunchDistance = 1f;
+                rp_PunchDistance = chargeDistanceMid;
                 //rightPunchSpeed = 10f;
                 //animator.SetTrigger("CR_L2");
             }
@@ -570,7 +569,7 @@ public class Player_Control : MonoBehaviour
             if (rp_ChargeTime >= ChargeMax)
             {
                 //Debug.Log("BIGGER AND MAX PUNCH A GOGO!!!");
-                rp_PunchDistance = 2f;
+                rp_PunchDistance = chargeDistanceMax;
             }
 
             if (rp_ChargeTime > ChargeMax)// if charge time is greater then max charge time
@@ -612,6 +611,14 @@ public class Player_Control : MonoBehaviour
 
         //Debug.Log(rp_ChargeTime);
 
+        //IF player is stunned the stop and reset charge punch
+        if (GetComponent<PlayerKnockBack>().isKnockedBacked) 
+        {
+            punchSpeed = 0f;
+            return;
+        
+        }
+
         //Checks charge variables once
         if (rp_ChargeTime <= ChargeMin)
         {
@@ -639,12 +646,12 @@ public class Player_Control : MonoBehaviour
 
         //If the fist is locked then player can't spam charged punches
         //Making so the punch can't change direction mid flight
-        if (scriptRH.isLocationLocked && rp_PunchDistance > 0f)
+        /*if (scriptRH.isLocationLocked && rp_PunchDistance > 0f)
         {
             scriptRH.StopAllCoroutines();
             scriptRH.StartCoroutine(scriptRH.MoveFist(rp_PunchDistance));
 
-        }
+        }*/
 
 
         //Sets animation Direction
@@ -677,14 +684,38 @@ public class Player_Control : MonoBehaviour
         //Resets charge time to 0
         this.gameObject.GetComponent<Player_Control>().rp_ChargeTime = 0f;
 
-
+        //Resets the punch distance and targetpoint location
+        rp_PunchDistance = 0f;
         //hitPoint = new Vector2(rp_ChargeTime, 0f);
     }
 
     private void RightPunch(InputAction.CallbackContext context)
-    {
+    {  
+        if (!scriptRH.isLocationLocked)
+        {
+            //How many times has the right trigger been pressed
+            //while location lock is not true for right hand
+            returnCount += 1;
+            if (returnCount >= 3) 
+            {
+                Debug.Log("Return EARLY: " + returnCount);
+                //Resets return input count
+                returnCount = 0;
+                //Stops the fist from moving and then starts its return
+                scriptRH.StopAllCoroutines();
+                scriptRH.StartCoroutine(scriptRH.ReturnToPlayer());
 
-        if (scriptRH.isLocationLocked) 
+            }
+            
+            
+        }
+        else{ returnCount = 0; }
+
+    }
+
+    ///<summary>
+    /// Holding combo script
+        /*if (scriptRH.isLocationLocked) 
         {
 
             //Combo punch 2 
@@ -713,20 +744,9 @@ public class Player_Control : MonoBehaviour
                 animator.ResetTrigger("CP_01");
             }
 
-            //Debug.Log("Right Count = " + fistComboCount);
-
-
-            // Debug.Log("PUNCHED");
-
-
-
-        }
-
-
-    }
-
-
+        }*/
     /// <summary>
+ 
     /// LEFT CHARGE 
     /// All need to for the left trigger and the charging grab mechanic
     /// </summary>
@@ -747,19 +767,19 @@ public class Player_Control : MonoBehaviour
             if (lp_ChargeTime >= ChargeMin)
             {
                 
-                lp_PunchDistance = 0.5f;
+                lp_PunchDistance = chargeDistanceMin;
                 //set trigger animation
             }
             if (lp_ChargeTime >= ChargeMid)
             {
                
-                lp_PunchDistance = 1f;
+                lp_PunchDistance = chargeDistanceMid;
                 //animator.SetTrigger("CR_L2");
             }
             if (lp_ChargeTime >= ChargeMax)
             {
                 
-                lp_PunchDistance = 2f;
+                lp_PunchDistance = chargeDistanceMax;
             }
             if (lp_ChargeTime > ChargeMax)// if charge time is greater then max charge time
             {
@@ -790,10 +810,18 @@ public class Player_Control : MonoBehaviour
     }
     private void LeftPerformAttack(float lp_ChargeTime) 
     {
-        
+
+        //IF player is stunned the stop and reset charge punch
+        if (GetComponent<PlayerKnockBack>().isKnockedBacked)
+        {
+            punchSpeed = 0f;
+            return;
+
+        }
 
 
-        if(lp_ChargeTime >= ChargeMin) 
+
+        if (lp_ChargeTime >= ChargeMin) 
         {
             //leftPunchSpeed = 0f;
         
@@ -855,6 +883,8 @@ public class Player_Control : MonoBehaviour
 
         }
 
+        //Resets the punch distance and target points location
+        lp_PunchDistance = 0f;
         lp_ChargeTime = 0f;
 
     }
@@ -912,7 +942,6 @@ public class Player_Control : MonoBehaviour
             animator.SetTrigger("Jump");
 
         }
-
         if (isWallJump && !scriptLH.isReturning) 
         {
             Debug.Log("WALL JUMP");
@@ -922,14 +951,10 @@ public class Player_Control : MonoBehaviour
             rb.velocity = new Vector2(direction.x * 50f, 0f);
 
             rb.AddForce(Vector2.up * 8f, ForceMode2D.Impulse);
-
             //isWallJump = false;
         }
-
     }
-
-   
-   
+ 
     void Flip()
     {
         //Switch player direction EG. IF player is facing right then player with now face left

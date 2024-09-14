@@ -1183,6 +1183,9 @@ MonoBehaviour:
   ChargeMin: 0.5
   ChargeMid: 1.25
   ChargeMax: 2.5
+  chargeDistanceMin: 0.5
+  chargeDistanceMid: 1
+  chargeDistanceMax: 2
   punchSpeedMin: 10
   punchSpeedMid: 15
   punchSpeedMax: 20

@@ -95,7 +95,7 @@ public class EnemyControls01 : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        Debug.Log(gameObject.name + " Just Hit" + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Wall") && !knockBack.isKnockedBacked)
         {
             Flip(); 
@@ -113,7 +113,7 @@ public class EnemyControls01 : MonoBehaviour
 
     }
 
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
 
         Debug.Log("STAYING");
@@ -122,9 +122,10 @@ public class EnemyControls01 : MonoBehaviour
             Debug.Log("TEMPING");
             temp += Time.deltaTime;
 
-            if (temp <= 2)
+            if (temp >= 2)  //  reach 2 seconds before flipping
             {
                 Flip();
+                temp = 0; // Reset temp after flipping
             }
         }
 

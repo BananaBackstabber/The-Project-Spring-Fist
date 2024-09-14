@@ -42,16 +42,27 @@ public class LeftHand : MonoBehaviour
     //public LayerMask;
 
     // Start is called before the first frame update
-    void Start()
+
+
+
+    private void Awake()
     {
+
         handPoint = GameObject.Find("L_HandPoint");
         targetPoint = GameObject.Find("TargetPoint02");
         player = GameObject.Find("Player");
         playerControls = GameObject.Find("Player").GetComponent<Player_Control>();
         objectCollider = GetComponent<BoxCollider2D>();
         objectCollider.enabled = false;
-        
+
+        handPointLocation = handPoint.transform.position;
+        targetPointLocation = targetPoint.transform.position;
+
+        isLocationLocked = true;
+        //objectColiider.enabled = false;
+
     }
+
 
     // Update is called once per frame
     void Update()
@@ -60,7 +71,7 @@ public class LeftHand : MonoBehaviour
 
         if (!isLocationLocked) 
         {
-            dCount += 1;
+            dCount += Time.deltaTime;
             //Rotates the fist to face the target point location while the hand is moving;
             Vector2 Direction = (targetPointLocation - handPointLocation).normalized;
             float angle = Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg;
@@ -69,44 +80,25 @@ public class LeftHand : MonoBehaviour
         }
         else 
         {
-            dCount += 1;
+            //Sets target point location
+            targetPointLocation = targetPoint.transform.position;
+            transform.position = handPoint.transform.position;
+
+            //Resets Roation back to Zero
             transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
-        }
-
-        
-
- 
-        /* if (!isReturning) 
-         {
-             RaycastHit2D hit = Physics2D.Raycast(transform.position, targetPointLocation, 0.3f);
-             if (hit.collider.gameObject.CompareTag("Wall"))
-             {
-                 StopAllCoroutines();
-                 StartCoroutine(pullPlayer());
-                 collisionPoint = hit.point;
-
-                 Debug.Log("Point of Contact:" + hit.point);
-
-             }
-
-         }*/
-
-
-        if (isLocationLocked == true)
-        {
             
-
-            StopAllCoroutines();
             isGrabbed = false;
             isHolding = false;
             isReturning = false;
-            transform.position = handPoint.transform.position;
-            count = 0;
-            holdingCount = 0f;
-            dCount = 0f;
-
             playerControls.isMoving = true;
             objectCollider.enabled = false;
+
+
+            count = 0;
+            holdingCount = 0f;
+
+            StopAllCoroutines();
+            
         }
 
         
@@ -124,21 +116,21 @@ public class LeftHand : MonoBehaviour
             count += 1;
         }
 
-    }
 
-
-    private void LateUpdate()
-    {
-        if (dCount < 2f)
+        /* if (!isReturning) 
         {
-            //Debug.Log(dCount);
-            targetPointLocation = targetPoint.transform.position;//DON'T DELETE IT MESSSES WITH THE AIM
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, targetPointLocation, 0.3f);
+            if (hit.collider.gameObject.CompareTag("Wall"))
+            {
+                StopAllCoroutines();
+                StartCoroutine(pullPlayer());
+                collisionPoint = hit.point;
 
-        }
-        else 
-        {
-           //Debug.Log("NO COUNT");
-        }
+                Debug.Log("Point of Contact:" + hit.point);
+
+            }
+
+        }*/
     }
     private void OnDrawGizmos()
     {
@@ -190,6 +182,7 @@ public class LeftHand : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, targetPointLocation, 4f);
         if (hit.collider != null && !isReturning)
         {
+            Debug.Log("HITS");
             if (collision.gameObject.CompareTag("Wall"))
             {
                 collisionPoint = hit.point;
@@ -283,19 +276,14 @@ public class LeftHand : MonoBehaviour
 
     public IEnumerator MoveFist(float chargeTime)
     {
-
         //Actives the hit box for the object;
-        objectCollider.enabled = true;
-
+         objectCollider.enabled = true;
         //Location is not locked to the players hand
         isLocationLocked = false;
-        targetPointLocation = targetPoint.transform.position;
-        //Debug.Log("TARGET LOCATION is" + targetPointLocation);
-        //targetPointLocation = targetPoint.transform.position;
 
         while ((Vector3.Distance(transform.position, targetPointLocation) > reachThreshold))
         {
-            
+          
 
             transform.position = Vector3.MoveTowards(transform.position, targetPointLocation, playerControls.leftPunchSpeed  * Time.deltaTime);
             yield return null;

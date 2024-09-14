@@ -56,7 +56,19 @@ public class RightHand : MonoBehaviour
         }
         else
         {
+
+            //Keeps the hands position on the player
+            transform.position = handPoint.transform.position;
+            //Resets Roation back to Zero
             transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+
+            objectColiider.enabled = false;
+            isReturning = false;
+            
+            count = 0;
+
+            StopAllCoroutines();
+
         }
 
 
@@ -65,12 +77,7 @@ public class RightHand : MonoBehaviour
         if (isLocationLocked == true) 
         {
 
-            StopAllCoroutines();
-            isReturning = false;
-
-            transform.position = handPoint.transform.position;
-            count = 0;
-            objectColiider.enabled = false;
+          
         }
         else 
         {
@@ -80,9 +87,9 @@ public class RightHand : MonoBehaviour
         if (isReturning && count == 0) 
         {
             
-            StopAllCoroutines();
-            StartCoroutine(ReturnToPlayer());
-            count += 1;
+            //StopAllCoroutines();
+            //StartCoroutine(ReturnToPlayer());
+            //count += 1;
         }
 
         if (Input.GetKeyDown("t")) 
@@ -98,29 +105,33 @@ public class RightHand : MonoBehaviour
     {
 
         //TargetPoint.transform.localPosition = TargetPoint.transform.localPosition * playerControls.punchDistance;
-        // Debug.Log("Move STARTED");
+        Debug.Log("Move STARTED");
         isLocationLocked = false;
         targetPointLocation = TargetPoint.transform.position;
-        //Debug.Log("TARGET LOCATION is" + targetPointLocation);
-
+       
         while ((Vector3.Distance(transform.position, targetPointLocation) > reachThreshold))
         {
-           
 
             transform.position = Vector3.MoveTowards(transform.position, targetPointLocation, playerControls.punchSpeed * Time.deltaTime);
             yield return null;
         }
 
-        //Debug.Log("Move END");
+       
+        Debug.Log("Move END");
+        count = 0;
+        StartCoroutine(ReturnToPlayer());
         isReturning = true;
     }
 
     public IEnumerator ReturnToPlayer() 
     {
 
-       // Debug.Log("RETURN STARTED");
-        
+        Debug.Log("RETURN STARTED");
+
+        objectColiider.enabled = false;
         handPointLocation = handPoint.transform.position;
+
+        //TargetPoint.transform.localPosition = handPoint.transform.localPosition;
         while ((Vector3.Distance(transform.position, handPointLocation) > reachThreshold)) 
         {
             //Debug.Log("DISTANCE TO = " + Vector3.Distance(transform.position, handPointLocation));
@@ -130,10 +141,10 @@ public class RightHand : MonoBehaviour
 
 
         }
-       //Debug.Log("RETURN END");
-        isLocationLocked = true;
-        objectColiider.enabled = false;
 
+        Debug.Log("RETURN END");
+        isLocationLocked = true;
+       
 
     }
 
@@ -151,16 +162,16 @@ public class RightHand : MonoBehaviour
         if (!isReturning)
         {
             EnemyKnockBack knockback = collision.GetComponent<EnemyKnockBack>();
-            if(knockback == null) 
+            if(knockback) 
             {
-                Debug.LogError("No Enemy detected, Hit " + collision.gameObject.name + "Instead");
-                return;
-            }
-            // Calculate direction from PunchOrigin to the object being punched
-            Vector2 knockbackDirection = (collision.transform.position - punchOrigin.transform.position).normalized;
+                // Calculate direction from PunchOrigin to the object being punched
+                Vector2 knockbackDirection = (collision.transform.position - punchOrigin.transform.position).normalized;
 
-            //Apply knockback to calculated direction
-            knockback.ApplyKnockBack(knockbackDirection);
+                //Apply knockback to calculated direction
+                knockback.ApplyKnockBack(knockbackDirection);
+                //Debug.LogError("No Enemy detected, Hit " + collision.gameObject.name + "Instead");
+            }
+           
 
             // Hit something while moving towards the target, immediately return
             StopAllCoroutines();
