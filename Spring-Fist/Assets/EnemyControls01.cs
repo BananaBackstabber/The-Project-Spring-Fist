@@ -43,7 +43,7 @@ public class EnemyControls01 : MonoBehaviour
     private PlayerKnockBack playerKnockBack;
     private Obj_Grab grab;
 
-    private float temp;
+    private float stayTime;
 
     private void Awake()
     {
@@ -116,16 +116,15 @@ public class EnemyControls01 : MonoBehaviour
     private void OnCollisionStay2D(Collision2D collision)
     {
 
-        Debug.Log("STAYING");
+        //When object stays colling with a wall
         if (collision.gameObject.CompareTag("Wall") && !knockBack.isKnockedBacked)
         {
-            Debug.Log("TEMPING");
-            temp += Time.deltaTime;
-
-            if (temp >= 2)  //  reach 2 seconds before flipping
+            //Add Seconds to time variable
+            stayTime += Time.deltaTime;
+            if (stayTime >= 2)  //  reach 2 seconds before flipping
             {
                 Flip();
-                temp = 0; // Reset temp after flipping
+                stayTime = 0; // Reset temp after flipping
             }
         }
 
@@ -137,7 +136,7 @@ public class EnemyControls01 : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Wall") && !knockBack.isKnockedBacked)
         {
-            temp = 0;
+            stayTime = 0;
         }
 
     }

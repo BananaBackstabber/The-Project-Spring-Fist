@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1483354881465432102}
   - component: {fileID: 3965617681825006699}
   m_Layer: 8
-  m_Name: Enemy Dummy
+  m_Name: Enemy Dummy-02 Floater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
