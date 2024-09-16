@@ -134,7 +134,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8192
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -179,6 +179,7 @@ MonoBehaviour:
   isKnockedBacked: 0
   maxSpeed: 10
   numOfBounces: 2
+  stunDuration: 0
 --- !u!114 &1896942280015452549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,9 +220,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db5395d3030a44e8b255d239ca17ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHP: 3
   damageColour: {r: 0.9245283, g: 0.16135636, b: 0.22518267, a: 1}
-  flashTime: 0.05
+  flashTime: 0.4
   flashAmount: 2
+  particleEffect: {fileID: 5049171720579544275, guid: b00caaddf7920f147946f70b45e82d6c, type: 3}
 --- !u!1 &5841815275615847964
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,8 +26,11 @@ public class EnemyKnockBack : MonoBehaviour
     //knockback Variables
     private float curSpeed;
     public float maxSpeed;
-    private int curBounce;
+
+    [HideInInspector]
+    public int curBounce;
     public int numOfBounces = 2;
+    public float stunDuration;
 
     //Knockback Delay
     private int countKnockBack;
@@ -106,11 +109,12 @@ public class EnemyKnockBack : MonoBehaviour
                 //isKnockedBacked = false;
                 return;
             }
+            
 
             /*if (!grabbed.isHeld)
             {
                 //Debug.Log("NOt Grabbed");
-                isKnockedBacked = false;
+                
 
             }
             else if(grabbed.isHeld)
@@ -121,6 +125,17 @@ public class EnemyKnockBack : MonoBehaviour
 
         }
 
+
+        if(health.eHP <= 0) 
+        {
+            isKnockedBacked = true;
+
+            if(curBounce >= 1) 
+            {
+                health.Death();
+            }
+
+        }
     }
 
     public void ApplyKnockBack(Vector2 direction)
@@ -133,8 +148,10 @@ public class EnemyKnockBack : MonoBehaviour
 
         Vector2 knockbackDirection;
         knockbackDirection = direction + knockUp;
+        //Reset bounce count
         curBounce = 0;
-
+        // reset stun duration
+        //stunDuration = 0;
 
 
         if (rb == null || countKnockBack > 0)
@@ -182,8 +199,29 @@ public class EnemyKnockBack : MonoBehaviour
 
     }
 
-    
-   
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (curBounce >= numOfBounces)
+        {
+            return;
+        }
+
+        if (collision.gameObject.CompareTag("Wall") && isKnockedBacked)
+        {
+            //Debug.Log("Colliding with " + collision.gameObject.name);
+            ContactPoint2D point = collision.contacts[0];
+            //gets its velocity speed based on the last frame
+            curSpeed = lastVelocity.magnitude;
+            //sets and reflects the objects direction
+            direction = Vector2.Reflect(lastVelocity.normalized, point.normal);
+            //Sets the velocity
+            rb.velocity = direction * Mathf.Max(curSpeed, 0f);
+            curBounce++;
+        }
+    }
+
+
+
     void ProcessCollision(GameObject collider)
     {
 

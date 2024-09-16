@@ -16,7 +16,8 @@ GameObject:
   - component: {fileID: 1896942280015452549}
   - component: {fileID: 1483354881465432102}
   - component: {fileID: 3965617681825006699}
-  m_Layer: 8
+  - component: {fileID: 864420801982930649}
+  m_Layer: 14
   m_Name: Enemy Dummy-02 Floater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +107,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 1
   m_AngularDrag: 1
-  m_GravityScale: 0.7
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -199,7 +200,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 568842793991398085}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96ea3ffa42c678543b74ee362d564356, type: 3}
   m_Name: 
@@ -222,6 +223,21 @@ MonoBehaviour:
   damageColour: {r: 0.9245283, g: 0.16135636, b: 0.22518267, a: 1}
   flashTime: 0.05
   flashAmount: 2
+--- !u!114 &864420801982930649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568842793991398085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c92324e6c9c81342a9b956d104f9b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
+  rayDistance: 2
+  bufferDistance: 0.3
 --- !u!1 &5841815275615847964
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +247,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 134449370181302120}
-  m_Layer: 8
+  m_Layer: 14
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

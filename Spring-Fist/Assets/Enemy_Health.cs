@@ -6,16 +6,21 @@ public class Enemy_Health : MonoBehaviour
 {
 
     
-    private int enemyHP;
+    public int eHP;
     private SpriteRenderer spriteRenderer;
 
+    //Damage colour variables
     private Color curColour;
     public Color damageColour;
+
+    //Time Float Variables
     private float curTime;
     public float flashTime;
     public int flashAmount;
 
-
+    //Death effect
+    public GameObject particleEffect;
+    private EnemyKnockBack knockBack;
 
     /// <summary>
     /// 
@@ -29,26 +34,26 @@ public class Enemy_Health : MonoBehaviour
     /// and then stop the coroutine
     /// </summary>
 
-    private void Start()
-    {
 
+    private void Awake()
+    {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        knockBack = GetComponent<EnemyKnockBack>();
 
         curColour = spriteRenderer.color;
+
     }
+    
 
 
     public void TakeDamage(int damage) 
     {
 
         //Debug.Log("DAMAGE");
-        enemyHP -= damage;
+        eHP -= damage;
 
+        //The enemy start to flash red for a few seconds
         StartCoroutine(DamageFlash());
-
-       
-    
-    
     }
     public IEnumerator DamageFlash() 
     {
@@ -67,10 +72,22 @@ public class Enemy_Health : MonoBehaviour
 
         }
 
+
+        if(eHP <= 0) 
+        {
+            StartCoroutine(DamageFlash());
+        }
         //Color eColor = gameObject.GetComponent<SpriteRenderer>().color;
         //curColour = eColor;
 
       
     
+    }
+
+    public void Death() 
+    {
+
+        Instantiate(particleEffect, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }

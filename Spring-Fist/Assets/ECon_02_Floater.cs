@@ -10,22 +10,31 @@ public class ECon_02_Floater : MonoBehaviour
     private float temp;
     public float speed;
     public float rayDistance;
+    public float bufferDistance;
     private float currentAngle;
-
+    private int moveTimes;
+    private int clockTime;
 
     private Vector2 targetposition;
     private Vector2 origin;
     private Vector2 randomDirection;
 
+    //private bool
     private bool isMoving;
     private bool isClockwise;
-    
 
 
 
+    private Collider2D objectcollider;
+
+    private EnemyKnockBack knockBack;
+    private float stunDuration;
 
     private void Awake()
     {
+
+        objectcollider = GetComponent<Collider2D>();
+        knockBack = GetComponent<EnemyKnockBack>();
         
     }
     // Start is called before the first frame update
@@ -39,21 +48,55 @@ public class ECon_02_Floater : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        temp += Time.deltaTime;
-
-        if(temp > 36f)
-        {
-
-            StartCoroutine(CastRandomRay());
-            temp = 0f;
-        }
         
+
+
+        /*
+          1.if knokback is true then down cast ray,
+          2. when  knockback is false check ground, if on
+           grounded then raycast directly, if clear the move 5f up,
+           If not clear ray cast directly right and then cast again
+          3. When the floater has moved up succefully, the contuine with base movement script
+         */
+        if (!knockBack.isKnockedBacked) 
+        {
+            temp += Time.deltaTime;
+
+            if (temp > 4f && !isMoving)
+            {
+
+                StartCoroutine(CastRandomRay());
+                temp = 0f;
+
+                //reset moves
+                moveTimes = 0;
+            }
+
+
+        }
+        else
+        {
+            StopAllCoroutines();
+        }
+
+        if (knockBack.isKnockedBacked)
+        {
+            stunDuration += Time.deltaTime;
+
+            if (stunDuration >= 3f)
+            {
+                knockBack.isKnockedBacked = false;
+                stunDuration = 0f;
+            }
+
+        }
+
     }
 
     IEnumerator CastRandomRay() 
     {
 
-        origin = transform.position; // Origin of the ray/ current position of object
+       
         randomDirection = Random.insideUnitCircle.normalized; // Random direction
         isMoving = true;
 
@@ -65,33 +108,39 @@ public class ECon_02_Floater : MonoBehaviour
             Debug.Log("FUll Rotation complete, Flip direction");
         }
 
-        while(currentAngle <= 360f) 
+        while(currentAngle <= 360f
+             && moveTimes < 3) 
         {
+
+
+            origin = transform.position; // Origin of the ray/ current position of object
 
             //Converts angle to direction vector
             Vector2 direction = AngleToVector2(currentAngle);
 
 
             //Cast ray in current direction
-            RaycastHit2D hit = Physics2D.Raycast(origin, direction, rayDistance);
+            RaycastHit2D hit = Physics2D.Raycast(origin, direction, rayDistance, ~LayerMask.GetMask("Enemy02"));
 
             //draw ray
-            Debug.DrawRay(origin, direction * rayDistance, Color.red, 1f);
+            
 
 
             // Check if the ray hit something
             if (hit.collider != null)
             {
                 Debug.Log("Hit: " + hit.collider.name + " at angle: " + currentAngle + " degrees.");
-               // rayHit = true; // hit something, so we will try the next angle
+                // rayHit = true; // hit something, so we will try the next angle
+                currentAngle += isClockwise ? 30f : -30f;
+                Debug.DrawRay(origin, direction * rayDistance, Color.red, 1f);
             }
             else
             {
                 // If no object is hit, move the object towards the end of the ray
-                Vector2 targetPosition = origin + direction * rayDistance;
+                Vector2 targetPosition = origin + direction * (rayDistance - bufferDistance);
                 Debug.Log("No hit, moving towards position: " + targetPosition);
-                //currentAngle = 30f; 
-                //isClockwise = !isClockwise;
+                Debug.DrawRay(origin, direction * rayDistance, Color.green, 1f);
+                moveTimes += 1;
                 yield return StartCoroutine(FloaterMove(transform, targetPosition)); // Move towards the empty direction
 
 
@@ -99,6 +148,7 @@ public class ECon_02_Floater : MonoBehaviour
                 if (isPathToPlayerClear(this.transform.position))
                 {
                     Debug.Log("PATH TO PLAYER IS CLEAR");
+
                     break; //Break the loop if path is found
 
                 }
@@ -109,8 +159,8 @@ public class ECon_02_Floater : MonoBehaviour
                 }
             }
 
+           
 
-            currentAngle += isClockwise ? 30f : -30f;
 
             // Reset angle if it goes below 0 degrees (for counter-clockwise rotation)
             if (currentAngle < 0f)
@@ -123,16 +173,13 @@ public class ECon_02_Floater : MonoBehaviour
 
         }
 
-       
+        if (moveTimes < 3)
+        {
+            Debug.Log("CAN't MOVE NOW");
 
+
+        }
         isMoving = false;//Things can move again
-        
-
-
-       
-
-
-
 
     }
 
@@ -152,9 +199,9 @@ public class ECon_02_Floater : MonoBehaviour
 
         Vector2 directionToPlayer = (Player.position - self.position).normalized;
         float distanceToPlayer = Vector2.Distance(self.position, Player.position);
-        Debug.DrawRay(curPos, directionToPlayer * distanceToPlayer, Color.green, 1f); // Visualize the ray
+       
 
-        RaycastHit2D hit = Physics2D.Raycast(curPos, directionToPlayer, distanceToPlayer);
+        RaycastHit2D hit = Physics2D.Raycast(curPos, directionToPlayer, distanceToPlayer, ~LayerMask.GetMask("Enemy02"));
 
 
         if(hit.collider != null) 
@@ -162,12 +209,13 @@ public class ECon_02_Floater : MonoBehaviour
 
             if(hit.collider.gameObject == Player.gameObject)
             {
-
+                Debug.DrawRay(curPos, directionToPlayer * distanceToPlayer, Color.green, 1f); // Visualize the ray
                 return true; //path is clear
 
             }
             else 
             {
+                Debug.DrawRay(curPos, directionToPlayer * distanceToPlayer, Color.red, 1f); // Visualize the ray
                 // The ray hit something other than the player, obstacle detected
                 Debug.Log("Obstacle detected: " + hit.collider.gameObject.name);
                 return false; // Obstacle in the path
@@ -188,6 +236,13 @@ public class ECon_02_Floater : MonoBehaviour
         }
 
         //StopAllCoroutines();
+    
+    }
+
+    void Shoot() 
+    {
+      ///Instactiate object and give it movement
+    
     
     }
 }
