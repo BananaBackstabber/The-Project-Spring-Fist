@@ -17,7 +17,7 @@ public class Enemy_Health : MonoBehaviour
     private float curTime;
     public float flashTime;
     public int flashAmount;
-
+    private float timeToDie;
     //Death effect
     public GameObject particleEffect;
     private EnemyKnockBack knockBack;
@@ -76,6 +76,14 @@ public class Enemy_Health : MonoBehaviour
         if(eHP <= 0) 
         {
             StartCoroutine(DamageFlash());
+
+            timeToDie += Time.deltaTime;
+        }
+
+        if(timeToDie >= 2) 
+        {
+            Death();
+        
         }
         //Color eColor = gameObject.GetComponent<SpriteRenderer>().color;
         //curColour = eColor;

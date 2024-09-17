@@ -178,6 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isKnockedBacked: 0
   maxSpeed: 10
+  curBounce: 0
   numOfBounces: 2
   stunDuration: 0
 --- !u!114 &1896942280015452549
@@ -220,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db5395d3030a44e8b255d239ca17ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHP: 3
+  eHP: 1
   damageColour: {r: 0.9245283, g: 0.16135636, b: 0.22518267, a: 1}
   flashTime: 0.4
   flashAmount: 2
