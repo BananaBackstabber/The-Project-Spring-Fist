@@ -109,7 +109,7 @@ public class ECon_02_Floater : MonoBehaviour
         }
 
         while(currentAngle <= 360f
-             && moveTimes < 3) 
+             && moveTimes < 4) 
         {
 
 

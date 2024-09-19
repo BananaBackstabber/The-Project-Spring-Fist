@@ -41,7 +41,6 @@ public class Player_Control : MonoBehaviour
     public float comboCooldownTime = 2;
     private float comboTimeCount;
 
-
     [Header("CHARGE TIME")]
     public GameObject rightHand;
     public float ChargeMin;
@@ -52,6 +51,7 @@ public class Player_Control : MonoBehaviour
     public float chargeDistanceMin;
     public float chargeDistanceMid;
     public float chargeDistanceMax;
+
     [Header("CHARGE SPEED")]
     public float punchSpeedMin;
     public float punchSpeedMid;
@@ -230,7 +230,16 @@ public class Player_Control : MonoBehaviour
         {
             //THE FOLLOWING CODE IS USE TO LINK THE DIRECTION OF 
             // THE RIGHT STICK TO THE TARGET POINT Location
-            if (aimDirection.x > 0.25f && aimDirection.y < -0.25f)
+
+            if (aimDirection.x == 0f && aimDirection.y == 0f)
+            {
+                //DIRECTION RIGHT
+                targetPoint01.transform.localPosition = right * rp_PunchDistance;
+                animDirection = right;
+
+
+            }
+            else if (aimDirection.x > 0.25f && aimDirection.y < -0.25f)
             {
                 //DIRECTION DOWNRIGHT
                 targetPoint01.transform.localPosition = downRight * rp_PunchDistance;
@@ -289,7 +298,13 @@ public class Player_Control : MonoBehaviour
 
 
             //LEFT STICK TARGET POINT || TARGET POINT 2 ROTATION
-            if (aimDirection.x > 0.25f && aimDirection.y < -0.25f)
+
+            if(aimDirection.x == 0f && aimDirection.y == 0f) 
+            {
+                targetPoint02.transform.localPosition = right * lp_PunchDistance;
+            
+            }
+            else if (aimDirection.x > 0.25f && aimDirection.y < -0.25f)
             {
                 //DIRECTION DOWNRIGHT
                 targetPoint02.transform.localPosition = downRight * lp_PunchDistance;
@@ -345,9 +360,17 @@ public class Player_Control : MonoBehaviour
         }
         else
         {
+
+
             //THE FOLLOWING CODE IS USE TO LINK THE DIRECTION OF 
             // THE RIGHT STICK TO THE TARGET POINT Location
-            if (aimDirection.x > 0.25f && aimDirection.y < -0.25f)
+            if (aimDirection.x == 0f && aimDirection.y == 0f)
+            {
+                //DIRECTION Foward
+                targetPoint02.transform.localPosition = right *  rp_PunchDistance;
+                animDirection = right;
+            }
+            else if (aimDirection.x > 0.25f && aimDirection.y < -0.25f)
             {
                 //DIRECTION DOWNRIGHT
                 targetPoint01.transform.localPosition = downLeft * rp_PunchDistance;
@@ -409,7 +432,13 @@ public class Player_Control : MonoBehaviour
 
 
             //LEFT STICK TARGET POINT || TARGET POINT 2 ROTATION
-            if (aimDirection.x > 0.25f && aimDirection.y < -0.25f)
+            if (aimDirection.x == 0f && aimDirection.y == 0f)
+            {
+                //DIRECTION Foward If no input from player then shoot in the foward facing direction 
+                targetPoint02.transform.localPosition = right * lp_PunchDistance;
+
+            }
+            else if (aimDirection.x > 0.25f && aimDirection.y < -0.25f)
             {
                 //DIRECTION DOWNleft
                 targetPoint02.transform.localPosition = downLeft * lp_PunchDistance;
@@ -546,7 +575,7 @@ public class Player_Control : MonoBehaviour
             //set position of target point based on charge time
             if (rp_ChargeTime <= ChargeMin)
             {
-                rp_PunchDistance = 0f;
+                scriptRH.isLocationLocked = true;
 
             }
 
@@ -761,7 +790,7 @@ public class Player_Control : MonoBehaviour
             //set position of target point based on charge time
             if (lp_ChargeTime <= ChargeMin)
             {
-                lp_PunchDistance = 0f;
+                scriptLH.isLocationLocked = true;
 
             }
             if (lp_ChargeTime >= ChargeMin)
@@ -900,9 +929,7 @@ public class Player_Control : MonoBehaviour
             scriptLH.StopAllCoroutines();
             scriptLH.StartCoroutine(scriptLH.ReturnToPlayer());
         }
-
         //Debug.Log("GRAB");
-
 
     }
 
@@ -928,8 +955,7 @@ public class Player_Control : MonoBehaviour
     }
     private void Jump(InputAction.CallbackContext context) 
     {
-       
-
+    
         if (isGrounded) 
         {
             Debug.Log("Jumped");

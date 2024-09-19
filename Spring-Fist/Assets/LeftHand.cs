@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LeftHand : MonoBehaviour
 {
-    [HideInInspector]
+    //[HideInInspector]
     public bool isLocationLocked = true;
     public bool isReturning;
     private float temp;
