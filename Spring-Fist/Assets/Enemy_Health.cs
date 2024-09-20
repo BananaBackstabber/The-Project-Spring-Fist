@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy_Health : MonoBehaviour
 {
 
-    
+    private GlobalVariables global;
     public int eHP;
     private SpriteRenderer spriteRenderer;
 
@@ -39,8 +39,9 @@ public class Enemy_Health : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         knockBack = GetComponent<EnemyKnockBack>();
-
         curColour = spriteRenderer.color;
+
+        global = GameObject.Find("Global_Object").GetComponent<GlobalVariables>();
 
     }
     
@@ -94,6 +95,12 @@ public class Enemy_Health : MonoBehaviour
 
     public void Death() 
     {
+       
+        if(global != null) 
+        {
+            global.gameScore += 10;
+        }
+        
 
         Instantiate(particleEffect, transform.position, transform.rotation);
         Destroy(gameObject);

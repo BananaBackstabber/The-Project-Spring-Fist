@@ -575,7 +575,7 @@ public class Player_Control : MonoBehaviour
             //set position of target point based on charge time
             if (rp_ChargeTime <= ChargeMin)
             {
-                scriptRH.isLocationLocked = true;
+                //scriptRH.isLocationLocked = true;
 
             }
 
@@ -628,10 +628,11 @@ public class Player_Control : MonoBehaviour
         isRightCharging = false;
         if(scriptRH.isLocationLocked && rp_PunchDistance > 0f) 
         {
+            Debug.Log("RIGHT PUNCH A GO");
             RightPerformAttack(rp_ChargeTime);
         }
 
-        rp_ChargeTime = 0f;
+        //rp_ChargeTime = 0f;
         //Debug.Log(rp_ChargeTime);
 
     }
@@ -648,6 +649,11 @@ public class Player_Control : MonoBehaviour
         
         }
 
+
+        /*if(rp_ChargeTime > ChargeMin && scriptRH.is) 
+        {
+            scriptLH.isLocationLocked = true;
+        }*/
         //Checks charge variables once
         if (rp_ChargeTime <= ChargeMin)
         {
@@ -790,7 +796,7 @@ public class Player_Control : MonoBehaviour
             //set position of target point based on charge time
             if (lp_ChargeTime <= ChargeMin)
             {
-                scriptLH.isLocationLocked = true;
+                //
 
             }
             if (lp_ChargeTime >= ChargeMin)
@@ -848,15 +854,16 @@ public class Player_Control : MonoBehaviour
 
         }
 
-
+        
 
         if (lp_ChargeTime >= ChargeMin) 
         {
+            //scriptLH.isLocationLocked = true;
             //leftPunchSpeed = 0f;
-        
+
         }
         //Checks charge variables once
-        if (lp_ChargeTime <= ChargeMin)
+        if (lp_ChargeTime <= ChargeMin )
         {
 
             leftPunchSpeed = punchSpeedMin;
