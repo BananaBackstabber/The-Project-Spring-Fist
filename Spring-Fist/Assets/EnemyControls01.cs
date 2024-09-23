@@ -35,6 +35,7 @@ public class EnemyControls01 : MonoBehaviour
     private bool isGrounded;
     private Rigidbody2D rb;
     private float Temp;
+
     public Transform groundCheck;
     private LayerMask groundLayer;
     private bool isFacingRight;
@@ -43,19 +44,27 @@ public class EnemyControls01 : MonoBehaviour
     private PlayerKnockBack playerKnockBack;
     private Obj_Grab grab;
 
+    private Animator animator;
+
     private float stayTime;
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         playerKnockBack = GameObject.Find("Player").GetComponent<PlayerKnockBack>();
         rb = GetComponent<Rigidbody2D>();
         grab = GetComponent<Obj_Grab>();
         knockBack = GetComponent<EnemyKnockBack>();
         groundLayer = LayerMask.GetMask("Ground");
+
+
+        
+        
     }
     // Update is called once per frame
     void Update()
     {
+        animator.SetFloat("Y", rb.velocityY);
 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.3f, groundLayer);
 
