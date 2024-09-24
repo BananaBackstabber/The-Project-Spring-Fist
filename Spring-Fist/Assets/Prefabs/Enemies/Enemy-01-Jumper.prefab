@@ -231,6 +231,7 @@ MonoBehaviour:
   flashTime: 0.4
   flashAmount: 2
   particleEffect: {fileID: 5049171720579544275, guid: b00caaddf7920f147946f70b45e82d6c, type: 3}
+  deathSound: {fileID: 8300000, guid: dd1eca56558872b4f9ebc7c906d0cb1d, type: 3}
 --- !u!95 &4937171273042770915
 Animator:
   serializedVersion: 7

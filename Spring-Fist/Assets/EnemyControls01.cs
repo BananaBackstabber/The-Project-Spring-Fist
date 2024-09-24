@@ -128,7 +128,7 @@ public class EnemyControls01 : MonoBehaviour
 
         if(collision.gameObject.layer == targetLayer + 1) 
         {
-            audiosource.PlayOneShot(groundHit, 0.8f);
+            //audiosource.PlayOneShot(groundHit, 0.8f);
 
         }
 

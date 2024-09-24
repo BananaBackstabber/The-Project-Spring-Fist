@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class ECon_02_Floater : MonoBehaviour
 {
@@ -39,8 +40,9 @@ public class ECon_02_Floater : MonoBehaviour
     public Sprite upSprite;
     public Sprite DownSprite;
     public Sprite sideSprite;
-   
 
+    public AudioClip moveSound;
+    private AudioSource audiosource;
     private void Awake()
     {
 
@@ -49,6 +51,7 @@ public class ECon_02_Floater : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audiosource = GetComponent<AudioSource>();
     }
     // Start is called before the first frame update
     void Start()
@@ -249,7 +252,7 @@ public class ECon_02_Floater : MonoBehaviour
     }
     IEnumerator FloaterMove(Transform self, Vector2 targetPosition) 
     {
-
+        audiosource.PlayOneShot(moveSound, 0.08f);
        // Debug.Log("TArget positon: " + targetPosition);
         // float angle = Mathf.Atan2(targetPosition.y, targetPosition.x) * Mathf.Rad2Deg;
         if (Mathf.Abs(targetPosition.x) > Mathf.Abs(targetPosition.y))

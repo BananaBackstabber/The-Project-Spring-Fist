@@ -215,6 +215,7 @@ MonoBehaviour:
   flashTime: 0.05
   flashAmount: 2
   particleEffect: {fileID: 5049171720579544275, guid: b00caaddf7920f147946f70b45e82d6c, type: 3}
+  deathSound: {fileID: 8300000, guid: d88e06788c6a86f40bc4a03527cf82e7, type: 3}
 --- !u!114 &864420801982930649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +234,7 @@ MonoBehaviour:
   upSprite: {fileID: 0}
   DownSprite: {fileID: 0}
   sideSprite: {fileID: 0}
+  moveSound: {fileID: 8300000, guid: e82aace7f7609ee4481d5abcd2354d6a, type: 3}
 --- !u!95 &1870451392399969606
 Animator:
   serializedVersion: 7

@@ -23,7 +23,10 @@ public class Enemy_Health : MonoBehaviour
     private EnemyKnockBack knockBack;
     private waveScript wavescript;
 
-    private float dieCount = 0f; 
+    private float dieCount = 0f;
+
+    public AudioClip deathSound;
+    private AudioSource audiosource;
     /// <summary>
     /// 
     /// when enemy HP is reduced then
@@ -103,8 +106,8 @@ public class Enemy_Health : MonoBehaviour
         {
             global.gameScore += 10;
         }
-        
 
+        audiosource.PlayOneShot(deathSound, 0.7f);
         Instantiate(particleEffect, transform.position, transform.rotation);
         wavescript.deadCount += 1;
         Destroy(gameObject);
