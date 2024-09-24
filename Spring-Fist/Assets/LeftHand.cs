@@ -53,7 +53,7 @@ public class LeftHand : MonoBehaviour
         player = GameObject.Find("Player");
         playerControls = GameObject.Find("Player").GetComponent<Player_Control>();
         objectCollider = GetComponent<BoxCollider2D>();
-        objectCollider.enabled = false;
+        //objectCollider.enabled = false;
 
         handPointLocation = handPoint.transform.position;
         targetPointLocation = targetPoint.transform.position;
@@ -67,7 +67,7 @@ public class LeftHand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Debug.Log("Collider is:  " + objectCollider.enabled);
 
         if (!isLocationLocked) 
         {
@@ -172,7 +172,7 @@ public class LeftHand : MonoBehaviour
     {
         //Debug.Log("TRIGGERHIT");
         temp += 1;
-        //Debug.Log("we hit: " + collision.gameObject.name + temp);
+        Debug.Log("we hit: " + collision.gameObject.name + temp);
 
         Obj_Grab grabbedObject;
         grabbedObject = collision.gameObject.GetComponent<Obj_Grab>();

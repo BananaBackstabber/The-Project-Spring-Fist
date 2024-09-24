@@ -943,6 +943,8 @@ public class Player_Control : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+        Debug.Log("You just hit" + collision.gameObject.name);
         if (collision.gameObject.layer == 7) 
         {
             isGrounded = true;

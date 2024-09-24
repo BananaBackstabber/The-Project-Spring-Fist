@@ -21,7 +21,9 @@ public class Enemy_Health : MonoBehaviour
     //Death effect
     public GameObject particleEffect;
     private EnemyKnockBack knockBack;
+    private waveScript wavescript;
 
+    private float dieCount = 0f; 
     /// <summary>
     /// 
     /// when enemy HP is reduced then
@@ -42,6 +44,7 @@ public class Enemy_Health : MonoBehaviour
         curColour = spriteRenderer.color;
 
         global = GameObject.Find("Global_Object").GetComponent<GlobalVariables>();
+        wavescript = GameObject.Find("Level_Settings").GetComponent<waveScript>();
 
     }
     
@@ -81,10 +84,10 @@ public class Enemy_Health : MonoBehaviour
             timeToDie += Time.deltaTime;
         }
 
-        if(timeToDie >= 2) 
+        if(timeToDie >= 0.25f && dieCount == 0) 
         {
             Death();
-        
+            dieCount += 1;
         }
         //Color eColor = gameObject.GetComponent<SpriteRenderer>().color;
         //curColour = eColor;
@@ -103,6 +106,7 @@ public class Enemy_Health : MonoBehaviour
         
 
         Instantiate(particleEffect, transform.position, transform.rotation);
+        wavescript.deadCount += 1;
         Destroy(gameObject);
     }
 }

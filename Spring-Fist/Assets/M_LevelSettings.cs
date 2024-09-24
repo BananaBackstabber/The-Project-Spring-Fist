@@ -17,7 +17,7 @@ public class M_LevelSettings : MonoBehaviour
         UItime = GameObject.Find("The Time").GetComponent<TextMeshProUGUI>();
         global = GameObject.Find("Global_Object").GetComponent<GlobalVariables>();
 
-        curTime = 60; 
+        curTime = 90; 
     }
     // Start is called before the first frame update
     void Start()
@@ -35,8 +35,19 @@ public class M_LevelSettings : MonoBehaviour
             return; 
         }
         
+
+        if(curTime > 0) 
+        {
+            curTime -= Time.deltaTime;
+
+        }
+        else 
+        {
+            curTime = 0f;
+        }
+
         global.gameTime = textTime;
-        curTime -= Time.deltaTime;
+        
         textTime = Mathf.RoundToInt(curTime);
         UItime.text = "Time Left: " + textTime;
 

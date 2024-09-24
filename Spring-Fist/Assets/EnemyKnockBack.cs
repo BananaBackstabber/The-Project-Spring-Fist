@@ -128,10 +128,12 @@ public class EnemyKnockBack : MonoBehaviour
 
         if(health.eHP <= 0) 
         {
+           
             isKnockedBacked = true;
 
             if(curBounce >= 1) 
             {
+                
                 health.Death();
             }
 

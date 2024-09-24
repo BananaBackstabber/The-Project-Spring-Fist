@@ -24,7 +24,7 @@ public class ECon_02_Floater : MonoBehaviour
     //private bool
     private bool isMoving;
     private bool isClockwise;
-
+    private bool isCol;
     //Distance to player variable
     private  Vector2 directionToPlayer;
     private float distanceToPlayer;
@@ -126,7 +126,8 @@ public class ECon_02_Floater : MonoBehaviour
         }
 
         while(currentAngle <= 360f
-             && moveTimes < 4) 
+            && !isCol
+             /*&& moveTimes < 4 IF LIMIT MOVEMENT*/ ) 
         {
 
 
@@ -157,7 +158,7 @@ public class ECon_02_Floater : MonoBehaviour
                 Vector2 targetPosition = origin + direction * (rayDistance - bufferDistance);
                 //Debug.Log("No hit, moving towards position: " + targetPosition);
                 Debug.DrawRay(origin, direction * rayDistance, Color.green, 1f);
-                Debug.Log("BEFORE POSITION" + targetPosition);
+               
                 moveTimes += 1;
                 yield return StartCoroutine(FloaterMove(transform, targetPosition)); // Move towards the empty direction
 
@@ -238,7 +239,7 @@ public class ECon_02_Floater : MonoBehaviour
             {
                 Debug.DrawRay(curPos, directionToPlayer * distanceToPlayer, Color.red, 1f); // Visualize the ray
                 // The ray hit something other than the player, obstacle detected
-                Debug.Log("Obstacle detected: " + hit.collider.gameObject.name);
+               // Debug.Log("Obstacle detected: " + hit.collider.gameObject.name);
                 return false; // Obstacle in the path
             }
     
@@ -249,7 +250,7 @@ public class ECon_02_Floater : MonoBehaviour
     IEnumerator FloaterMove(Transform self, Vector2 targetPosition) 
     {
 
-        Debug.Log("TArget positon: " + targetPosition);
+       // Debug.Log("TArget positon: " + targetPosition);
         // float angle = Mathf.Atan2(targetPosition.y, targetPosition.x) * Mathf.Rad2Deg;
         if (Mathf.Abs(targetPosition.x) > Mathf.Abs(targetPosition.y))
         {
@@ -257,12 +258,12 @@ public class ECon_02_Floater : MonoBehaviour
            
             if (targetPosition.x > 0)
             {
-                Debug.Log("FACE rigth " + targetPosition);
+               // Debug.Log("FACE rigth " + targetPosition);
                 FaceRight();
             }
             else
             {
-                Debug.Log("Face Left " + targetPosition);
+                //Debug.Log("Face Left " + targetPosition);
                 FaceLeft();
             }
         }
@@ -287,10 +288,24 @@ public class ECon_02_Floater : MonoBehaviour
 
 
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
+        isCol = true;
+        //Vector2 collisionPoint = collision.gameObject.transform.position;
         StopAllCoroutines();
+        targetposition = (transform.position - collision.transform.position) * 3;
+        StartCoroutine(FloaterMove(transform, targetposition));
+
+
     }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        isCol = false;
+        StopAllCoroutines();
+
+    }
+
     void Shoot() 
     {
         ///Instactiate object and give it movement

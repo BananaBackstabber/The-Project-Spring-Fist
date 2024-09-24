@@ -45,21 +45,18 @@ public class EnemyControls01 : MonoBehaviour
     private Obj_Grab grab;
 
     private Animator animator;
-
+    private SpriteRenderer spriterenderer;
     private float stayTime;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        spriterenderer = GetComponent<SpriteRenderer>();
         playerKnockBack = GameObject.Find("Player").GetComponent<PlayerKnockBack>();
         rb = GetComponent<Rigidbody2D>();
         grab = GetComponent<Obj_Grab>();
         knockBack = GetComponent<EnemyKnockBack>();
-        groundLayer = LayerMask.GetMask("Ground");
-
-
-        
-        
+        groundLayer = LayerMask.GetMask("Ground");  
     }
     // Update is called once per frame
     void Update()
@@ -89,9 +86,17 @@ public class EnemyControls01 : MonoBehaviour
              isGrounded = true;
              Jump();
              Temp = 0f;
+            
+        }
 
-         }
-
+        if (knockBack.isKnockedBacked) 
+        {
+            animator.SetBool("isStun", true);
+        }
+        else 
+        {
+            animator.SetBool("isStun", false);
+        }
 
         if (isGrounded && !knockBack.isKnockedBacked) 
         {
@@ -107,10 +112,10 @@ public class EnemyControls01 : MonoBehaviour
         LayerMask targetLayer;
         targetLayer = LayerMask.NameToLayer("Wall");
 
-        Debug.Log("HIT SOMETHING");
+        //Debug.Log("HIT SOMETHING");
         if(collision.gameObject.layer == targetLayer) 
         {
-            Debug.Log("Flip");
+           // Debug.Log("Flip");
             Flip();
 
         }
@@ -207,7 +212,8 @@ public class EnemyControls01 : MonoBehaviour
 
     void Flip() 
     {
-
+        spriterenderer.flipX = !spriterenderer.flipX;
+        
         isFacingRight = !isFacingRight;
     }
 }
