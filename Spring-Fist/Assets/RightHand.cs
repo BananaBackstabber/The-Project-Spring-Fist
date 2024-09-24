@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Audio;
 public class RightHand : MonoBehaviour
 {
+
+    private AudioSource Hit;
 
     private LeftHand scriptLH;
     private Collider2D objectColiider;

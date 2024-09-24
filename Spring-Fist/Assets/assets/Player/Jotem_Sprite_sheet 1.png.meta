@@ -1,0 +1,2752 @@
+fileFormatVersion: 2
+guid: d2a2dcfc16c415c4296e104d80c7f62f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8174057514938974802
+    second: Jotem_Sprite_sheet 1_0
+  - first:
+      213: 5003314495595603461
+    second: Jotem_Sprite_sheet 1_1
+  - first:
+      213: 7951454061989808165
+    second: Jotem_Sprite_sheet 1_2
+  - first:
+      213: 7836896604744275356
+    second: Jotem_Sprite_sheet 1_3
+  - first:
+      213: 8545027632871075016
+    second: Jotem_Sprite_sheet 1_4
+  - first:
+      213: -8044323367192030321
+    second: Jotem_Sprite_sheet 1_5
+  - first:
+      213: 6624092600762724068
+    second: Jotem_Sprite_sheet 1_6
+  - first:
+      213: -4572465838074911303
+    second: Jotem_Sprite_sheet 1_7
+  - first:
+      213: 335865484151660373
+    second: Jotem_Sprite_sheet 1_8
+  - first:
+      213: -5281806207569857733
+    second: Jotem_Sprite_sheet 1_9
+  - first:
+      213: -7787474222462587468
+    second: Jotem_Sprite_sheet 1_10
+  - first:
+      213: -4876237192577263023
+    second: Jotem_Sprite_sheet 1_11
+  - first:
+      213: 850318464908575158
+    second: Jotem_Sprite_sheet 1_12
+  - first:
+      213: 6935781644911820291
+    second: Jotem_Sprite_sheet 1_13
+  - first:
+      213: 7122005026570197428
+    second: Jotem_Sprite_sheet 1_14
+  - first:
+      213: -5014197920710921517
+    second: Jotem_Sprite_sheet 1_15
+  - first:
+      213: 8994898621680666886
+    second: Jotem_Sprite_sheet 1_16
+  - first:
+      213: 128933970531726727
+    second: Jotem_Sprite_sheet 1_17
+  - first:
+      213: -4884934579951896494
+    second: Jotem_Sprite_sheet 1_18
+  - first:
+      213: 3106129420331366248
+    second: Jotem_Sprite_sheet 1_19
+  - first:
+      213: -1629053226691307243
+    second: Jotem_Sprite_sheet 1_20
+  - first:
+      213: -1646374335728831283
+    second: Jotem_Sprite_sheet 1_21
+  - first:
+      213: 7680766440825275484
+    second: Jotem_Sprite_sheet 1_22
+  - first:
+      213: 1698910719399393825
+    second: Jotem_Sprite_sheet 1_23
+  - first:
+      213: -7034656331633966823
+    second: Jotem_Sprite_sheet 1_24
+  - first:
+      213: 277341634088556709
+    second: Jotem_Sprite_sheet 1_25
+  - first:
+      213: -5434997052568217644
+    second: Jotem_Sprite_sheet 1_26
+  - first:
+      213: -2331732872010810070
+    second: Jotem_Sprite_sheet 1_27
+  - first:
+      213: 2278873907507999421
+    second: Jotem_Sprite_sheet 1_28
+  - first:
+      213: -5957663320548140637
+    second: Jotem_Sprite_sheet 1_29
+  - first:
+      213: 4777485663620670075
+    second: Jotem_Sprite_sheet 1_30
+  - first:
+      213: -3908201779463960186
+    second: Jotem_Sprite_sheet 1_31
+  - first:
+      213: -287123270024608364
+    second: Jotem_Sprite_sheet 1_32
+  - first:
+      213: 1555520603126124251
+    second: Jotem_Sprite_sheet 1_33
+  - first:
+      213: 7651058496331038400
+    second: Jotem_Sprite_sheet 1_34
+  - first:
+      213: -5734698162718492011
+    second: Jotem_Sprite_sheet 1_35
+  - first:
+      213: -3091068870036428611
+    second: Jotem_Sprite_sheet 1_36
+  - first:
+      213: 3349131639043219351
+    second: Jotem_Sprite_sheet 1_37
+  - first:
+      213: -5129258191920556354
+    second: Jotem_Sprite_sheet 1_38
+  - first:
+      213: -8895555260970492040
+    second: Jotem_Sprite_sheet 1_39
+  - first:
+      213: 5191857893526399377
+    second: Jotem_Sprite_sheet 1_40
+  - first:
+      213: 2146457094101540519
+    second: Jotem_Sprite_sheet 1_41
+  - first:
+      213: 8709159729268340307
+    second: Jotem_Sprite_sheet 1_42
+  - first:
+      213: -8898876940362463348
+    second: Jotem_Sprite_sheet 1_43
+  - first:
+      213: -591593548953945729
+    second: Jotem_Sprite_sheet 1_44
+  - first:
+      213: -664996442425328851
+    second: Jotem_Sprite_sheet 1_45
+  - first:
+      213: -6811023953014441027
+    second: Jotem_Sprite_sheet 1_46
+  - first:
+      213: 7340683381111980959
+    second: Jotem_Sprite_sheet 1_47
+  - first:
+      213: -7105019825413066302
+    second: Jotem_Sprite_sheet 1_48
+  - first:
+      213: 2501981324656402305
+    second: Jotem_Sprite_sheet 1_49
+  - first:
+      213: -1419432736239170123
+    second: Jotem_Sprite_sheet 1_50
+  - first:
+      213: 4538080612754480449
+    second: Jotem_Sprite_sheet 1_51
+  - first:
+      213: 2591147100138729362
+    second: Jotem_Sprite_sheet 1_52
+  - first:
+      213: -2779886960990858209
+    second: Jotem_Sprite_sheet 1_53
+  - first:
+      213: 6794633143162588093
+    second: Jotem_Sprite_sheet 1_54
+  - first:
+      213: 3920603758682902069
+    second: Jotem_Sprite_sheet 1_55
+  - first:
+      213: -138709006554956074
+    second: Jotem_Sprite_sheet 1_56
+  - first:
+      213: -4415110725430414397
+    second: Jotem_Sprite_sheet 1_57
+  - first:
+      213: 7219432989812436087
+    second: Jotem_Sprite_sheet 1_58
+  - first:
+      213: -2843947664443163307
+    second: Jotem_Sprite_sheet 1_59
+  - first:
+      213: -4301954509408650789
+    second: Jotem_Sprite_sheet 1_60
+  - first:
+      213: -7107052753290905764
+    second: Jotem_Sprite_sheet 1_61
+  - first:
+      213: -4075060128697582286
+    second: Jotem_Sprite_sheet 1_62
+  - first:
+      213: -5064349090886938713
+    second: Jotem_Sprite_sheet 1_63
+  - first:
+      213: 3771474164366166859
+    second: Jotem_Sprite_sheet 1_64
+  - first:
+      213: 5727139042344991613
+    second: Jotem_Sprite_sheet 1_65
+  - first:
+      213: -6621689857328079291
+    second: Jotem_Sprite_sheet 1_66
+  - first:
+      213: 5435187451410533151
+    second: Jotem_Sprite_sheet 1_67
+  - first:
+      213: 4713782245172024521
+    second: Jotem_Sprite_sheet 1_68
+  - first:
+      213: 4426036864263344926
+    second: Jotem_Sprite_sheet 1_69
+  - first:
+      213: -1827636939276880977
+    second: Jotem_Sprite_sheet 1_70
+  - first:
+      213: 7350551322453945860
+    second: Jotem_Sprite_sheet 1_71
+  - first:
+      213: 1546622335855352161
+    second: Jotem_Sprite_sheet 1_72
+  - first:
+      213: -3051572986987577128
+    second: Jotem_Sprite_sheet 1_73
+  - first:
+      213: -5409860624691402005
+    second: Jotem_Sprite_sheet 1_74
+  - first:
+      213: 6228542799165910563
+    second: Jotem_Sprite_sheet 1_75
+  - first:
+      213: -2901645578576803352
+    second: Jotem_Sprite_sheet 1_76
+  - first:
+      213: -2553855401668251326
+    second: Jotem_Sprite_sheet 1_77
+  - first:
+      213: 1148329734813438099
+    second: Jotem_Sprite_sheet 1_78
+  - first:
+      213: -6293324327833486470
+    second: Jotem_Sprite_sheet 1_79
+  - first:
+      213: 960379085851453130
+    second: Jotem_Sprite_sheet 1_80
+  - first:
+      213: -1687988282875980323
+    second: Jotem_Sprite_sheet 1_81
+  - first:
+      213: 3220233291396958555
+    second: Jotem_Sprite_sheet 1_82
+  - first:
+      213: -969980621051215908
+    second: Jotem_Sprite_sheet 1_83
+  - first:
+      213: 7147677387614997894
+    second: Jotem_Sprite_sheet 1_84
+  - first:
+      213: -3627190063274437757
+    second: Jotem_Sprite_sheet 1_85
+  - first:
+      213: 1150165138712150685
+    second: Jotem_Sprite_sheet 1_86
+  - first:
+      213: -6282375166244827673
+    second: Jotem_Sprite_sheet 1_87
+  - first:
+      213: 8879517786660187574
+    second: Jotem_Sprite_sheet 1_88
+  - first:
+      213: 2045870592350685248
+    second: Jotem_Sprite_sheet 1_89
+  - first:
+      213: 4086848964056270348
+    second: Jotem_Sprite_sheet 1_90
+  - first:
+      213: -4520849760808068184
+    second: Jotem_Sprite_sheet 1_91
+  - first:
+      213: -5107510939619437423
+    second: Jotem_Sprite_sheet 1_92
+  - first:
+      213: 7169648259850382422
+    second: Jotem_Sprite_sheet 1_93
+  - first:
+      213: -8097884464847828630
+    second: Jotem_Sprite_sheet 1_94
+  - first:
+      213: 8605194351546195819
+    second: Jotem_Sprite_sheet 1_95
+  - first:
+      213: 6193298685067845054
+    second: Jotem_Sprite_sheet 1_96
+  - first:
+      213: 4269277943482448920
+    second: Jotem_Sprite_sheet 1_97
+  - first:
+      213: 4149037039680195683
+    second: Jotem_Sprite_sheet 1_98
+  - first:
+      213: 6731845233483717126
+    second: Jotem_Sprite_sheet 1_99
+  - first:
+      213: -7721054076475661137
+    second: Jotem_Sprite_sheet 1_100
+  - first:
+      213: 5143757650201706541
+    second: Jotem_Sprite_sheet 1_101
+  - first:
+      213: -4676410744728271708
+    second: Jotem_Sprite_sheet 1_102
+  - first:
+      213: -8705451234691996477
+    second: Jotem_Sprite_sheet 1_103
+  - first:
+      213: -6682514120594385621
+    second: Jotem_Sprite_sheet 1_104
+  - first:
+      213: -5833605788402476445
+    second: Jotem_Sprite_sheet 1_105
+  - first:
+      213: 6606732893623005101
+    second: Jotem_Sprite_sheet 1_106
+  - first:
+      213: 7397061862109888259
+    second: Jotem_Sprite_sheet 1_107
+  - first:
+      213: 1063977427933546655
+    second: Jotem_Sprite_sheet 1_108
+  - first:
+      213: 7953772918455387687
+    second: Jotem_Sprite_sheet 1_109
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_0
+      rect:
+        serializedVersion: 2
+        x: 11300
+        y: 0
+        width: 69
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 252cc877006107170800000000000000
+      internalID: 8174057514938974802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_1
+      rect:
+        serializedVersion: 2
+        x: 11488
+        y: 54
+        width: 17
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 506e98966085f6540800000000000000
+      internalID: 5003314495595603461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_2
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 0
+        width: 38
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5284dbc375d395e60800000000000000
+      internalID: 7951454061989808165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_3
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 0
+        width: 38
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c955f3bb0ff32cc60800000000000000
+      internalID: 7836896604744275356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_4
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 0
+        width: 38
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cc6d2dcb59069670800000000000000
+      internalID: 8545027632871075016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_5
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 0
+        width: 38
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f831528a482dc5090800000000000000
+      internalID: -8044323367192030321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_6
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 0
+        width: 38
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ee61cbdf118deb50800000000000000
+      internalID: 6624092600762724068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_7
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 0
+        width: 38
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b5afe5db865b80c0800000000000000
+      internalID: -4572465838074911303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_8
+      rect:
+        serializedVersion: 2
+        x: 7723
+        y: 3
+        width: 86
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55f9c2bd0eb39a400800000000000000
+      internalID: 335865484151660373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_9
+      rect:
+        serializedVersion: 2
+        x: 11443
+        y: 43
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3378590d3143b6b0800000000000000
+      internalID: -5281806207569857733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_10
+      rect:
+        serializedVersion: 2
+        x: 11477
+        y: 46
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bd2b9854755de390800000000000000
+      internalID: -7787474222462587468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_11
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 0
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15a52e7db10245cb0800000000000000
+      internalID: -4876237192577263023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_12
+      rect:
+        serializedVersion: 2
+        x: 945
+        y: 0
+        width: 28
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b1c4de7320fccb00800000000000000
+      internalID: 850318464908575158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_13
+      rect:
+        serializedVersion: 2
+        x: 1073
+        y: 0
+        width: 28
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30eb4a0a8a8d04060800000000000000
+      internalID: 6935781644911820291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_14
+      rect:
+        serializedVersion: 2
+        x: 1201
+        y: 0
+        width: 28
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b9534176d176d260800000000000000
+      internalID: 7122005026570197428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_15
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 0
+        width: 28
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d2f586be8df96ab0800000000000000
+      internalID: -5014197920710921517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_16
+      rect:
+        serializedVersion: 2
+        x: 1457
+        y: 0
+        width: 28
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6094defa3ac44dc70800000000000000
+      internalID: 8994898621680666886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_17
+      rect:
+        serializedVersion: 2
+        x: 1587
+        y: 0
+        width: 27
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 785360953c01ac100800000000000000
+      internalID: 128933970531726727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_18
+      rect:
+        serializedVersion: 2
+        x: 1715
+        y: 0
+        width: 25
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 258f1fa81e9353cb0800000000000000
+      internalID: -4884934579951896494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_19
+      rect:
+        serializedVersion: 2
+        x: 1843
+        y: 0
+        width: 26
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 867bd3530403b1b20800000000000000
+      internalID: 3106129420331366248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_20
+      rect:
+        serializedVersion: 2
+        x: 1970
+        y: 0
+        width: 28
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5195cdea8b07469e0800000000000000
+      internalID: -1629053226691307243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_21
+      rect:
+        serializedVersion: 2
+        x: 2097
+        y: 0
+        width: 30
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc43097b347e629e0800000000000000
+      internalID: -1646374335728831283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_22
+      rect:
+        serializedVersion: 2
+        x: 2226
+        y: 0
+        width: 28
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c54c12c2260979a60800000000000000
+      internalID: 7680766440825275484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_23
+      rect:
+        serializedVersion: 2
+        x: 2355
+        y: 0
+        width: 26
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12a77ee4c4eb39710800000000000000
+      internalID: 1698910719399393825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_24
+      rect:
+        serializedVersion: 2
+        x: 2483
+        y: 0
+        width: 25
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 911410c6651ef5e90800000000000000
+      internalID: -7034656331633966823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_25
+      rect:
+        serializedVersion: 2
+        x: 2609
+        y: 0
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a8564d2fb059d300800000000000000
+      internalID: 277341634088556709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_26
+      rect:
+        serializedVersion: 2
+        x: 2737
+        y: 0
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d7506ef9f20394b0800000000000000
+      internalID: -5434997052568217644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_27
+      rect:
+        serializedVersion: 2
+        x: 2865
+        y: 0
+        width: 33
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2db1b49e4504afd0800000000000000
+      internalID: -2331732872010810070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_28
+      rect:
+        serializedVersion: 2
+        x: 2993
+        y: 0
+        width: 33
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db2bbe0bebf20af10800000000000000
+      internalID: 2278873907507999421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_29
+      rect:
+        serializedVersion: 2
+        x: 3121
+        y: 0
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a99a5766c0225da0800000000000000
+      internalID: -5957663320548140637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_30
+      rect:
+        serializedVersion: 2
+        x: 3249
+        y: 0
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b72a1ab16e90d4240800000000000000
+      internalID: 4777485663620670075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_31
+      rect:
+        serializedVersion: 2
+        x: 3380
+        y: 0
+        width: 31
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6894088203743c9c0800000000000000
+      internalID: -3908201779463960186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_32
+      rect:
+        serializedVersion: 2
+        x: 3508
+        y: 0
+        width: 31
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4954f6b38eee30cf0800000000000000
+      internalID: -287123270024608364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_33
+      rect:
+        serializedVersion: 2
+        x: 3635
+        y: 0
+        width: 32
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bde422e3fb1569510800000000000000
+      internalID: 1555520603126124251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_34
+      rect:
+        serializedVersion: 2
+        x: 3762
+        y: 0
+        width: 33
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cebb855a250e2a60800000000000000
+      internalID: 7651058496331038400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_35
+      rect:
+        serializedVersion: 2
+        x: 3889
+        y: 0
+        width: 34
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59a341d97624a60b0800000000000000
+      internalID: -5734698162718492011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_36
+      rect:
+        serializedVersion: 2
+        x: 4018
+        y: 0
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db8e5396d315a15d0800000000000000
+      internalID: -3091068870036428611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_37
+      rect:
+        serializedVersion: 2
+        x: 4147
+        y: 0
+        width: 32
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79f51333b718a7e20800000000000000
+      internalID: 3349131639043219351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_38
+      rect:
+        serializedVersion: 2
+        x: 4276
+        y: 0
+        width: 31
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb61055b9d631d8b0800000000000000
+      internalID: -5129258191920556354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_39
+      rect:
+        serializedVersion: 2
+        x: 4400
+        y: 0
+        width: 34
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87f1ffdee93ac8480800000000000000
+      internalID: -8895555260970492040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_40
+      rect:
+        serializedVersion: 2
+        x: 4527
+        y: 0
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 199e2fb1f3f2d0840800000000000000
+      internalID: 5191857893526399377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_41
+      rect:
+        serializedVersion: 2
+        x: 4655
+        y: 0
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ae1a8bca5fb9cd10800000000000000
+      internalID: 2146457094101540519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_42
+      rect:
+        serializedVersion: 2
+        x: 4781
+        y: 0
+        width: 37
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3563d2371a62dd870800000000000000
+      internalID: 8709159729268340307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_43
+      rect:
+        serializedVersion: 2
+        x: 4909
+        y: 0
+        width: 37
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c87c7cd2296d08480800000000000000
+      internalID: -8898876940362463348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_44
+      rect:
+        serializedVersion: 2
+        x: 5037
+        y: 0
+        width: 37
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f79ff273dcc3ac7f0800000000000000
+      internalID: -591593548953945729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_45
+      rect:
+        serializedVersion: 2
+        x: 5165
+        y: 0
+        width: 37
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2bf658424575c6f0800000000000000
+      internalID: -664996442425328851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_46
+      rect:
+        serializedVersion: 2
+        x: 5293
+        y: 0
+        width: 37
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbbb5e31dc16a71a0800000000000000
+      internalID: -6811023953014441027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_47
+      rect:
+        serializedVersion: 2
+        x: 5425
+        y: 0
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f930bcb74a85fd560800000000000000
+      internalID: 7340683381111980959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_48
+      rect:
+        serializedVersion: 2
+        x: 5552
+        y: 0
+        width: 34
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c17520ec16e56d90800000000000000
+      internalID: -7105019825413066302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_49
+      rect:
+        serializedVersion: 2
+        x: 5679
+        y: 0
+        width: 35
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18f5eca32c2d8b220800000000000000
+      internalID: 2501981324656402305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_50
+      rect:
+        serializedVersion: 2
+        x: 5807
+        y: 0
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bd47e562792d4ce0800000000000000
+      internalID: -1419432736239170123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_51
+      rect:
+        serializedVersion: 2
+        x: 5932
+        y: 0
+        width: 38
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14d515506408afe30800000000000000
+      internalID: 4538080612754480449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_52
+      rect:
+        serializedVersion: 2
+        x: 6058
+        y: 33
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29f6d802f8a95f320800000000000000
+      internalID: 2591147100138729362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_53
+      rect:
+        serializedVersion: 2
+        x: 6058
+        y: 0
+        width: 40
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f145666998bdb69d0800000000000000
+      internalID: -2779886960990858209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_54
+      rect:
+        serializedVersion: 2
+        x: 6061
+        y: 31
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbb4d4d18d26b4e50800000000000000
+      internalID: 6794633143162588093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_55
+      rect:
+        serializedVersion: 2
+        x: 6064
+        y: 31
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53e0b55a858c86630800000000000000
+      internalID: 3920603758682902069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_56
+      rect:
+        serializedVersion: 2
+        x: 6074
+        y: 33
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6def429b4e4331ef0800000000000000
+      internalID: -138709006554956074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_57
+      rect:
+        serializedVersion: 2
+        x: 6180
+        y: 0
+        width: 46
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c3f3beff206ab2c0800000000000000
+      internalID: -4415110725430414397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_58
+      rect:
+        serializedVersion: 2
+        x: 6319
+        y: 0
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77ca185dd04903460800000000000000
+      internalID: 7219432989812436087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_59
+      rect:
+        serializedVersion: 2
+        x: 6449
+        y: 0
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55d3015caa44888d0800000000000000
+      internalID: -2843947664443163307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_60
+      rect:
+        serializedVersion: 2
+        x: 6577
+        y: 0
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd9beca9a236c44c0800000000000000
+      internalID: -4301954509408650789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_61
+      rect:
+        serializedVersion: 2
+        x: 6705
+        y: 0
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c573228fc2dae5d90800000000000000
+      internalID: -7107052753290905764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_62
+      rect:
+        serializedVersion: 2
+        x: 6833
+        y: 0
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23d7f9e476a7277c0800000000000000
+      internalID: -4075060128697582286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_63
+      rect:
+        serializedVersion: 2
+        x: 6950
+        y: 0
+        width: 54
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7af8c1b7551d7b9b0800000000000000
+      internalID: -5064349090886938713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_64
+      rect:
+        serializedVersion: 2
+        x: 7083
+        y: 0
+        width: 77
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4bcb9635c7f65430800000000000000
+      internalID: 3771474164366166859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_65
+      rect:
+        serializedVersion: 2
+        x: 7188
+        y: 0
+        width: 59
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7b7e368d92ea7f40800000000000000
+      internalID: 5727139042344991613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_66
+      rect:
+        serializedVersion: 2
+        x: 7346
+        y: 0
+        width: 29
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54e172178280b14a0800000000000000
+      internalID: -6621689857328079291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_67
+      rect:
+        serializedVersion: 2
+        x: 7453
+        y: 0
+        width: 51
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1b4cf0b03aad6b40800000000000000
+      internalID: 5435187451410533151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_68
+      rect:
+        serializedVersion: 2
+        x: 7599
+        y: 0
+        width: 82
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c495003af7ba6140800000000000000
+      internalID: 4713782245172024521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_69
+      rect:
+        serializedVersion: 2
+        x: 7729
+        y: 0
+        width: 36
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e135331f3117c6d30800000000000000
+      internalID: 4426036864263344926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_70
+      rect:
+        serializedVersion: 2
+        x: 7857
+        y: 0
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa3f40013ede2a6e0800000000000000
+      internalID: -1827636939276880977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_71
+      rect:
+        serializedVersion: 2
+        x: 7985
+        y: 0
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40e252e9b77620660800000000000000
+      internalID: 7350551322453945860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_72
+      rect:
+        serializedVersion: 2
+        x: 8099
+        y: 0
+        width: 50
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 169d752f1d4b67510800000000000000
+      internalID: 1546622335855352161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_73
+      rect:
+        serializedVersion: 2
+        x: 8228
+        y: 0
+        width: 50
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d08d684982a6a5d0800000000000000
+      internalID: -3051572986987577128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_74
+      rect:
+        serializedVersion: 2
+        x: 8484
+        y: 0
+        width: 50
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bea65ecac605ce4b0800000000000000
+      internalID: -5409860624691402005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_75
+      rect:
+        serializedVersion: 2
+        x: 8626
+        y: 0
+        width: 32
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32ee994fcaa307650800000000000000
+      internalID: 6228542799165910563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_76
+      rect:
+        serializedVersion: 2
+        x: 8755
+        y: 0
+        width: 31
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e9c8d848b84bb7d0800000000000000
+      internalID: -2901645578576803352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_77
+      rect:
+        serializedVersion: 2
+        x: 8868
+        y: 0
+        width: 50
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 241f9d70b02ee8cd0800000000000000
+      internalID: -2553855401668251326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_78
+      rect:
+        serializedVersion: 2
+        x: 8996
+        y: 0
+        width: 50
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 390d2984fcfafef00800000000000000
+      internalID: 1148329734813438099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_79
+      rect:
+        serializedVersion: 2
+        x: 9124
+        y: 0
+        width: 50
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7b39270ede99a8a0800000000000000
+      internalID: -6293324327833486470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_80
+      rect:
+        serializedVersion: 2
+        x: 9252
+        y: 0
+        width: 50
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac6e3e5b0b3f35d00800000000000000
+      internalID: 960379085851453130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_81
+      rect:
+        serializedVersion: 2
+        x: 9380
+        y: 0
+        width: 50
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd5d72e999f0398e0800000000000000
+      internalID: -1687988282875980323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_82
+      rect:
+        serializedVersion: 2
+        x: 9508
+        y: 0
+        width: 50
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b594a93fd1190bc20800000000000000
+      internalID: 3220233291396958555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_83
+      rect:
+        serializedVersion: 2
+        x: 9636
+        y: 0
+        width: 55
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdfba3ba3cfe982f0800000000000000
+      internalID: -969980621051215908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_84
+      rect:
+        serializedVersion: 2
+        x: 9764
+        y: 0
+        width: 53
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68d42e9c6b6a13360800000000000000
+      internalID: 7147677387614997894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_85
+      rect:
+        serializedVersion: 2
+        x: 9892
+        y: 0
+        width: 57
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38353b9ead1a9adc0800000000000000
+      internalID: -3627190063274437757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_86
+      rect:
+        serializedVersion: 2
+        x: 10020
+        y: 0
+        width: 66
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d92c9fd891536ff00800000000000000
+      internalID: 1150165138712150685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_87
+      rect:
+        serializedVersion: 2
+        x: 10148
+        y: 0
+        width: 64
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7edcd3e521580d8a0800000000000000
+      internalID: -6282375166244827673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_88
+      rect:
+        serializedVersion: 2
+        x: 10276
+        y: 0
+        width: 67
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bda4aa91626a3b70800000000000000
+      internalID: 8879517786660187574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_89
+      rect:
+        serializedVersion: 2
+        x: 10404
+        y: 0
+        width: 66
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0480b79d674646c10800000000000000
+      internalID: 2045870592350685248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_90
+      rect:
+        serializedVersion: 2
+        x: 10532
+        y: 0
+        width: 66
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c064f31da7767b830800000000000000
+      internalID: 4086848964056270348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_91
+      rect:
+        serializedVersion: 2
+        x: 10660
+        y: 0
+        width: 66
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ab10245817b241c0800000000000000
+      internalID: -4520849760808068184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_92
+      rect:
+        serializedVersion: 2
+        x: 10788
+        y: 0
+        width: 65
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 194df857cd97e19b0800000000000000
+      internalID: -5107510939619437423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_93
+      rect:
+        serializedVersion: 2
+        x: 10916
+        y: 0
+        width: 67
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65c21ec1b15bf7360800000000000000
+      internalID: 7169648259850382422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_94
+      rect:
+        serializedVersion: 2
+        x: 11044
+        y: 0
+        width: 67
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a694790dbf88e9f80800000000000000
+      internalID: -8097884464847828630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_95
+      rect:
+        serializedVersion: 2
+        x: 11172
+        y: 0
+        width: 67
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6fdb13abaacb6770800000000000000
+      internalID: 8605194351546195819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_96
+      rect:
+        serializedVersion: 2
+        x: 11423
+        y: 0
+        width: 71
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebddc5f275403f550800000000000000
+      internalID: 6193298685067845054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_97
+      rect:
+        serializedVersion: 2
+        x: 11556
+        y: 0
+        width: 53
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81c7ea48ba58f3b30800000000000000
+      internalID: 4269277943482448920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_98
+      rect:
+        serializedVersion: 2
+        x: 11606
+        y: 20
+        width: 12
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36c831e7437549930800000000000000
+      internalID: 4149037039680195683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_99
+      rect:
+        serializedVersion: 2
+        x: 11611
+        y: 32
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60a14b0b2915c6d50800000000000000
+      internalID: 6731845233483717126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_100
+      rect:
+        serializedVersion: 2
+        x: 11684
+        y: 0
+        width: 50
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa42610b93e49d490800000000000000
+      internalID: -7721054076475661137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_101
+      rect:
+        serializedVersion: 2
+        x: 11827
+        y: 0
+        width: 31
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2088fe745c426740800000000000000
+      internalID: 5143757650201706541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_102
+      rect:
+        serializedVersion: 2
+        x: 11955
+        y: 0
+        width: 31
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a4c6a0543d0a1fb0800000000000000
+      internalID: -4676410744728271708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_103
+      rect:
+        serializedVersion: 2
+        x: 6058
+        y: 19
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c4a2bab936003780800000000000000
+      internalID: -8705451234691996477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_104
+      rect:
+        serializedVersion: 2
+        x: 8355
+        y: 0
+        width: 50
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b25907310d0f243a0800000000000000
+      internalID: -6682514120594385621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_105
+      rect:
+        serializedVersion: 2
+        x: 9553
+        y: 10
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36a9b96717eda0fa0800000000000000
+      internalID: -5833605788402476445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_106
+      rect:
+        serializedVersion: 2
+        x: 12082
+        y: 0
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dafa9421094dfab50800000000000000
+      internalID: 6606732893623005101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_107
+      rect:
+        serializedVersion: 2
+        x: 9430
+        y: 12
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30f36a08294a7a660800000000000000
+      internalID: 7397061862109888259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_108
+      rect:
+        serializedVersion: 2
+        x: 12206
+        y: 0
+        width: 43
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f98430165d104ce00800000000000000
+      internalID: 1063977427933546655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Jotem_Sprite_sheet 1_109
+      rect:
+        serializedVersion: 2
+        x: 12334
+        y: 0
+        width: 43
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 726c7a4145a716e60800000000000000
+      internalID: 7953772918455387687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Audio;
 public class EnemyControls01 : MonoBehaviour
 {
     /// <summary>
@@ -48,6 +48,11 @@ public class EnemyControls01 : MonoBehaviour
     private SpriteRenderer spriterenderer;
     private float stayTime;
 
+    [Header("Audio Clips")]
+    private AudioSource audiosource;
+    public AudioClip jumping;
+    public AudioClip groundHit;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -56,6 +61,7 @@ public class EnemyControls01 : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         grab = GetComponent<Obj_Grab>();
         knockBack = GetComponent<EnemyKnockBack>();
+        audiosource = GetComponent<AudioSource>();
         groundLayer = LayerMask.GetMask("Ground");  
     }
     // Update is called once per frame
@@ -120,6 +126,12 @@ public class EnemyControls01 : MonoBehaviour
 
         }
 
+        if(collision.gameObject.layer == targetLayer + 1) 
+        {
+            audiosource.PlayOneShot(groundHit, 0.8f);
+
+        }
+
         //Debug.Log(gameObject.name + " Just Hit" + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Wall") && !knockBack.isKnockedBacked)
         {
@@ -169,13 +181,13 @@ public class EnemyControls01 : MonoBehaviour
 
     void Jump() 
     {
-
+        
         if (isGrounded) 
         {
 
             //Clears Velocity
             rb.velocity = new Vector2(rb.velocity.x, 0f);
-
+            audiosource.PlayOneShot(jumping, 0.8f);
             if (isFacingRight) 
             {
                 //Apply Upwards Force

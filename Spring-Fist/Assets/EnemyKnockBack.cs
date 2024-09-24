@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Audio;
 public class EnemyKnockBack : MonoBehaviour
 {
     private float knockbackDistance;
@@ -36,12 +36,14 @@ public class EnemyKnockBack : MonoBehaviour
     private int countKnockBack;
     private float curKnockBackDelay;
 
-    
+    private AudioSource hitSound;
+    public AudioClip impact;
 
     private void Awake()
     {
         playerControls = GameObject.Find("Player").GetComponent<Player_Control>();
-
+        hitSound = GetComponent<AudioSource>();
+      
 
         health = GetComponent<Enemy_Health>();
         grabbed = GetComponent<Obj_Grab>();
@@ -142,6 +144,8 @@ public class EnemyKnockBack : MonoBehaviour
 
     public void ApplyKnockBack(Vector2 direction)
     {
+        hitSound.PlayOneShot(impact, 0.7f);
+
         knockbackForce = Random.Range(1, 12);
 
         health.TakeDamage(damageNumber);

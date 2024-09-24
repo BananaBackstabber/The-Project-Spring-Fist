@@ -126,6 +126,9 @@ public class Player_Control : MonoBehaviour
         //FIND LEFT HAND SCRIPT
         scriptLH = GameObject.Find("LeftHand").GetComponent<LeftHand>();
 
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+
         right = new Vector2(1f, 0f);
         upRight = new Vector2(0.75f, 0.75f);
         up = new Vector2(0f, 1f);
@@ -135,11 +138,12 @@ public class Player_Control : MonoBehaviour
         down = new Vector2(0f, -1f);
         downRight = new Vector2(0.75f, -0.75f);
 
+        
+
     }
     void Start()
     {
-        animator = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
+        
     }
 
     private void OnEnable()
@@ -193,6 +197,8 @@ public class Player_Control : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        animator.SetFloat("v.y", rb.velocity.y);
         //TargetPoint.transform.localPosition = TargetPoint.transform.localPosition * punchDistance;
 
         // Debug.Log("HitPoint = "+ hitPoint);
