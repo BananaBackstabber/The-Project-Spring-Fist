@@ -1,0 +1,74 @@
+{
+    "name": "MainMenu",
+    "maps": [
+        {
+            "name": "UI",
+            "id": "688b29f2-5f86-49d7-8590-b95de5ed2068",
+            "actions": [
+                {
+                    "name": "Nav",
+                    "type": "Button",
+                    "id": "4f29d86b-4ce2-45fd-a66c-d367b7b20578",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Press",
+                    "type": "Button",
+                    "id": "98b95449-09b2-4703-8742-293542b0d4a6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Cancel",
+                    "type": "Button",
+                    "id": "0ee8ab85-5b79-4f1f-8ba4-2adad2013514",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "05bd4ac0-de3f-4a48-9c75-383a8a194a60",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Nav",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2378f9b0-ce94-4be6-b993-b2a67a72f514",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Press",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5d335890-93da-4414-8840-2fe6c9e76714",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

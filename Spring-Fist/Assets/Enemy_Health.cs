@@ -48,6 +48,7 @@ public class Enemy_Health : MonoBehaviour
 
         global = GameObject.Find("Global_Object").GetComponent<GlobalVariables>();
         wavescript = GameObject.Find("Level_Settings").GetComponent<waveScript>();
+        audiosource = GetComponent<AudioSource>();
 
     }
     

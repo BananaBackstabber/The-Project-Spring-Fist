@@ -17,7 +17,7 @@ public class M_LevelSettings : MonoBehaviour
         UItime = GameObject.Find("The Time").GetComponent<TextMeshProUGUI>();
         global = GameObject.Find("Global_Object").GetComponent<GlobalVariables>();
 
-        curTime = 90; 
+        curTime = 150; 
     }
     // Start is called before the first frame update
     void Start()

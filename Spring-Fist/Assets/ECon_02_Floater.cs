@@ -99,7 +99,7 @@ public class ECon_02_Floater : MonoBehaviour
 
         if (knockBack.isKnockedBacked)
         {
-            animator.SetBool("isStuned", true);
+            animator.SetBool("isStun", true);
             stunDuration += Time.deltaTime;
 
             if (stunDuration >= 3f)
